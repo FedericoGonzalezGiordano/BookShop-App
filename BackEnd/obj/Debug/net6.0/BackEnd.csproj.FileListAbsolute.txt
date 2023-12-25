@@ -1,0 +1,4 @@
+C:\Users\Federico gonzalez\Desktop\BookShop App\BackEnd\obj\Debug\net6.0\BackEnd.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Federico gonzalez\Desktop\BookShop App\BackEnd\obj\Debug\net6.0\BackEnd.AssemblyInfoInputs.cache
+C:\Users\Federico gonzalez\Desktop\BookShop App\BackEnd\obj\Debug\net6.0\BackEnd.AssemblyInfo.cs
+C:\Users\Federico gonzalez\Desktop\BookShop App\BackEnd\obj\Debug\net6.0\BackEnd.csproj.CoreCompileInputs.cache

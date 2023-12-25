@@ -6,4 +6,15 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.1.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="DAO\Implementation\" />
+    <Folder Include="DAO\Interface\" />
+    <Folder Include="Front\Implementation\" />
+    <Folder Include="Front\Interface\" />
+  </ItemGroup>
+
 </Project>
