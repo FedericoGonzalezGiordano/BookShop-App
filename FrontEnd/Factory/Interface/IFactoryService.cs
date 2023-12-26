@@ -1,15 +1,14 @@
-﻿using FrontEnd.HTTPClient;
+﻿using FrontEnd.Service.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BackEnd.Model;
 
 namespace FrontEnd.Factory.Interface
 {
-    public interface ICustomerService
+    public interface IFactoryService
     {
-        Task<HttpResponse> AltaCliente(CustomerModel cliente);
+        ICustomerService CreateClienteService();
     }
 }
