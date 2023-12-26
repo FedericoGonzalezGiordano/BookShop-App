@@ -1,10 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\API\\Controllers",
-    "\\BackEnd",
-    "\\BackEnd\\DAO\\HelperDao"
+    "\\BackEnd\\DAO",
+    "\\BackEnd\\DAO\\Helper"
   ],
-  "SelectedNode": "\\BackEnd\\BackEnd.csproj",
+  "SelectedNode": "\\BackEnd",
   "PreviewInSolutionExplorer": false
 }
