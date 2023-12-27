@@ -7,16 +7,26 @@ namespace FrontEnd
     {
         IFactoryService factory;
         ICustomerService _customerService;
+        private List<NeighborhoodModel> neighborhoodLst;
         public FrmCustomerRegistration(IFactoryService factory)
         {
             InitializeComponent();
             this.factory = factory;
             _customerService = factory.CreateClienteService();
+            
         }
 
         private void FrmCustomerRegistration_Load(object sender, EventArgs e)
         {
+            LoadComboAsync();
+        }
 
+        private async void LoadComboAsync()
+        {
+            neighborhoodLst = await _customerService.GetNeighborhoodAsync();
+            cboNeighborhood.DataSource = neighborhoodLst;
+            cboNeighborhood.DisplayMember = "barrio";
+            cboNeighborhood.ValueMember = "cod_barrio";
         }
 
         private void btnLoad_Click(object sender, EventArgs e)

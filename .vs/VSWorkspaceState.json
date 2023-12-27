@@ -1,9 +1,10 @@
 {
   "ExpandedNodes": [
     "",
+    "\\BackEnd",
     "\\BackEnd\\DAO",
     "\\BackEnd\\DAO\\Helper"
   ],
-  "SelectedNode": "\\BackEnd",
+  "SelectedNode": "\\BackEnd\\DAO\\Helper\\HelperDao.cs",
   "PreviewInSolutionExplorer": false
 }

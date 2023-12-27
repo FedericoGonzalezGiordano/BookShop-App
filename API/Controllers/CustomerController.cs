@@ -14,8 +14,27 @@ namespace API.Controllers
         {
             front = new CustomerFront();
         }
-           
-        
+
+        [HttpGet("/GetNeighborhood")]
+        public IActionResult GetNeighborhood()
+        {
+
+            try
+            {
+                var result = front.GetNeighborhood();
+                if (result == null)
+                {
+                    return StatusCode(500, " Se produjo un error al buscar los barrios");
+                }
+                return Ok(result);
+
+            }
+            catch (Exception)
+            {
+
+                return StatusCode(500);
+            }
+        }
 
 
 

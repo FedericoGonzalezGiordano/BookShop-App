@@ -8,9 +8,9 @@ namespace BackEnd.DAO.Interface
 {
     public interface ICustomerDao
     {
-        bool CustomerRegistration(CustomerModel customer);
-        bool CustomerUpdate(CustomerModel customer);
-        bool CustomerTermination(string number);
+        //bool CustomerRegistration(CustomerModel customer);
+        //bool CustomerUpdate(CustomerModel customer);
+        //bool CustomerTermination(string number);
         List<NeighborhoodModel> GetNeighborhood();
     }
 }

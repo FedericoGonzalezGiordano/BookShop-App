@@ -12,7 +12,7 @@ namespace BackEnd.DAO.Helper
     public class HelperDao
     {
         private SqlConnection _connection;
-        private string stringConexion = "Data Source=.\\SQLEXPRESS;Initial Catalog = LIBRERIA_LCI2023;Integrated Security = True";
+        private string stringConexion = "Data Source=.\\SQLEXPRESS;Initial Catalog = LIBRERIA2023;Integrated Security = True";
         private static HelperDao instance;
 
         private HelperDao()
