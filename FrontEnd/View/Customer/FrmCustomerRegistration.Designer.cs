@@ -235,6 +235,8 @@
             PerformLayout();
         }
 
+       
+
         #endregion
 
         private TextBox txtEmail;

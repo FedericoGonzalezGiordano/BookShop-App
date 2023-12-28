@@ -12,7 +12,7 @@ namespace FrontEnd.Service.Implementation
 {
     public class CustomerService : ICustomerService
     {
-        private const string host = "https://localhost:3000";
+        private const string host = "https://localhost:7101";
         //public async Task<HttpResponse> CustomerRegistration(CustomerModel customer)
         //{
         //    string url = host + "/PostCliente";

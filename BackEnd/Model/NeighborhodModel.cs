@@ -9,8 +9,8 @@ public class NeighborhoodModel
         CodNeighborHood = cod;
         NameNeighborhood = name;
     }
-
     public NeighborhoodModel()
     {
+            
     }
 }

@@ -24,9 +24,9 @@ namespace FrontEnd
         private async void LoadComboAsync()
         {
             neighborhoodLst = await _customerService.GetNeighborhoodAsync();
-            cboNeighborhood.DataSource = neighborhoodLst;
-            cboNeighborhood.DisplayMember = "barrio";
-            cboNeighborhood.ValueMember = "cod_barrio";
+            cboNeighborhood.ValueMember = "codNeighborHood";
+            cboNeighborhood.DisplayMember = "nameNeighborhood";
+            cboNeighborhood.DataSource = neighborhoodLst; 
         }
 
         private void btnLoad_Click(object sender, EventArgs e)
