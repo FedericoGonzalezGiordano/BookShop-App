@@ -8,7 +8,7 @@ namespace BackEnd.Front.Interface
 {
     public interface ICustomerFront
     {
-        //bool CustomerRegistration(CustomerModel customer);
+        bool CustomerRegistration(CustomerModel customer);
         //bool CustomerUpdate(CustomerModel customer);
         //bool CustomerTermination(string number);
         List<NeighborhoodModel> GetNeighborhood();

@@ -31,7 +31,7 @@
             txtEmail = new TextBox();
             LblEmail = new Label();
             cboNeighborhood = new ComboBox();
-            txtTelefono = new TextBox();
+            txtTelephone = new TextBox();
             LblTelephone = new Label();
             LblStreet = new Label();
             LblNeighborhood = new Label();
@@ -50,16 +50,16 @@
             // txtEmail
             // 
             txtEmail.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            txtEmail.Location = new Point(222, 264);
+            txtEmail.Location = new Point(212, 270);
             txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(126, 23);
+            txtEmail.Size = new Size(191, 23);
             txtEmail.TabIndex = 70;
             // 
             // LblEmail
             // 
             LblEmail.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             LblEmail.AutoSize = true;
-            LblEmail.Location = new Point(111, 272);
+            LblEmail.Location = new Point(91, 273);
             LblEmail.Name = "LblEmail";
             LblEmail.Size = new Size(41, 15);
             LblEmail.TabIndex = 79;
@@ -70,24 +70,24 @@
             cboNeighborhood.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             cboNeighborhood.DropDownStyle = ComboBoxStyle.DropDownList;
             cboNeighborhood.FormattingEnabled = true;
-            cboNeighborhood.Location = new Point(229, 175);
+            cboNeighborhood.Location = new Point(212, 194);
             cboNeighborhood.Name = "cboNeighborhood";
-            cboNeighborhood.Size = new Size(109, 23);
+            cboNeighborhood.Size = new Size(169, 23);
             cboNeighborhood.TabIndex = 65;
             // 
-            // txtTelefono
+            // txtTelephone
             // 
-            txtTelefono.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            txtTelefono.Location = new Point(229, 217);
-            txtTelefono.Name = "txtTelefono";
-            txtTelefono.Size = new Size(140, 23);
-            txtTelefono.TabIndex = 71;
+            txtTelephone.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            txtTelephone.Location = new Point(212, 232);
+            txtTelephone.Name = "txtTelephone";
+            txtTelephone.Size = new Size(135, 23);
+            txtTelephone.TabIndex = 71;
             // 
             // LblTelephone
             // 
             LblTelephone.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             LblTelephone.AutoSize = true;
-            LblTelephone.Location = new Point(92, 225);
+            LblTelephone.Location = new Point(91, 235);
             LblTelephone.Name = "LblTelephone";
             LblTelephone.Size = new Size(61, 15);
             LblTelephone.TabIndex = 78;
@@ -97,7 +97,7 @@
             // 
             LblStreet.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             LblStreet.AutoSize = true;
-            LblStreet.Location = new Point(101, 97);
+            LblStreet.Location = new Point(91, 121);
             LblStreet.Name = "LblStreet";
             LblStreet.Size = new Size(37, 15);
             LblStreet.TabIndex = 76;
@@ -107,7 +107,7 @@
             // 
             LblNeighborhood.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             LblNeighborhood.AutoSize = true;
-            LblNeighborhood.Location = new Point(92, 183);
+            LblNeighborhood.Location = new Point(91, 197);
             LblNeighborhood.Name = "LblNeighborhood";
             LblNeighborhood.Size = new Size(85, 15);
             LblNeighborhood.TabIndex = 75;
@@ -116,16 +116,16 @@
             // TxtLastName
             // 
             TxtLastName.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            TxtLastName.Location = new Point(212, 64);
+            TxtLastName.Location = new Point(212, 80);
             TxtLastName.Name = "TxtLastName";
-            TxtLastName.Size = new Size(114, 23);
+            TxtLastName.Size = new Size(169, 23);
             TxtLastName.TabIndex = 67;
             // 
             // LblLastName
             // 
             LblLastName.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             LblLastName.AutoSize = true;
-            LblLastName.Location = new Point(75, 72);
+            LblLastName.Location = new Point(91, 83);
             LblLastName.Name = "LblLastName";
             LblLastName.Size = new Size(58, 15);
             LblLastName.TabIndex = 73;
@@ -134,16 +134,16 @@
             // txtname
             // 
             txtname.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            txtname.Location = new Point(222, 27);
+            txtname.Location = new Point(212, 42);
             txtname.Name = "txtname";
-            txtname.Size = new Size(104, 23);
+            txtname.Size = new Size(169, 23);
             txtname.TabIndex = 66;
             // 
             // LblName
             // 
             LblName.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             LblName.AutoSize = true;
-            LblName.Location = new Point(111, 35);
+            LblName.Location = new Point(91, 45);
             LblName.Name = "LblName";
             LblName.Size = new Size(39, 15);
             LblName.TabIndex = 72;
@@ -152,24 +152,24 @@
             // txtStreet
             // 
             txtStreet.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            txtStreet.Location = new Point(212, 93);
+            txtStreet.Location = new Point(212, 118);
             txtStreet.Name = "txtStreet";
-            txtStreet.Size = new Size(126, 23);
+            txtStreet.Size = new Size(169, 23);
             txtStreet.TabIndex = 80;
             // 
             // TxtStreetNumber
             // 
             TxtStreetNumber.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            TxtStreetNumber.Location = new Point(212, 136);
+            TxtStreetNumber.Location = new Point(212, 156);
             TxtStreetNumber.Name = "TxtStreetNumber";
-            TxtStreetNumber.Size = new Size(136, 23);
+            TxtStreetNumber.Size = new Size(67, 23);
             TxtStreetNumber.TabIndex = 81;
             // 
             // LblStreetNumber
             // 
             LblStreetNumber.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             LblStreetNumber.AutoSize = true;
-            LblStreetNumber.Location = new Point(75, 144);
+            LblStreetNumber.Location = new Point(91, 159);
             LblStreetNumber.Name = "LblStreetNumber";
             LblStreetNumber.Size = new Size(84, 15);
             LblStreetNumber.TabIndex = 82;
@@ -178,7 +178,7 @@
             // btnCancel
             // 
             btnCancel.Anchor = AnchorStyles.Bottom;
-            btnCancel.Location = new Point(273, 361);
+            btnCancel.Location = new Point(241, 335);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(75, 21);
             btnCancel.TabIndex = 84;
@@ -188,7 +188,7 @@
             // btnExit
             // 
             btnExit.Anchor = AnchorStyles.Bottom;
-            btnExit.Location = new Point(382, 361);
+            btnExit.Location = new Point(408, 335);
             btnExit.Name = "btnExit";
             btnExit.Size = new Size(75, 21);
             btnExit.TabIndex = 85;
@@ -198,7 +198,7 @@
             // btnLoad
             // 
             btnLoad.Anchor = AnchorStyles.Bottom;
-            btnLoad.Location = new Point(132, 361);
+            btnLoad.Location = new Point(74, 335);
             btnLoad.Name = "btnLoad";
             btnLoad.Size = new Size(75, 21);
             btnLoad.TabIndex = 83;
@@ -210,7 +210,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(600, 430);
+            ClientSize = new Size(531, 402);
             Controls.Add(btnCancel);
             Controls.Add(btnExit);
             Controls.Add(btnLoad);
@@ -220,7 +220,7 @@
             Controls.Add(txtEmail);
             Controls.Add(LblEmail);
             Controls.Add(cboNeighborhood);
-            Controls.Add(txtTelefono);
+            Controls.Add(txtTelephone);
             Controls.Add(LblTelephone);
             Controls.Add(LblStreet);
             Controls.Add(LblNeighborhood);
@@ -235,14 +235,14 @@
             PerformLayout();
         }
 
-       
+
 
         #endregion
 
         private TextBox txtEmail;
         private Label LblEmail;
         public ComboBox cboNeighborhood;
-        private TextBox txtTelefono;
+        private TextBox txtTelephone;
         private Label LblTelephone;
         private Label LblStreet;
         private Label LblNeighborhood;

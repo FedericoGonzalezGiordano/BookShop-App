@@ -13,13 +13,13 @@ namespace FrontEnd.Service.Implementation
     public class CustomerService : ICustomerService
     {
         private const string host = "https://localhost:7101";
-        //public async Task<HttpResponse> CustomerRegistration(CustomerModel customer)
-        //{
-        //    string url = host + "/PostCliente";
-        //    var cuerpo = JsonConvert.SerializeObject(customer);
-        //    var response = await ClientSingleton.GetInstance().PostAsync(url, cuerpo);
-        //    return response;
-        //}
+        public async Task<HttpResponse> CustomerRegistration(CustomerModel customer)
+        {
+            string url = host + "/PostCustomer";
+            var cuerpo = JsonConvert.SerializeObject(customer);
+            var response = await ClientSingleton.GetInstance().PostAsync(url, cuerpo);
+            return response;
+        }
 
         public  async Task<List<NeighborhoodModel>> GetNeighborhoodAsync()
         {

@@ -17,10 +17,10 @@ namespace BackEnd.Front.Implementation
             dao=new CustomerDao();
         }
 
-        //public bool CustomerRegistration(CustomerModel customer)
-        //{
-        //    return dao.CustomerRegistration(customer);
-        //}
+        public bool CustomerRegistration(CustomerModel customer)
+        {
+            return dao.CustomerRegistration(customer);
+        }
 
         //public bool CustomerTermination(string number)
         //{

@@ -7,7 +7,7 @@ public class CustomerModel
     public string LastNameCustomer { get; set; }
     public string StreetCustomer { get; set; }
     public int StreetNumberCustomer { get; set; }
-    public NeighborhoodModel CodNeighborhoodCustomer { get; set; }
+    public NeighborhoodModel Neighborhood { get; set; }
     public int TelCustomer { get; set; }
     public string MailCustomer { get;set; }
 
@@ -18,7 +18,7 @@ public class CustomerModel
         LastNameCustomer = string.Empty;
         StreetCustomer = string.Empty;
         StreetNumberCustomer= 0;
-        CodNeighborhoodCustomer = new NeighborhoodModel();
+        Neighborhood = new NeighborhoodModel();
         TelCustomer = 0;
         MailCustomer = string.Empty;
     }

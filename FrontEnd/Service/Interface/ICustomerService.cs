@@ -11,7 +11,7 @@ namespace FrontEnd.Service.Interface
 {
     public interface ICustomerService
     {
-        //Task<HttpResponse> CustomerRegistration(CustomerModel customer);
+        Task<HttpResponse> CustomerRegistration(CustomerModel customer);
         Task<List<NeighborhoodModel>> GetNeighborhoodAsync();
         
     }

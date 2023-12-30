@@ -10,10 +10,11 @@ namespace FrontEnd
         private List<NeighborhoodModel> neighborhoodLst;
         public FrmCustomerRegistration(IFactoryService factory)
         {
-            InitializeComponent();
             this.factory = factory;
             _customerService = factory.CreateClienteService();
+            InitializeComponent();
             
+
         }
 
         private void FrmCustomerRegistration_Load(object sender, EventArgs e)
@@ -26,14 +27,37 @@ namespace FrontEnd
             neighborhoodLst = await _customerService.GetNeighborhoodAsync();
             cboNeighborhood.ValueMember = "codNeighborHood";
             cboNeighborhood.DisplayMember = "nameNeighborhood";
-            cboNeighborhood.DataSource = neighborhoodLst; 
+            cboNeighborhood.DataSource = neighborhoodLst;
         }
 
-        private void btnLoad_Click(object sender, EventArgs e)
+        private async void  btnLoad_Click(object sender, EventArgs e)
         {
             if (Validate())
             {
-
+                CustomerModel customer = new CustomerModel();
+                customer.NameCustomer = txtname.Text;
+                customer.LastNameCustomer = TxtLastName.Text;
+                customer.StreetCustomer = txtStreet.Text;
+                customer.StreetNumberCustomer = Convert.ToInt32(TxtStreetNumber.Text);
+                customer.Neighborhood= (NeighborhoodModel)cboNeighborhood.SelectedItem;
+                customer.TelCustomer = Convert.ToInt32(txtTelephone.Text);
+                customer.MailCustomer=txtEmail.Text;
+                var result = await _customerService.CustomerRegistration(customer);
+                if (result.SuccessStatus)
+                {
+                    MessageBox.Show("Customer successfully generated", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    TxtLastName.Text = string.Empty;
+                    txtname.Text = string.Empty;
+                    txtEmail.Text = string.Empty;
+                    txtStreet.Text = string.Empty;
+                    TxtStreetNumber.Text = string.Empty;
+                    txtTelephone.Text = string.Empty;
+                    cboNeighborhood.SelectedIndex = -1;
+                }
+                else
+                {
+                    MessageBox.Show("Error loading client: " + result.Data, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -70,10 +94,10 @@ namespace FrontEnd
                 return false;
 
             }
-            if (string.IsNullOrEmpty(txtTelefono.Text) || !int.TryParse(txtTelefono.Text, out _))
+            if (string.IsNullOrEmpty(txtTelephone.Text) || !int.TryParse(txtTelephone.Text, out _))
             {
                 MessageBox.Show("You must enter a telephone number..", "Add", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                txtTelefono.Focus();
+                txtTelephone.Focus();
                 return false;
             }
             if (string.IsNullOrEmpty(txtEmail.Text))

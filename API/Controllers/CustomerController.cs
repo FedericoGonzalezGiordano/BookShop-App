@@ -24,7 +24,7 @@ namespace API.Controllers
                 var result = front.GetNeighborhood();
                 if (result == null)
                 {
-                    return StatusCode(500, " Se produjo un error al buscar los barrios");
+                    return StatusCode(500, "An error occurred while searching for neighborhoods");
                 }
                 return Ok(result);
 
@@ -35,8 +35,26 @@ namespace API.Controllers
                 return StatusCode(500);
             }
         }
+        [HttpPost("/PostCustomer")]
+        public IActionResult PostCliente(CustomerModel customer)
+        {
 
+            try
+            {
+                var result = front.CustomerRegistration(customer);
+                if (result == false)
+                {
+                    return StatusCode(500, "An error occurred while registering a client");
+                }
+                return Ok(result);
 
+            }
+            catch (Exception)
+            {
+
+                return StatusCode(500);
+            }
+        }
 
         //// GET: api/<CustomerController>
         //[HttpGet]

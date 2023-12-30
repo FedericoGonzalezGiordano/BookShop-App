@@ -11,6 +11,7 @@ public class NeighborhoodModel
     }
     public NeighborhoodModel()
     {
-            
+        CodNeighborHood = 0;
+        NameNeighborhood=string.Empty;
     }
 }
