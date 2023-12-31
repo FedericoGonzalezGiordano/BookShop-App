@@ -15,5 +15,10 @@ namespace FrontEnd.Factory.Implementation
         {
             return new CustomerService();
         }
+
+        public ILoginService CreateLoginService()
+        {
+            return new LoginService();
+        }
     }
 }

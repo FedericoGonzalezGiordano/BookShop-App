@@ -1775,3 +1775,12 @@ insert into detalle_facturas (nro_factura, cod_articulo, pre_unitario, cantidad)
 insert into detalle_facturas (nro_factura, cod_articulo, pre_unitario, cantidad) values(568,10,5.50,25);
 insert into detalle_facturas (nro_factura, cod_articulo, pre_unitario, cantidad) values(569,12,62.90,25);
 insert into detalle_facturas (nro_factura, cod_articulo, pre_unitario, cantidad) values(570,19,45.00,10);
+
+alter table vendedores
+add  contrasenia varchar(10)  null
+
+UPDATE vendedores
+SET contrasenia = LEFT(CONVERT(VARCHAR(255), NEWID()), 10)
+
+UPDATE vendedores
+SET contrasenia = REPLACE(LEFT(CONVERT(VARCHAR(255), NEWID()), 10), '-', '')

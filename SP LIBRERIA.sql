@@ -12,3 +12,19 @@ AS
 BEGIN
 SELECT * FROM LOCALIDADES ORDER BY 2
 END
+
+create PROCEDURE Sp_ObtenerUser
+    @pName VARCHAR(10),
+	@pApe varchar(10),
+    @pPassword VARCHAR(10) OUTPUT,
+	@cod int
+AS
+BEGIN
+    SELECT @pPassword = contrasenia FROM vendedores WHERE nom_vendedor = @pName and @pApe=ape_vendedor and cod_vendedor=@cod;
+END;
+
+create PROCEDURE Sp_Obtener_Vendedores
+AS
+BEGIN
+    SELECT * FROM vendedores Order by 1,2;
+END;

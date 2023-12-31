@@ -35,7 +35,7 @@ namespace BackEnd.DAO.Implementation
                 transaction.Commit();
                 result = true;
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 if (transaction != null)
                     transaction.Rollback();
@@ -67,7 +67,7 @@ namespace BackEnd.DAO.Implementation
             catch (Exception ex)
             {
 
-                throw new Exception("Error en GetNeighborhood", ex);
+                throw new Exception("GetNeighborhood failed", ex);
             }
 
             return lstNeighborhood;

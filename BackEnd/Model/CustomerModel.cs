@@ -13,14 +13,7 @@ public class CustomerModel
 
     public CustomerModel()
     { 
-        CodCustomer = 0;
-        NameCustomer = string.Empty;
-        LastNameCustomer = string.Empty;
-        StreetCustomer = string.Empty;
-        StreetNumberCustomer= 0;
-        Neighborhood = new NeighborhoodModel();
-        TelCustomer = 0;
-        MailCustomer = string.Empty;
+     
     }
 
     public override string ToString()

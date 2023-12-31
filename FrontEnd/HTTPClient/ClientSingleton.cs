@@ -27,16 +27,26 @@ namespace FrontEnd.HTTPClient
         }
         public async Task<HttpResponse> GetAsync(string url)
         {
-            var result = await client.GetAsync(url);
-            var content = "";
+            try
+            {
+                var result = await client.GetAsync(url);
+                var content = "";
 
 
-            if (result.IsSuccessStatusCode)
+                if (result.IsSuccessStatusCode)
+                {
+
+                    content = await result.Content.ReadAsStringAsync();
+                }
+                return new HttpResponse(result.StatusCode, content, result.IsSuccessStatusCode);
+            }
+            catch (Exception ex)
             {
 
-                content = await result.Content.ReadAsStringAsync();
+                return new HttpResponse(System.Net.HttpStatusCode.BadRequest, ex.Message, false);
             }
-            return new HttpResponse(result.StatusCode, content,result.IsSuccessStatusCode);
+           
+            
         }
 
         public async Task<HttpResponse> PostAsync(string url, string data)
@@ -47,7 +57,7 @@ namespace FrontEnd.HTTPClient
             {
                 var content = new StringContent(data, Encoding.UTF8, "application/json");
                 var result = await client.PostAsync(url, content);
-                var reply = "Se produjo un error en el servidor";
+                var reply = "A server error occurred";
 
                 if (result.IsSuccessStatusCode)
                 {
