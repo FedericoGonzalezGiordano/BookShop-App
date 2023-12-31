@@ -19,6 +19,7 @@ public class SellerModel
             return NameSeller + " " + LastNameSeller;
         }
     }
+    public string PasswordSeller { get; set; }
 
 
 
@@ -34,5 +35,6 @@ public class SellerModel
         NumberTelephoneSeller = 0;
         MailSeller=string.Empty;
         BirthdaySeller=default(DateTime);
+        PasswordSeller = string.Empty;
 	}
 }

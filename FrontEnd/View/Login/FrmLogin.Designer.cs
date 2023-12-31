@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLogin));
             LblUser = new Label();
             LblPassword = new Label();
-            textBox2 = new TextBox();
+            TxtPassword = new TextBox();
             cboSeller = new ComboBox();
             btnLog = new Button();
             SuspendLayout();
@@ -56,12 +56,13 @@
             LblPassword.TabIndex = 1;
             LblPassword.Text = "Password";
             // 
-            // textBox2
+            // TxtPassword
             // 
-            textBox2.Location = new Point(171, 131);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(230, 23);
-            textBox2.TabIndex = 3;
+            TxtPassword.Location = new Point(171, 131);
+            TxtPassword.Name = "TxtPassword";
+            TxtPassword.Size = new Size(230, 23);
+            TxtPassword.TabIndex = 3;
+            TxtPassword.TextAlign = HorizontalAlignment.Center;
             // 
             // cboSeller
             // 
@@ -79,6 +80,7 @@
             btnLog.TabIndex = 5;
             btnLog.Text = "Log";
             btnLog.UseVisualStyleBackColor = true;
+            btnLog.Click += btnLog_Click;
             // 
             // FrmLogin
             // 
@@ -89,7 +91,7 @@
             ClientSize = new Size(588, 241);
             Controls.Add(btnLog);
             Controls.Add(cboSeller);
-            Controls.Add(textBox2);
+            Controls.Add(TxtPassword);
             Controls.Add(LblPassword);
             Controls.Add(LblUser);
             Name = "FrmLogin";
@@ -103,7 +105,7 @@
 
         private Label LblUser;
         private Label LblPassword;
-        private TextBox textBox2;
+        private TextBox TxtPassword;
         private ComboBox cboSeller;
         private Button btnLog;
     }

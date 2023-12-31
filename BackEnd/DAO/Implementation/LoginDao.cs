@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -29,6 +30,7 @@ namespace BackEnd.DAO.Implementation
                     int numberTelephoneSeller = int.TryParse(row["nro_tel"].ToString(), out int resultNumber) ? resultNumber : 0;
                     string mailSeller = row["e-mail"].ToString();
                     DateTime.TryParse(row["fec_nac"].ToString(), out DateTime birthdateSeller);
+                    string password= row["contrasenia"].ToString();    
                     NeighborhoodModel neighborhood = new NeighborhoodModel(idHood, "");
 
 
@@ -42,7 +44,8 @@ namespace BackEnd.DAO.Implementation
                         Neighborhood = neighborhood,
                         NumberTelephoneSeller = numberTelephoneSeller,
                         MailSeller = mailSeller,
-                        BirthdaySeller = birthdateSeller
+                        BirthdaySeller = birthdateSeller,
+                        PasswordSeller=password
                     };
                     lstSeller.Add(seller);
                 }

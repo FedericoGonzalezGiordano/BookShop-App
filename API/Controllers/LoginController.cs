@@ -36,12 +36,5 @@ namespace API.Controllers
                 return StatusCode(500);
             }
         }
-
-
-
-
-
-
-
     }
 }
