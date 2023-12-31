@@ -12,6 +12,13 @@ public class SellerModel
     public int NumberTelephoneSeller { get; set; }
     public string MailSeller { get; set; }
     public DateTime BirthdaySeller { get; set; }
+    public string CompleteName
+    {
+        get
+        {
+            return NameSeller + " " + LastNameSeller;
+        }
+    }
 
 
 

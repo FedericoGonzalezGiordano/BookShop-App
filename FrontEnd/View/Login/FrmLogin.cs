@@ -17,25 +17,39 @@ namespace FrontEnd.View.Login
     {
         IFactoryService factory;
         ILoginService loginService;
-        private List<SellerModel> lstSellers;
+        private List<SellerModel> sellerLst;
+
         public FrmLogin(IFactoryService factory)
         {
             this.factory = factory;
             loginService = factory.CreateLoginService();
             InitializeComponent();
+            //InitComp();
         }
 
-        private void FrmLogin_Load(object sender, EventArgs e)
+        //private void InitComp()
+        //{
+        //    cboSeller.DisplayMember = "NombreCompleto";
+        //    cboSeller.ValueMember = "IdSeller";
+        //    cboSeller.DataSource = new List<SellerModel>();
+        //}
+        private async void FrmLogin_Load(object? sender, EventArgs e)
         {
             LoadComboAsync();
         }
 
         private async void LoadComboAsync()
         {
-            lstSellers = await loginService.GetSellerAsync();
+            sellerLst = await loginService.GetSellerAsync();
             cboSeller.ValueMember = "IdSeller";
-            cboSeller.DisplayMember = "NameSeller";
-            cboSeller.DataSource = lstSellers;
+            cboSeller.DisplayMember = "CompleteName";
+            cboSeller.DataSource = sellerLst;
         }
+
+        //private async Task GetSellers()
+        //{
+        //    var list = await loginService.GetSellerAsync();
+        //    cboSeller.DataSource = list;
+        //}
     }
 }
