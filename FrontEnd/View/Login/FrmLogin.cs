@@ -46,7 +46,7 @@ namespace FrontEnd.View.Login
             cboSeller.ValueMember = "IdSeller";
             cboSeller.DisplayMember = "CompleteName";
             cboSeller.DataSource = sellerLst;
-            cboSeller.SelectedIndex=-1
+            cboSeller.SelectedIndex = -1;
         }
 
         private void btnLog_Click(object sender, EventArgs e)
