@@ -45,7 +45,7 @@ The **Alphabet Bookshop Management System** is a C# application developed using 
 Contributions are welcome! If you find any issues or have suggestions for improvement, please open an issue or create a pull request.
 
 # License:
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+This project is licensed under the MIT License - see under text for details.
 
 ---
 
