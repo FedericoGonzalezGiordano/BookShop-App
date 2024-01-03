@@ -46,6 +46,7 @@ namespace FrontEnd.View.Login
             cboSeller.ValueMember = "IdSeller";
             cboSeller.DisplayMember = "CompleteName";
             cboSeller.DataSource = sellerLst;
+            cboSeller.SelectedIndex=-1
         }
 
         private void btnLog_Click(object sender, EventArgs e)
@@ -57,7 +58,7 @@ namespace FrontEnd.View.Login
                 if (selectedSeller.PasswordSeller == pass)
                 {
                     MessageBox.Show("Correct password", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    FrmMain main = new FrmMain(factory);
+                    FrmMainAlphabetCRUD main = new FrmMainAlphabetCRUD(factory);
                     this.Hide();
                     main.ShowDialog();
                     TxtPassword.Text=string.Empty;

@@ -1,5 +1,7 @@
 using FrontEnd.Factory.Interface;
 using FrontEnd.Service.Interface;
+using System.Data;
+using System.Text.RegularExpressions;
 
 namespace FrontEnd
 {
@@ -8,18 +10,35 @@ namespace FrontEnd
         IFactoryService factory;
         ICustomerService _customerService;
         private List<NeighborhoodModel> neighborhoodLst;
+         private List<CustomerModel> lst = new List<CustomerModel>();
         public FrmCustomerRegistration(IFactoryService factory)
         {
             this.factory = factory;
             _customerService = factory.CreateClienteService();
             InitializeComponent();
-            
+
 
         }
 
         private void FrmCustomerRegistration_Load(object sender, EventArgs e)
         {
+            Clean();
             LoadComboAsync();
+        }
+
+        private void Clean()
+        {
+            foreach (Control control in GpbCustomer.Controls)
+            {
+                if (control is TextBox textBox)
+                {
+                    textBox.Text = string.Empty;
+                }
+                else if (control is ComboBox comboBox)
+                {
+                    comboBox.SelectedIndex = -1;
+                }
+            }
         }
 
         private async void LoadComboAsync()
@@ -28,37 +47,26 @@ namespace FrontEnd
             cboNeighborhood.ValueMember = "codNeighborHood";
             cboNeighborhood.DisplayMember = "nameNeighborhood";
             cboNeighborhood.DataSource = neighborhoodLst;
+            cboNeighborhood.SelectedIndex = -1;
         }
 
-        private async void  btnLoad_Click(object sender, EventArgs e)
+        private async void btnLoad_Click(object sender, EventArgs e)
         {
-            if (Validate())
+            foreach (CustomerModel customer in lst)
             {
-                CustomerModel customer = new CustomerModel();
-                customer.NameCustomer = txtname.Text;
-                customer.LastNameCustomer = TxtLastName.Text;
-                customer.StreetCustomer = txtStreet.Text;
-                customer.StreetNumberCustomer = Convert.ToInt32(TxtStreetNumber.Text);
-                customer.Neighborhood= (NeighborhoodModel)cboNeighborhood.SelectedItem;
-                customer.TelCustomer = Convert.ToInt32(txtTelephone.Text);
-                customer.MailCustomer=txtEmail.Text;
                 var result = await _customerService.CustomerRegistration(customer);
-                if (result.SuccessStatus)
-                {
-                    MessageBox.Show("Customer successfully generated", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    TxtLastName.Text = string.Empty;
-                    txtname.Text = string.Empty;
-                    txtEmail.Text = string.Empty;
-                    txtStreet.Text = string.Empty;
-                    TxtStreetNumber.Text = string.Empty;
-                    txtTelephone.Text = string.Empty;
-                    cboNeighborhood.SelectedIndex = -1;
-                }
-                else
+
+                if (!result.SuccessStatus)
                 {
                     MessageBox.Show("Error loading client: " + result.Data, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
             }
+            Clean();
+
+                 MessageBox.Show("Customers successfully loaded", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            DgvCustomer.Rows.Clear();
+
         }
 
         private bool Validate()
@@ -75,12 +83,13 @@ namespace FrontEnd
                 TxtLastName.Focus();
                 return false;
             }
-            if (string.IsNullOrEmpty(txtStreet.Text))
+            if (string.IsNullOrEmpty(txtStreet.Text) || !txtStreet.Text.All(char.IsLetter))
             {
-                MessageBox.Show("You must enter a street...", "Control", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("You must enter a valid street name with only letters.", "Control", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 txtStreet.Focus();
                 return false;
             }
+
             if (string.IsNullOrEmpty(TxtStreetNumber.Text) || !int.TryParse(TxtStreetNumber.Text, out _))
             {
                 MessageBox.Show("You must enter a street number..", "Add", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -108,6 +117,84 @@ namespace FrontEnd
             }
 
             return true;
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            Clean();
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void txtStreet_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cboNeighborhood_SelectedIndexChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void txtname_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void AddColumnsToDataGridView()
+        {
+            if (DgvCustomer.Columns.Count == 0)
+            {
+                DgvCustomer.Columns.Add("NameCustomer", "First Name");
+                DgvCustomer.Columns.Add("LastNameCustomer", "Last Name");
+                DgvCustomer.Columns.Add("StreetCustomer", "Street");
+                DgvCustomer.Columns.Add("StreetNumberCustomer", "Street Number");
+                DgvCustomer.Columns.Add("NeighborhoodName", "Neighborhood");
+                DgvCustomer.Columns.Add("TelCustomer", "Phone");
+                DgvCustomer.Columns.Add("MailCustomer", "Email");
+            }
+        }
+
+        private void BtnAdd_Click(object sender, EventArgs e)
+        {
+            if (Validate())
+            {
+                CustomerModel customer = new CustomerModel
+                {
+                    NameCustomer = txtname.Text,
+                    LastNameCustomer = TxtLastName.Text,
+                    StreetCustomer = txtStreet.Text,
+                    StreetNumberCustomer = int.Parse(TxtStreetNumber.Text),
+                    Neighborhood = (NeighborhoodModel)cboNeighborhood.SelectedItem,
+                    TelCustomer = int.Parse(txtTelephone.Text),
+                    MailCustomer = txtEmail.Text
+                };
+
+                lst.Add(customer);
+
+                AddColumnsToDataGridView();
+
+                DgvCustomer.Rows.Add(
+                    customer.NameCustomer,
+                    customer.LastNameCustomer,
+                    customer.StreetCustomer,
+                    customer.StreetNumberCustomer,
+                    customer.Neighborhood.NameNeighborhood,
+                    customer.TelCustomer,
+                    customer.MailCustomer
+                );
+
+                Clean();
+            }
+        }
+
+
+
+
+        private void DgvCustomer_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
