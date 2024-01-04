@@ -1,4 +1,5 @@
 ﻿using FrontEnd.Factory.Interface;
+using FrontEnd.View.Customer;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -66,6 +67,12 @@ namespace FrontEnd.View.Main
         private void FrmMainAlphabetCRUD_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void seeClientsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmCustomerWatch frmCustomerWatch = new FrmCustomerWatch(factory);
+            frmCustomerWatch.ShowDialog();
         }
     }
 }

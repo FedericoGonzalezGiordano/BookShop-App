@@ -55,37 +55,27 @@ namespace API.Controllers
                 return StatusCode(500);
             }
         }
+        [HttpGet("/GetCustomer")]
+        public IActionResult GetCustomer([FromQuery] string name, [FromQuery] string lastName)
+        {
+            try
+            {
+                var result = front.GetCustomer(name, lastName);
 
-        //// GET: api/<CustomerController>
-        //[HttpGet]
-        //public IEnumerable<string> Get()
-        //{
-        //    return new string[] { "value1", "value2" };
-        //}
+                if (result == null)
+                {
+                    return StatusCode(500, "An error occurred while searching for customers");
+                }
 
-        //// GET api/<CustomerController>/5
-        //[HttpGet("{id}")]
-        //public string Get(int id)
-        //{
-        //    return "value";
-        //}
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred: {ex.Message}");
+                Console.WriteLine($"StackTrace: {ex.StackTrace}");
+                return StatusCode(500, $"An error occurred while processing your request. Details: {ex.Message}");
+            }
+        }
 
-        //// POST api/<CustomerController>
-        //[HttpPost]
-        //public void Post([FromBody] string value)
-        //{
-        //}
-
-        //// PUT api/<CustomerController>/5
-        //[HttpPut("{id}")]
-        //public void Put(int id, [FromBody] string value)
-        //{
-        //}
-
-        //// DELETE api/<CustomerController>/5
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //}
     }
 }

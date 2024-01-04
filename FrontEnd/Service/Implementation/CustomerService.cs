@@ -32,7 +32,26 @@ namespace FrontEnd.Service.Implementation
             }
             return result;
         }
+        public async Task<List<CustomerModel>> GetCustomerAsync(string name, string lastName)
+        {
+            try
+            {
+                string url = host + $"/GetCustomer?name={Uri.EscapeDataString(name)}&lastName={Uri.EscapeDataString(lastName)}";
+                List<CustomerModel> result = new List<CustomerModel>();
+                var response = await ClientSingleton.GetInstance().GetAsync(url);
+                if (response != null && response.SuccessStatus)
+                {
+                    result = JsonConvert.DeserializeObject<List<CustomerModel>>(response.Data);
+                }
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred: {ex.Message}");
+                return new List<CustomerModel>();
+            }
+        }
 
-      
+
     }
 }

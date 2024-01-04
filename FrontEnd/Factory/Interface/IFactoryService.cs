@@ -11,5 +11,7 @@ namespace FrontEnd.Factory.Interface
     {
         ICustomerService CreateClienteService();
         ILoginService CreateLoginService();
+
+        ICustomerService GetCustomerService();
     }
 }

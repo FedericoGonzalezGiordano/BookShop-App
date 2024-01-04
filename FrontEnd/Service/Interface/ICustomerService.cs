@@ -13,6 +13,7 @@ namespace FrontEnd.Service.Interface
     {
         Task<HttpResponse> CustomerRegistration(CustomerModel customer);
         Task<List<NeighborhoodModel>> GetNeighborhoodAsync();
-        
+        Task<List<CustomerModel>> GetCustomerAsync(string name, string lastName);
+
     }
 }

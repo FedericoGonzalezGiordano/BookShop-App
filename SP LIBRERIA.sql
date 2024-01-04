@@ -10,7 +10,7 @@ END;
 CREATE PROCEDURE SP_CONSULTAR_BARRIOS
 AS
 BEGIN
-SELECT * FROM LOCALIDADES ORDER BY 2
+SELECT * FROM barrios ORDER BY 2
 END
 
 create PROCEDURE Sp_ObtenerUser
@@ -28,3 +28,14 @@ AS
 BEGIN
     SELECT * FROM vendedores Order by 1,2;
 END;
+
+create procedure sp_search_customers
+@name varchar (50),
+@lastName varchar(50)
+as
+begin 
+select c.cod_cliente, c.nom_cliente, c.ape_cliente, c.calle, c.altura, c.cod_barrio,b.barrio as 'NombreBarrio', c.nro_tel, c.[e-mail]
+from clientes c 
+join barrios b on c.cod_barrio = b.cod_barrio
+where @name = c.nom_cliente and @lastName = c.ape_cliente
+end

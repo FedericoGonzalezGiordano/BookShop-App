@@ -12,5 +12,7 @@ namespace BackEnd.DAO.Interface
         //bool CustomerUpdate(CustomerModel customer);
         //bool CustomerTermination(string number);
         List<NeighborhoodModel> GetNeighborhood();
+
+        List<CustomerModel> GetCustomer(string nameCustomer,string lastNameCustomer);
     }
 }

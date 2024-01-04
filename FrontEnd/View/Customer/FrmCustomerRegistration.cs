@@ -2,6 +2,7 @@ using FrontEnd.Factory.Interface;
 using FrontEnd.Service.Interface;
 using System.Data;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace FrontEnd
 {
@@ -10,18 +11,19 @@ namespace FrontEnd
         IFactoryService factory;
         ICustomerService _customerService;
         private List<NeighborhoodModel> neighborhoodLst;
-         private List<CustomerModel> lst = new List<CustomerModel>();
+        private List<CustomerModel> lst = new List<CustomerModel>();
         public FrmCustomerRegistration(IFactoryService factory)
         {
             this.factory = factory;
             _customerService = factory.CreateClienteService();
             InitializeComponent();
-
-
+            
         }
 
         private void FrmCustomerRegistration_Load(object sender, EventArgs e)
         {
+            DgvCustomer.ReadOnly = true;
+            //DgvCustomer.AllowUserToDeleteRows = false;
             Clean();
             LoadComboAsync();
         }
@@ -52,22 +54,31 @@ namespace FrontEnd
 
         private async void btnLoad_Click(object sender, EventArgs e)
         {
-            foreach (CustomerModel customer in lst)
+            if (lst.Count > 0)
             {
-                var result = await _customerService.CustomerRegistration(customer);
-
-                if (!result.SuccessStatus)
+                foreach (CustomerModel customer in lst)
                 {
-                    MessageBox.Show("Error loading client: " + result.Data, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
+                    var result = await _customerService.CustomerRegistration(customer);
+
+                    if (!result.SuccessStatus)
+                    {
+                        MessageBox.Show("Error loading client: " + result.Data, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                 }
+                Clean();
+
+                MessageBox.Show("Customers successfully loaded", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                lst.Clear();  // Limpiar la lista después de cargar los clientes en la base de datos
+                DgvCustomer.Rows.Clear();
+                DgvCustomer.Refresh();
             }
-            Clean();
-
-                 MessageBox.Show("Customers successfully loaded", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            DgvCustomer.Rows.Clear();
-
+            else
+            {
+                MessageBox.Show("No customers to load", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
+
 
         private bool Validate()
         {
@@ -121,7 +132,10 @@ namespace FrontEnd
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
+            lst.Clear();  // Limpiar la lista de clientes
             Clean();
+            DgvCustomer.Rows.Clear();
+            DgvCustomer.Refresh();
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -186,6 +200,7 @@ namespace FrontEnd
                 );
 
                 Clean();
+
             }
         }
 

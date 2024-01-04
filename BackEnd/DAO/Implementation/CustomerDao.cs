@@ -49,6 +49,9 @@ namespace BackEnd.DAO.Implementation
 
             return result;
         }
+
+      
+
         public List<NeighborhoodModel> GetNeighborhood()
         {
             List<NeighborhoodModel> lstNeighborhood = new List<NeighborhoodModel>();
@@ -73,18 +76,58 @@ namespace BackEnd.DAO.Implementation
             return lstNeighborhood;
         }
 
-        //public bool CustomerTermination(string number)
-        //{
-        //    throw new NotImplementedException();
-        //}
 
-        //public bool CustomerUpdate(CustomerModel customer)
-        //{
-        //    throw new NotImplementedException();
-        //}
+        public List<CustomerModel> GetCustomer(string nameCustomer, string lastNameCustomer)
+        {
+            List<CustomerModel> lstCustomers = new List<CustomerModel>();
+            List<Parameter> lstParams = new List<Parameter>();
+            lstParams.Add(new Parameter("@name", nameCustomer));
+            lstParams.Add(new Parameter("@lastName", lastNameCustomer));
 
-       
-       
+            try
+            {
+                DataTable table = HelperDao.GetInstance().GetConsultParameters("sp_search_customers", lstParams);
+
+                foreach (DataRow r in table.Rows)
+                {
+                    CustomerModel customer = new CustomerModel
+                    {
+                        CodCustomer = IsDBNull(r["cod_cliente"]) ? 0 : Convert.ToInt32(r["cod_cliente"]),
+                        NameCustomer = IsDBNull(r["nom_cliente"]) ? string.Empty : r["nom_cliente"].ToString(),
+                        LastNameCustomer = IsDBNull(r["ape_cliente"]) ? string.Empty : r["ape_cliente"].ToString(),
+                        StreetCustomer = IsDBNull(r["calle"]) ? string.Empty : r["calle"].ToString(),
+                        StreetNumberCustomer = IsDBNull(r["altura"]) ? 0 : Convert.ToInt32(r["altura"]),
+                        Neighborhood = new NeighborhoodModel
+                        {
+                            CodNeighborHood = IsDBNull(r["cod_barrio"]) ? 0 : Convert.ToInt32(r["cod_barrio"]),
+                            NameNeighborhood = IsDBNull(r["NombreBarrio"]) ? string.Empty : r["NombreBarrio"].ToString()
+                        },
+                        TelCustomer = IsDBNull(r["nro_tel"]) ? 0 : Convert.ToInt32(r["nro_tel"]),
+                        MailCustomer = IsDBNull(r["e-mail"]) ? string.Empty : r["e-mail"].ToString()
+                    };
+
+                    lstCustomers.Add(customer);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred in GetCustomer: {ex.Message}");
+                Console.WriteLine($"StackTrace: {ex.StackTrace}");
+                throw;
+            }
+
+            return lstCustomers;
+        }
+
+        private bool IsDBNull(object value)
+        {
+            return value == DBNull.Value || value == null;
+        }
+
+
+
+
+
     }
-    
+
 }

@@ -9,5 +9,6 @@ namespace FrontEnd.Service.Interface
     public interface ILoginService
     {
         Task<List<SellerModel>> GetSellerAsync();
+       
     }
 }

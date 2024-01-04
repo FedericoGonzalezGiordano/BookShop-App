@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 using System.Runtime.Intrinsics.X86;
+using System.Reflection.Metadata;
 
 
 namespace BackEnd.DAO.Helper
@@ -58,8 +59,24 @@ namespace BackEnd.DAO.Helper
             Disconect();
             return tabla;
         }
+        public DataTable GetConsultParameters(string nombreSP, List<Parameter> lstParametros)
+        {
+            DataTable table= new DataTable();   
+            Connect();
+            SqlCommand comando = new SqlCommand();
+            comando.Connection = _connection;
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.CommandText = nombreSP;
+            comando.Parameters.Clear();
+            foreach (Parameter p in lstParametros)
+            {
+                comando.Parameters.AddWithValue(p.Name, p.Value);
+            }
+            table.Load(comando.ExecuteReader());
+            Disconect();
+            return table;
+        }
 
-      
 
     }
 }
