@@ -100,10 +100,10 @@ namespace FrontEnd
                 return false;
             }
 
-            if (string.IsNullOrEmpty(TxtStreetNumber.Text) || !int.TryParse(TxtStreetNumber.Text, out _))
+            if (string.IsNullOrEmpty(TxtStreetNumber.Text) || !TxtStreetNumber.Text.All(char.IsDigit))
             {
-                MessageBox.Show("You must enter a street number..", "Add", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                TxtStreetNumber.Focus();
+                MessageBox.Show("You must enter a valid street number with only numbers.", "Control", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                txtStreet.Focus();
                 return false;
             }
             if (cboNeighborhood.SelectedIndex == -1)

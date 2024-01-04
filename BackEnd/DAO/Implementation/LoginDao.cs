@@ -21,32 +21,24 @@ namespace BackEnd.DAO.Implementation
                 DataTable table = HelperDao.GetInstance().GetConsult("Sp_Obtener_Vendedores", CommandType.StoredProcedure);
                 foreach (DataRow row in table.Rows)
                 {
-                    int idSeller = int.Parse(row["cod_vendedor"].ToString());
-                    string nameSeller = row["nom_vendedor"].ToString();
-                    string lastnameSeller = row["ape_vendedor"].ToString();
-                    string streetSeller = row["calle"].ToString();
-                    int streetNumberSeller = int.Parse(row["altura"].ToString());
-                    int idHood = Convert.ToInt32(row["cod_barrio"].ToString());
-                    int numberTelephoneSeller = int.TryParse(row["nro_tel"].ToString(), out int resultNumber) ? resultNumber : 0;
-                    string mailSeller = row["e-mail"].ToString();
-                    DateTime.TryParse(row["fec_nac"].ToString(), out DateTime birthdateSeller);
-                    string password= row["contrasenia"].ToString();    
-                    NeighborhoodModel neighborhood = new NeighborhoodModel(idHood, "");
-
-
                     SellerModel seller = new SellerModel
                     {
-                        IdSeller = idSeller,
-                        NameSeller = nameSeller,
-                        LastNameSeller = lastnameSeller,
-                        StreetSeller = streetSeller,
-                        StreetNumberSeller = streetNumberSeller,
-                        Neighborhood = neighborhood,
-                        NumberTelephoneSeller = numberTelephoneSeller,
-                        MailSeller = mailSeller,
-                        BirthdaySeller = birthdateSeller,
-                        PasswordSeller=password
+                        IdSeller = Convert.ToInt32(row["cod_vendedor"]),
+                        NameSeller = row["nom_vendedor"].ToString(),
+                        LastNameSeller = row["ape_vendedor"].ToString(),
+                        StreetSeller = row["calle"].ToString(),
+                        StreetNumberSeller = Convert.ToInt32(row["altura"]),
+                        Neighborhood = new NeighborhoodModel
+                        {
+                            CodNeighborHood = row["cod_barrio"] != DBNull.Value ? Convert.ToInt32(row["cod_barrio"]) : 0,
+                            NameNeighborhood = row["NombreBarrio"].ToString()
+                        },
+                        NumberTelephoneSeller = row["nro_tel"] != DBNull.Value ? Convert.ToInt32(row["nro_tel"]) : 0,
+                        MailSeller = row["e-mail"].ToString(),
+                        BirthdaySeller = DateTime.TryParse(row["fec_nac"].ToString(), out DateTime birthdateSeller) ? birthdateSeller : DateTime.MinValue,
+                        PasswordSeller = row["contrasenia"].ToString()
                     };
+
                     lstSeller.Add(seller);
                 }
             }
@@ -54,11 +46,11 @@ namespace BackEnd.DAO.Implementation
             {
                 Console.WriteLine($"Error in GetSeller: {ex.Message}");
                 Console.WriteLine($"StackTrace: {ex.StackTrace}");
-
             }
 
-            return lstSeller; ;
+            return lstSeller;
         }
+
 
     }
 }

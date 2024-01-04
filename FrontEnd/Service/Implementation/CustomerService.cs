@@ -39,18 +39,27 @@ namespace FrontEnd.Service.Implementation
                 string url = host + $"/GetCustomer?name={Uri.EscapeDataString(name)}&lastName={Uri.EscapeDataString(lastName)}";
                 List<CustomerModel> result = new List<CustomerModel>();
                 var response = await ClientSingleton.GetInstance().GetAsync(url);
+
                 if (response != null && response.SuccessStatus)
                 {
                     result = JsonConvert.DeserializeObject<List<CustomerModel>>(response.Data);
                 }
+                else
+                {
+                   
+                    MessageBox.Show("Error retrieving customer data.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
                 return result;
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"An error occurred: {ex.Message}");
+                
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return new List<CustomerModel>();
             }
         }
+
 
 
     }

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            dataGridView1 = new DataGridView();
+            DgvCustomerWatch = new DataGridView();
             gpbCustomerSearch = new GroupBox();
             LblLastName = new Label();
             LblName = new Label();
@@ -38,18 +38,18 @@
             BtnDelete = new Button();
             BtnModify = new Button();
             BtnExit = new Button();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)DgvCustomerWatch).BeginInit();
             gpbCustomerSearch.SuspendLayout();
             SuspendLayout();
             // 
-            // dataGridView1
+            // DgvCustomerWatch
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(47, 122);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(674, 238);
-            dataGridView1.TabIndex = 0;
+            DgvCustomerWatch.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            DgvCustomerWatch.Location = new Point(41, 109);
+            DgvCustomerWatch.Name = "DgvCustomerWatch";
+            DgvCustomerWatch.RowTemplate.Height = 25;
+            DgvCustomerWatch.Size = new Size(816, 238);
+            DgvCustomerWatch.TabIndex = 0;
             // 
             // gpbCustomerSearch
             // 
@@ -60,7 +60,7 @@
             gpbCustomerSearch.Controls.Add(BtnSearch);
             gpbCustomerSearch.Location = new Point(47, 12);
             gpbCustomerSearch.Name = "gpbCustomerSearch";
-            gpbCustomerSearch.Size = new Size(674, 104);
+            gpbCustomerSearch.Size = new Size(816, 91);
             gpbCustomerSearch.TabIndex = 1;
             gpbCustomerSearch.TabStop = false;
             gpbCustomerSearch.Text = "Search Customers";
@@ -69,16 +69,17 @@
             // LblLastName
             // 
             LblLastName.AutoSize = true;
-            LblLastName.Location = new Point(23, 67);
+            LblLastName.Location = new Point(410, 24);
             LblLastName.Name = "LblLastName";
             LblLastName.Size = new Size(60, 15);
             LblLastName.TabIndex = 9;
             LblLastName.Text = "LastName";
+            LblLastName.Click += LblLastName_Click;
             // 
             // LblName
             // 
             LblName.AutoSize = true;
-            LblName.Location = new Point(44, 30);
+            LblName.Location = new Point(20, 24);
             LblName.Name = "LblName";
             LblName.Size = new Size(39, 15);
             LblName.TabIndex = 8;
@@ -86,21 +87,21 @@
             // 
             // TxtLastName
             // 
-            TxtLastName.Location = new Point(92, 64);
+            TxtLastName.Location = new Point(495, 24);
             TxtLastName.Name = "TxtLastName";
-            TxtLastName.Size = new Size(245, 23);
+            TxtLastName.Size = new Size(258, 23);
             TxtLastName.TabIndex = 7;
             // 
             // TxtName
             // 
-            TxtName.Location = new Point(92, 30);
+            TxtName.Location = new Point(75, 24);
             TxtName.Name = "TxtName";
-            TxtName.Size = new Size(245, 23);
+            TxtName.Size = new Size(258, 23);
             TxtName.TabIndex = 6;
             // 
             // BtnSearch
             // 
-            BtnSearch.Location = new Point(599, 75);
+            BtnSearch.Location = new Point(735, 62);
             BtnSearch.Name = "BtnSearch";
             BtnSearch.Size = new Size(75, 23);
             BtnSearch.TabIndex = 5;
@@ -110,7 +111,7 @@
             // 
             // BtnDelete
             // 
-            BtnDelete.Location = new Point(47, 390);
+            BtnDelete.Location = new Point(41, 353);
             BtnDelete.Name = "BtnDelete";
             BtnDelete.Size = new Size(75, 23);
             BtnDelete.TabIndex = 2;
@@ -119,7 +120,7 @@
             // 
             // BtnModify
             // 
-            BtnModify.Location = new Point(139, 390);
+            BtnModify.Location = new Point(134, 353);
             BtnModify.Name = "BtnModify";
             BtnModify.Size = new Size(75, 23);
             BtnModify.TabIndex = 3;
@@ -128,7 +129,7 @@
             // 
             // BtnExit
             // 
-            BtnExit.Location = new Point(646, 390);
+            BtnExit.Location = new Point(782, 353);
             BtnExit.Name = "BtnExit";
             BtnExit.Size = new Size(75, 23);
             BtnExit.TabIndex = 4;
@@ -139,16 +140,16 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(749, 430);
+            ClientSize = new Size(880, 394);
             Controls.Add(BtnExit);
             Controls.Add(BtnModify);
             Controls.Add(BtnDelete);
             Controls.Add(gpbCustomerSearch);
-            Controls.Add(dataGridView1);
+            Controls.Add(DgvCustomerWatch);
             Name = "FrmCustomerWatch";
             Text = "FrmCustomerWatch";
             Load += FrmCustomerWatch_Load;
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)DgvCustomerWatch).EndInit();
             gpbCustomerSearch.ResumeLayout(false);
             gpbCustomerSearch.PerformLayout();
             ResumeLayout(false);
@@ -156,7 +157,7 @@
 
         #endregion
 
-        private DataGridView dataGridView1;
+        private DataGridView DgvCustomerWatch;
         private GroupBox gpbCustomerSearch;
         private Button BtnDelete;
         private Button BtnModify;

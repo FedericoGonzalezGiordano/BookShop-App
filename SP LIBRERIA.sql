@@ -23,10 +23,13 @@ BEGIN
     SELECT @pPassword = contrasenia FROM vendedores WHERE nom_vendedor = @pName and @pApe=ape_vendedor and cod_vendedor=@cod;
 END;
 
-create PROCEDURE Sp_Obtener_Vendedores
+CREATE PROCEDURE [dbo].[Sp_Obtener_Vendedores]
 AS
 BEGIN
-    SELECT * FROM vendedores Order by 1,2;
+    SELECT v.*, b.barrio as 'NombreBarrio'
+    FROM vendedores v
+    LEFT JOIN barrios b ON v.cod_barrio = b.cod_barrio
+    ORDER BY 1,2;
 END;
 
 create procedure sp_search_customers
