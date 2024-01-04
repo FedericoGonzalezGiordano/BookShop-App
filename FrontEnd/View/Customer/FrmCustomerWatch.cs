@@ -1,4 +1,6 @@
 ﻿using FrontEnd.Factory.Interface;
+using FrontEnd.Service.Implementation;
+using FrontEnd.Service.Interface;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,11 +17,14 @@ namespace FrontEnd.View.Customer
     public partial class FrmCustomerWatch : Form
     {
         IFactoryService factory;
+        ICustomerService customerService;
 
         public FrmCustomerWatch(IFactoryService factory)
         {
             this.factory = factory;
+            customerService = factory.GetCustomerService();
             InitializeComponent();
+            
         }
 
 
@@ -51,7 +56,12 @@ namespace FrontEnd.View.Customer
                 TxtLastName.Focus();
                 return false;
             }
-            return true;    
+            return true;
+
+        }
+
+        private void gpbCustomerSearch_Enter(object sender, EventArgs e)
+        {
 
         }
     }

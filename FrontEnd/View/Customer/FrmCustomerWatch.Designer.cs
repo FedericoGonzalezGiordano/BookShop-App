@@ -64,6 +64,7 @@
             gpbCustomerSearch.TabIndex = 1;
             gpbCustomerSearch.TabStop = false;
             gpbCustomerSearch.Text = "Search Customers";
+            gpbCustomerSearch.Enter += gpbCustomerSearch_Enter;
             // 
             // LblLastName
             // 

@@ -31,16 +31,7 @@ namespace BackEnd.Front.Implementation
         {
             return dao.GetNeighborhood();
         }
-
-        //public bool CustomerTermination(string number)
-        //{
-        //    return dao.CustomerTermination(number);
-        //}
-
-        //public bool CustomerUpdate(CustomerModel customer)
-        //{
-        //    return dao.CustomerUpdate(customer);
-        //}
+        
 
 
     }

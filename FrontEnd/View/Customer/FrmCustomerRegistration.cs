@@ -23,7 +23,6 @@ namespace FrontEnd
         private void FrmCustomerRegistration_Load(object sender, EventArgs e)
         {
             DgvCustomer.ReadOnly = true;
-            //DgvCustomer.AllowUserToDeleteRows = false;
             Clean();
             LoadComboAsync();
         }
