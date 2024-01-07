@@ -54,7 +54,7 @@ namespace FrontEnd.View.Customer
 
         private void FrmCustomerWatch_Load(object sender, EventArgs e)
         {
-
+            DgvCustomerWatch.ReadOnly = true;
         }
 
         private async void BtnSearch_Click(object sender, EventArgs e)
@@ -81,8 +81,10 @@ namespace FrontEnd.View.Customer
                                 c.Neighborhood != null ? c.Neighborhood.NameNeighborhood : string.Empty,
                                 c.TelCustomer,
                                 c.MailCustomer ?? string.Empty
+
                             );
                         }
+                        DgvCustomerWatch.ClearSelection();
                     }
                     else
                     {
@@ -127,6 +129,41 @@ namespace FrontEnd.View.Customer
 
         private void LblLastName_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private async void BtnDelete_Click(object sender, EventArgs e)
+        {
+            {
+                if (DgvCustomerWatch.SelectedRows.Count > 0)
+                {
+                    DataGridViewRow row = DgvCustomerWatch.SelectedRows[0];
+                    string idClienteStr = row.Cells[0].Value.ToString();
+                    try
+                    {
+                        if (int.TryParse(idClienteStr, out int idCliente))
+                        {
+
+                            var result = await customerService.CustomerTermination(idCliente);
+                            MessageBox.Show("Customer deleted with ID: " + idCliente);
+                        }
+                        else
+                        {
+
+                            MessageBox.Show("The customer ID is not a valid number.");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+
+                        Console.WriteLine($"Error: {ex.Message}");
+                        MessageBox.Show("Error deleting customer. Details: " + ex.Message);
+                    }
+                 
+                    
+                }
+               
+            }
 
         }
     }

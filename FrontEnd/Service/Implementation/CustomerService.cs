@@ -36,7 +36,7 @@ namespace FrontEnd.Service.Implementation
         {
             try
             {
-                string url = host + $"/GetCustomer?name={Uri.EscapeDataString(name)}&lastName={Uri.EscapeDataString(lastName)}";
+                string url = host + $"/GetCustomer?name={name}&lastName={lastName}";
                 List<CustomerModel> result = new List<CustomerModel>();
                 var response = await ClientSingleton.GetInstance().GetAsync(url);
 
@@ -60,7 +60,16 @@ namespace FrontEnd.Service.Implementation
             }
         }
 
+        
+
+        public async Task<HttpResponse> CustomerTermination(int id)
+        {
+            string url = host + $"/DeleteCliente?id={id}";
+
+            var response = await ClientSingleton.GetInstance().DeleteAsync(url);
 
 
+            return response;
+        }
     }
 }

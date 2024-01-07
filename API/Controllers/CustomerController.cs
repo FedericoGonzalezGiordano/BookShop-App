@@ -76,6 +76,24 @@ namespace API.Controllers
                 return StatusCode(500, $"An error occurred while processing your request. Details: {ex.Message}");
             }
         }
+        [HttpDelete("/DeleteCustomer")]
+        public IActionResult DeleteCustomer(string id )
+        {
+            try
+            {
+                var result = front.CustomerTermination(id);
+                if (result == false)
+                {
+                    return StatusCode(500, " Se produjo un error al dar de baja un cliente");
+                }
+                return Ok(result);
+            }
+            catch (Exception)
+            {
+
+                return StatusCode(500);
+            }
+        }
 
     }
 }

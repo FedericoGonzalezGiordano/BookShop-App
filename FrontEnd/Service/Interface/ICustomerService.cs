@@ -15,5 +15,7 @@ namespace FrontEnd.Service.Interface
         Task<List<NeighborhoodModel>> GetNeighborhoodAsync();
         Task<List<CustomerModel>> GetCustomerAsync(string name, string lastName);
 
+        Task<HttpResponse> CustomerTermination(int id);
+
     }
 }

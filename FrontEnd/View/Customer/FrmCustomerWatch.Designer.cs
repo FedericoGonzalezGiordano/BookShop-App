@@ -58,7 +58,7 @@
             gpbCustomerSearch.Controls.Add(TxtLastName);
             gpbCustomerSearch.Controls.Add(TxtName);
             gpbCustomerSearch.Controls.Add(BtnSearch);
-            gpbCustomerSearch.Location = new Point(47, 12);
+            gpbCustomerSearch.Location = new Point(41, 12);
             gpbCustomerSearch.Name = "gpbCustomerSearch";
             gpbCustomerSearch.Size = new Size(816, 91);
             gpbCustomerSearch.TabIndex = 1;
@@ -69,7 +69,7 @@
             // LblLastName
             // 
             LblLastName.AutoSize = true;
-            LblLastName.Location = new Point(410, 24);
+            LblLastName.Location = new Point(376, 24);
             LblLastName.Name = "LblLastName";
             LblLastName.Size = new Size(60, 15);
             LblLastName.TabIndex = 9;
@@ -87,16 +87,16 @@
             // 
             // TxtLastName
             // 
-            TxtLastName.Location = new Point(495, 24);
+            TxtLastName.Location = new Point(463, 24);
             TxtLastName.Name = "TxtLastName";
-            TxtLastName.Size = new Size(258, 23);
+            TxtLastName.Size = new Size(263, 23);
             TxtLastName.TabIndex = 7;
             // 
             // TxtName
             // 
             TxtName.Location = new Point(75, 24);
             TxtName.Name = "TxtName";
-            TxtName.Size = new Size(258, 23);
+            TxtName.Size = new Size(263, 23);
             TxtName.TabIndex = 6;
             // 
             // BtnSearch
@@ -117,6 +117,7 @@
             BtnDelete.TabIndex = 2;
             BtnDelete.Text = "Delete";
             BtnDelete.UseVisualStyleBackColor = true;
+            BtnDelete.Click += BtnDelete_Click;
             // 
             // BtnModify
             // 

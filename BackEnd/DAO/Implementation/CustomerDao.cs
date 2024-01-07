@@ -124,10 +124,48 @@ namespace BackEnd.DAO.Implementation
             return value == DBNull.Value || value == null;
         }
 
+        public bool CustomerTermination(string id)
+        {
+            SqlConnection connection = null;
+            SqlTransaction t = null;
+            bool resultado = true;
 
+            try
+            {
+                connection = HelperDao.GetInstance().GetConnection();
+                connection.Open();
+                t = connection.BeginTransaction();
+
+                SqlCommand comando = new SqlCommand("SP_BORRAR_CLIENTE", connection, t);
+                comando.CommandType = CommandType.StoredProcedure;
+
+                comando.Parameters.AddWithValue("@id", id);
+
+                comando.ExecuteNonQuery();
+                t.Commit();
+              
+            }
+            catch (Exception ex)
+            {
+                if (t != null)
+                {
+                    t.Rollback();
+                }
+                resultado = false;
+            }
+            finally
+            {
+                if (connection != null && connection.State == ConnectionState.Open)
+                {
+                    connection.Close();
+                }
+            }
+
+            return resultado;
+        }
 
 
 
     }
-
 }
+

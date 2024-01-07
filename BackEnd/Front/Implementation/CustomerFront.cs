@@ -22,6 +22,11 @@ namespace BackEnd.Front.Implementation
             return dao.CustomerRegistration(customer);
         }
 
+        public bool CustomerTermination(string id)
+        {
+            return dao.CustomerTermination(id);
+        }
+
         public List<CustomerModel> GetCustomer(string nameCustomer, string lastNameCustomer)
         {
             return dao.GetCustomer(nameCustomer, lastNameCustomer);

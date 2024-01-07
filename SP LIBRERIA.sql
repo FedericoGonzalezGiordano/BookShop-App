@@ -42,3 +42,39 @@ from clientes c
 join barrios b on c.cod_barrio = b.cod_barrio
 where @name = c.nom_cliente and @lastName = c.ape_cliente
 end
+
+CREATE PROCEDURE SP_BORRAR_CLIENTE
+    @id INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    -- Iniciar la transacción
+    BEGIN TRANSACTION;
+
+    BEGIN TRY
+        -- Verificar si el cliente tiene facturas
+        IF EXISTS (SELECT cod_cliente FROM facturas WHERE cod_cliente = @id)
+        BEGIN
+            PRINT 'El cliente tiene facturas. No se puede eliminar.';
+            ROLLBACK TRANSACTION;
+        END
+        ELSE
+        BEGIN
+            -- Eliminar el cliente si no tiene facturas
+            DELETE FROM clientes WHERE cod_cliente = @id;
+
+            -- Confirmar la transacción si la eliminación fue exitosa
+            COMMIT;
+            PRINT 'Cliente eliminado exitosamente.';
+        END
+    END TRY
+    BEGIN CATCH
+        -- Deshacer la transacción en caso de error
+        IF @@TRANCOUNT > 0  
+            ROLLBACK;
+
+        -- Propagar el error al nivel superior (puedes personalizar el mensaje aquí)
+        PRINT 'Error en SP_BORRAR_CLIENTE: ' + ERROR_MESSAGE();
+    END CATCH;
+END;
