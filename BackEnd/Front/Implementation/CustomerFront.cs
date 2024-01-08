@@ -22,7 +22,7 @@ namespace BackEnd.Front.Implementation
             return dao.CustomerRegistration(customer);
         }
 
-        public bool CustomerTermination(string id)
+        public bool CustomerTermination(int id)
         {
             return dao.CustomerTermination(id);
         }

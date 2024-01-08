@@ -77,8 +77,9 @@ namespace API.Controllers
             }
         }
         [HttpDelete("/DeleteCustomer")]
-        public IActionResult DeleteCustomer(string id )
+        public IActionResult DeleteCustomer(int id )
         {
+            Console.WriteLine($"Received DeleteCustomer request with id: {id}");
             try
             {
                 var result = front.CustomerTermination(id);

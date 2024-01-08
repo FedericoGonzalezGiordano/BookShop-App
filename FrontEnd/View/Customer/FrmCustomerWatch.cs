@@ -134,37 +134,36 @@ namespace FrontEnd.View.Customer
 
         private async void BtnDelete_Click(object sender, EventArgs e)
         {
+            if (DgvCustomerWatch.SelectedRows.Count > 0)
             {
-                if (DgvCustomerWatch.SelectedRows.Count > 0)
+                DataGridViewRow row = DgvCustomerWatch.SelectedRows[0];
+                int idCliente = Convert.ToInt32(row.Cells[0].Value);
+
+                MessageBox.Show($"Before CustomerTermination: {idCliente}");
+
+                try
                 {
-                    DataGridViewRow row = DgvCustomerWatch.SelectedRows[0];
-                    string idClienteStr = row.Cells[0].Value.ToString();
-                    try
-                    {
-                        if (int.TryParse(idClienteStr, out int idCliente))
-                        {
-
-                            var result = await customerService.CustomerTermination(idCliente);
-                            MessageBox.Show("Customer deleted with ID: " + idCliente);
-                        }
-                        else
-                        {
-
-                            MessageBox.Show("The customer ID is not a valid number.");
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-
-                        Console.WriteLine($"Error: {ex.Message}");
-                        MessageBox.Show("Error deleting customer. Details: " + ex.Message);
-                    }
-                 
-                    
+                    var result = await customerService.CustomerTermination(idCliente);
+                    MessageBox.Show("Customer deleted with ID: " + idCliente);
                 }
-               
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error: {ex.Message}");
+                    MessageBox.Show("Error deleting customer. Details: " + ex.Message);
+                }
             }
-
+            else
+            {
+                MessageBox.Show("No selected rows in DataGridView");
+                MessageBox.Show("Select a customer before deleting.");
+            }
         }
+
+
+
     }
+
+
 }
+
+

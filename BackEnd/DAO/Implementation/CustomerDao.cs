@@ -124,7 +124,7 @@ namespace BackEnd.DAO.Implementation
             return value == DBNull.Value || value == null;
         }
 
-        public bool CustomerTermination(string id)
+        public bool CustomerTermination(int id)
         {
             SqlConnection connection = null;
             SqlTransaction t = null;
@@ -143,7 +143,18 @@ namespace BackEnd.DAO.Implementation
 
                 comando.ExecuteNonQuery();
                 t.Commit();
-              
+            }
+            catch (SqlException sqlEx)
+            {
+                if (t != null)
+                {
+                    t.Rollback();
+                }
+
+                Console.WriteLine("SQL Exception: " + sqlEx.Message);
+                Console.WriteLine("Error Number: " + sqlEx.Number);
+
+                resultado = false;
             }
             catch (Exception ex)
             {
@@ -151,6 +162,9 @@ namespace BackEnd.DAO.Implementation
                 {
                     t.Rollback();
                 }
+
+                Console.WriteLine("Exception: " + ex.Message);
+
                 resultado = false;
             }
             finally
@@ -163,6 +177,7 @@ namespace BackEnd.DAO.Implementation
 
             return resultado;
         }
+
 
 
 

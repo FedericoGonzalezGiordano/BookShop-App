@@ -64,7 +64,8 @@ namespace FrontEnd.Service.Implementation
 
         public async Task<HttpResponse> CustomerTermination(int id)
         {
-            string url = host + $"/DeleteCliente?id={id}";
+            string url = host + $"/DeleteCustomer?id={id}";
+
 
             var response = await ClientSingleton.GetInstance().DeleteAsync(url);
 

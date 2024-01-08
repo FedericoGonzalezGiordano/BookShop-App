@@ -24,7 +24,6 @@ namespace FrontEnd.Service.Implementation
                     result = JsonConvert.DeserializeObject<List<SellerModel>>(response.Data);
                 }
                 return result;
-            
         }
     }
 }

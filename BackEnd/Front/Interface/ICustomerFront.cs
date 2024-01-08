@@ -10,7 +10,7 @@ namespace BackEnd.Front.Interface
     {
         bool CustomerRegistration(CustomerModel customer);
         //bool CustomerUpdate(CustomerModel customer);
-        bool CustomerTermination(string id);
+        bool CustomerTermination(int id);
         List<NeighborhoodModel> GetNeighborhood();
         List<CustomerModel> GetCustomer(string nameCustomer, string lastNameCustomer);
     }
