@@ -139,7 +139,7 @@ namespace FrontEnd.View.Customer
                 DataGridViewRow row = DgvCustomerWatch.SelectedRows[0];
                 int idCliente = Convert.ToInt32(row.Cells[0].Value);
 
-                MessageBox.Show($"Before CustomerTermination: {idCliente}");
+
 
                 try
                 {
@@ -159,8 +159,15 @@ namespace FrontEnd.View.Customer
             }
         }
 
-
-
+        private void BtnModify_Click(object sender, EventArgs e)
+        {
+            if (DgvCustomerWatch.SelectedRows.Count > 0)
+            {
+                CustomerModel customer = DgvCustomerWatch.SelectedRows[0].DataBoundItem as CustomerModel;
+                FrmCustomerRegistration frmModification=new FrmCustomerRegistration(factory,customer);
+                
+            }
+        }
     }
 
 

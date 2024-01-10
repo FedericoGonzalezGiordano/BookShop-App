@@ -7,6 +7,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 
 namespace BackEnd.DAO.Implementation
 {
@@ -136,12 +137,12 @@ namespace BackEnd.DAO.Implementation
                 connection.Open();
                 t = connection.BeginTransaction();
 
-                SqlCommand comando = new SqlCommand("SP_BORRAR_CLIENTE", connection, t);
-                comando.CommandType = CommandType.StoredProcedure;
+                SqlCommand command = new SqlCommand("SP_BORRAR_CLIENTE", connection, t);
+                command.CommandType = CommandType.StoredProcedure;
 
-                comando.Parameters.AddWithValue("@id", id);
+                command.Parameters.AddWithValue("@id", id);
 
-                comando.ExecuteNonQuery();
+                command.ExecuteNonQuery();
                 t.Commit();
             }
             catch (SqlException sqlEx)
@@ -178,8 +179,47 @@ namespace BackEnd.DAO.Implementation
             return resultado;
         }
 
+        public bool CustomerUpdate(CustomerModel customer)
+        {
+            SqlConnection connection = HelperDao.GetInstance().GetConnection();
+            SqlTransaction t = null;
+            bool result = true;
 
+            try
+            {
+                connection = HelperDao.GetInstance().GetConnection();
+                connection.Open();
+                t = connection.BeginTransaction();
 
+                SqlCommand command = new SqlCommand("sp_modify_customer", connection, t);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@cod", customer.CodCustomer);
+                command.Parameters.AddWithValue("@nom", customer.NameCustomer);
+                command.Parameters.AddWithValue("@ape", customer.LastNameCustomer);
+                command.Parameters.AddWithValue("@calle", customer.StreetCustomer);
+                command.Parameters.AddWithValue("@altura", customer.StreetNumberCustomer);
+                command.Parameters.AddWithValue("@codbarrio", customer.Neighborhood.CodNeighborHood);
+                command.Parameters.AddWithValue("@tel", customer.TelCustomer);
+                command.Parameters.AddWithValue("@mail", customer.MailCustomer);
+                command.ExecuteNonQuery();
+                t.Commit();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error during customer update: {ex.Message}");
+
+                if (t != null)
+                    t.Rollback();
+                result = false;
+            }
+            finally
+            {
+                if (connection != null && connection.State == ConnectionState.Open)
+                    connection.Close();
+            }
+
+            return result;
+        }
 
     }
 }

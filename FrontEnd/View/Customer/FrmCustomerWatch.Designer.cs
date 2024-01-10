@@ -127,6 +127,7 @@
             BtnModify.TabIndex = 3;
             BtnModify.Text = "Modify";
             BtnModify.UseVisualStyleBackColor = true;
+            BtnModify.Click += BtnModify_Click;
             // 
             // BtnExit
             // 

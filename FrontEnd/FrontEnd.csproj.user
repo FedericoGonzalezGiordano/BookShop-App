@@ -4,6 +4,9 @@
     <Compile Update="View\Customer\FrmCustomerRegistration.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="View\Customer\FrmCustomerUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="View\Customer\FrmCustomerWatch.cs">
       <SubType>Form</SubType>
     </Compile>

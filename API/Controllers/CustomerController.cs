@@ -15,6 +15,7 @@ namespace API.Controllers
             front = new CustomerFront();
         }
 
+
         [HttpGet("/GetNeighborhood")]
         public IActionResult GetNeighborhood()
         {
@@ -35,6 +36,8 @@ namespace API.Controllers
                 return StatusCode(500);
             }
         }
+
+
         [HttpPost("/PostCustomer")]
         public IActionResult PostCliente(CustomerModel customer)
         {
@@ -55,6 +58,8 @@ namespace API.Controllers
                 return StatusCode(500);
             }
         }
+
+
         [HttpGet("/GetCustomer")]
         public IActionResult GetCustomer([FromQuery] string name, [FromQuery] string lastName)
         {
@@ -76,6 +81,7 @@ namespace API.Controllers
                 return StatusCode(500, $"An error occurred while processing your request. Details: {ex.Message}");
             }
         }
+
         [HttpDelete("/DeleteCustomer")]
         public IActionResult DeleteCustomer(int id )
         {
@@ -85,7 +91,7 @@ namespace API.Controllers
                 var result = front.CustomerTermination(id);
                 if (result == false)
                 {
-                    return StatusCode(500, " Se produjo un error al dar de baja un cliente");
+                    return StatusCode(500, " An error occurred while deregistering a customer");
                 }
                 return Ok(result);
             }
@@ -95,6 +101,45 @@ namespace API.Controllers
                 return StatusCode(500);
             }
         }
+        [HttpPut("/UpdateCustomer")]
+        public IActionResult UpdateCustomer(CustomerModel customer)
+        {
+            try
+            {
+                var result =front.CustomerUpdate(customer);
+                if (result==false)
+                {
+                    return StatusCode(500, "An error ocurred while updating a customer");
+                }
+                return Ok(result);  
+            }
+            catch (Exception)
+            {
 
+                return StatusCode(500);
+            }
+        }
+
+        [HttpGet("/GetCustomer")]
+        public IActionResult GetCustomer([FromQuery] int id)
+        {
+            try
+            {
+                var result = front.GetCustomerById(id);
+
+                if (result == null)
+                {
+                    return StatusCode(500, "An error occurred while searching for customer with id="+id);
+                }
+
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred: {ex.Message}");
+                Console.WriteLine($"StackTrace: {ex.StackTrace}");
+                return StatusCode(500, $"An error occurred while processing your request. Details: {ex.Message}");
+            }
+        }
     }
 }

@@ -12,12 +12,19 @@ namespace FrontEnd
         ICustomerService _customerService;
         private List<NeighborhoodModel> neighborhoodLst;
         private List<CustomerModel> lst = new List<CustomerModel>();
+        private CustomerModel? customer;
+
         public FrmCustomerRegistration(IFactoryService factory)
         {
             this.factory = factory;
             _customerService = factory.CreateClienteService();
             InitializeComponent();
             
+        }
+
+        public FrmCustomerRegistration(IFactoryService factory, CustomerModel? customer) : this(factory)
+        {
+            this.customer = customer;
         }
 
         private void FrmCustomerRegistration_Load(object sender, EventArgs e)
