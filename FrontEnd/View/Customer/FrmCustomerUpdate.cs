@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -19,54 +20,25 @@ namespace FrontEnd.View.Customer
         ICustomerService _customerService;
         private List<NeighborhoodModel> neighborhoodLst;
 
-        public FrmCustomerUpdate(IFactoryService factoryService, CustomerModel cliente)
+        public FrmCustomerUpdate(IFactoryService factoryService, CustomerModel customer)
         {
             InitializeComponent();
             this.factoryService = factoryService;
-            this.customer = cliente;
-            _customerService = factoryService.GetCustomerService();
-           
-            
-        }
-
-        private async Task LoadDataAsync()
-        {
-            try
-            {
-                loadFields();
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show($"Error en LoadDataAsync: {ex.Message}\nStackTrace: {ex.StackTrace}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            
+            this.customer = customer;
+            _customerService = factoryService.GetCustomerService(); 
         }
         private void loadFields()
-        {
-            try
-            {
-                // Cargar campos del cliente
+        {                
                 txtname.Text = customer.NameCustomer;
                 TxtLastName.Text = customer.LastNameCustomer;
                 txtStreet.Text = customer.StreetCustomer;
                 TxtStreetNumber.Text = customer.StreetNumberCustomer.ToString();
                 txtEmail.Text = customer.MailCustomer;
-                txtTelephone.Text = customer.TelCustomer.ToString();
-                
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error en loadFields: {ex.Message}\nStackTrace: {ex.StackTrace}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+                txtTelephone.Text = customer.TelCustomer.ToString();              
         }
-
-
-
-
         private async void FrmCustomerUpdate_Load(object sender, EventArgs e)
         {
-            await LoadDataAsync();
+            loadFields();
             await LoadComboAsync(customer);
         }
 
@@ -101,12 +73,6 @@ namespace FrontEnd.View.Customer
             }
         }
 
-
-
-
-
-
-
         private void GpbCustomer_Enter(object sender, EventArgs e)
         {
 
@@ -117,14 +83,41 @@ namespace FrontEnd.View.Customer
             this.Dispose();
         }
 
-        private  void BtnUpdate_Click(object sender, EventArgs e)
+        private async void BtnUpdate_Click(object sender, EventArgs e)
+        {
+                await PerformUpdateAsync();   
+        }
+
+        private async Task PerformUpdateAsync()
         {
             if (Validated())
             {
+                var response = await _customerService.CustomerUpdate(customer);
 
+                // Imprimir el contenido de la respuesta para obtener más detalles
+                Debug.WriteLine($"Response Content: {response?.Data}");
+
+                // Manejar la respuesta
+                if (response != null)
+                {
+                    if (response.SuccessStatus)
+                    {
+                        MessageBox.Show($"Customer updated successfully. Response Content: {response?.Data}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.Dispose(); // Otra acción después de la actualización (puedes cerrar el formulario, por ejemplo)
+                    }
+                    else
+                    {
+                        Debug.WriteLine($"Error updating customer. Response Content: {response?.Data}");
+                        MessageBox.Show($"Error updating customer. Response Content: {response?.Data}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    Debug.WriteLine("Error updating customer. Null response received.");
+                    MessageBox.Show("Error updating customer. Null response received.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
-
         private bool Validated()
         {
           

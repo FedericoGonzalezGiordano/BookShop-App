@@ -101,12 +101,13 @@ namespace API.Controllers
                 return StatusCode(500);
             }
         }
+        
         [HttpPut("/UpdateCustomer")]
         public IActionResult UpdateCustomer(CustomerModel customer)
         {
             try
             {
-                var result =front.CustomerUpdate(customer);
+                var result=front.CustomerUpdate(customer);
                 if (result==false)
                 {
                     return StatusCode(500, "An error ocurred while updating a customer");

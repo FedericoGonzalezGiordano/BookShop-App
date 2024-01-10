@@ -3,6 +3,7 @@ using FrontEnd.Service.Interface;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -59,9 +60,6 @@ namespace FrontEnd.Service.Implementation
                 return new List<CustomerModel>();
             }
         }
-
-        
-
         public async Task<HttpResponse> CustomerTermination(int id)
         {
             string url = host + $"/DeleteCustomer?id={id}";
@@ -98,9 +96,21 @@ namespace FrontEnd.Service.Implementation
             }
         }
 
-        public Task<HttpResponse> CustomerUpdate(CustomerModel customer)
+        public async Task<HttpResponse> CustomerUpdate(CustomerModel customer)
         {
-            throw new NotImplementedException();
+            try
+            {
+                string url = host + "/UpdateCustomer";
+                var cuerpo = JsonConvert.SerializeObject(customer);
+                var response = await ClientSingleton.GetInstance().PutAsync(url, cuerpo);
+                return response;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"An error occurred during customer update: {ex.Message}\nStackTrace: {ex.StackTrace}");
+                MessageBox.Show($"An error occurred during customer update: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
         }
     }
 }

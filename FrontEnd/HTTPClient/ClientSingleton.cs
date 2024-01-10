@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -71,29 +72,36 @@ namespace FrontEnd.HTTPClient
 
                 return new HttpResponse(System.Net.HttpStatusCode.BadRequest, ex.Message, false);
             }
-
-
-            //
         }
+
         public async Task<HttpResponse> PutAsync(string url, string data)
         {
             try
             {
                 var content = new StringContent(data, Encoding.UTF8, "application/json");
                 var result = await client.PutAsync(url, content);
-                var reply = "An error occurred on the server";
 
                 if (result.IsSuccessStatusCode)
                 {
-                    reply = await result.Content.ReadAsStringAsync();
+                    var reply = await result.Content.ReadAsStringAsync();
+                    Debug.WriteLine($"PUT Request Response Content: {reply}");
+                    return new HttpResponse(result.StatusCode, reply, true);
                 }
-                return new HttpResponse(result.StatusCode, reply, result.IsSuccessStatusCode);
+                else
+                {
+                    var errorResponse = await result.Content.ReadAsStringAsync();
+                    Debug.WriteLine($"PUT Request Error Response Content: {errorResponse}");
+                    return new HttpResponse(result.StatusCode, errorResponse, false);
+                }
             }
             catch (Exception ex)
             {
-                return new HttpResponse(System.Net.HttpStatusCode.BadRequest, ex.Message, false);
+                Debug.WriteLine($"Exception during PUT request: {ex.Message}");
+                throw;
             }
         }
+
+
 
         public async Task<HttpResponse> DeleteAsync(string url)
         {
