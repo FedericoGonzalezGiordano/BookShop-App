@@ -37,6 +37,11 @@ namespace BackEnd.Front.Implementation
             return dao.GetCustomer(nameCustomer, lastNameCustomer);
         }
 
+        public CustomerModel GetCustomerById(int idCliente)
+        {
+            return dao.GetCustomerById(idCliente);
+        }
+
         public List<NeighborhoodModel> GetNeighborhood()
         {
             return dao.GetNeighborhood();

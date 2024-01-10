@@ -13,5 +13,6 @@ namespace BackEnd.Front.Interface
         bool CustomerTermination(int id);
         List<NeighborhoodModel> GetNeighborhood();
         List<CustomerModel> GetCustomer(string nameCustomer, string lastNameCustomer);
+        CustomerModel GetCustomerById(int idCliente);
     }
 }

@@ -214,6 +214,7 @@ namespace BackEnd.DAO.Implementation
             }
             finally
             {
+
                 if (connection != null && connection.State == ConnectionState.Open)
                     connection.Close();
             }
@@ -221,6 +222,75 @@ namespace BackEnd.DAO.Implementation
             return result;
         }
 
+        public CustomerModel GetCustomerById(int idCliente)
+        {
+            SqlConnection connection = HelperDao.GetInstance().GetConnection();
+            SqlCommand command = null;
+            CustomerModel customer = null;
+
+            try
+            {
+                connection.Open();
+                command = new SqlCommand("sp_get_customer_by_id", connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@cod", idCliente);
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        Console.WriteLine("Reading customer data from database...");
+
+                        customer = new CustomerModel
+                        {
+                            CodCustomer = reader["cod_cliente"] as int? ?? 0, // Modify this line
+                            NameCustomer = reader["nom_cliente"] as string,
+                            LastNameCustomer = reader["ape_cliente"] as string,
+                            StreetCustomer = reader["calle"] as string,
+                            StreetNumberCustomer = reader["altura"] as int? ?? 0,
+                            Neighborhood = new NeighborhoodModel
+                            {
+                                CodNeighborHood = reader["cod_barrio"] as int? ?? 0,
+                                NameNeighborhood = reader["barrio"] as string ?? string.Empty
+                            },
+                            TelCustomer = reader["nro_tel"] as long? ?? 0,
+                            MailCustomer = reader["e-mail"] as string
+                        };
+
+                        Console.WriteLine("Customer data read successfully.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("No data found for the specified customer ID.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error en GetCustomerById: {ex.Message}");
+                Console.WriteLine($"Tipo de excepción: {ex.GetType().FullName}");
+                Console.WriteLine($"StackTrace: {ex.StackTrace}");
+                throw;
+            }
+            finally
+            {
+                if (command != null)
+                {
+                    command.Dispose();
+                }
+
+                if (connection != null && connection.State == ConnectionState.Open)
+                {
+                    connection.Close();
+                }
+            }
+
+            return customer;
+        }
+
+
     }
 }
+
+
 

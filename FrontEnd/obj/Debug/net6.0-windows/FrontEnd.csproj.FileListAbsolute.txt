@@ -29,4 +29,4 @@ C:\Users\Federico gonzalez\Desktop\BookShop App\FrontEnd\obj\Debug\net6.0-window
 C:\Users\Federico gonzalez\Desktop\BookShop App\FrontEnd\obj\Debug\net6.0-windows\FrontEnd.Properties.Resources.resources
 C:\Users\Federico gonzalez\Desktop\BookShop App\FrontEnd\obj\Debug\net6.0-windows\FrontEnd.View.Main.FrmMainAlphabetCRUD.resources
 C:\Users\Federico gonzalez\Desktop\BookShop App\FrontEnd\obj\Debug\net6.0-windows\FrontEnd.View.Customer.FrmCustomerWatch.resources
-C:\Users\Federico gonzalez\Desktop\BookShop App\FrontEnd\obj\Debug\net6.0-windows\FrontEnd.View.Customer.FrmCustomerModification.resources
+C:\Users\Federico gonzalez\Desktop\BookShop App\FrontEnd\obj\Debug\net6.0-windows\FrontEnd.View.Customer.FrmCustomerUpdate.resources

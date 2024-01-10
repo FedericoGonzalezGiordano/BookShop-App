@@ -44,12 +44,16 @@
             // 
             // DgvCustomerWatch
             // 
+            DgvCustomerWatch.AllowUserToAddRows = false;
+            DgvCustomerWatch.AllowUserToDeleteRows = false;
             DgvCustomerWatch.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DgvCustomerWatch.Location = new Point(41, 109);
             DgvCustomerWatch.Name = "DgvCustomerWatch";
+            DgvCustomerWatch.ReadOnly = true;
             DgvCustomerWatch.RowTemplate.Height = 25;
             DgvCustomerWatch.Size = new Size(816, 238);
-            DgvCustomerWatch.TabIndex = 0;
+            DgvCustomerWatch.TabIndex = 1;
+            DgvCustomerWatch.CellContentClick += DgvCustomerWatch_CellContentClick;
             // 
             // gpbCustomerSearch
             // 
@@ -61,7 +65,7 @@
             gpbCustomerSearch.Location = new Point(41, 12);
             gpbCustomerSearch.Name = "gpbCustomerSearch";
             gpbCustomerSearch.Size = new Size(816, 91);
-            gpbCustomerSearch.TabIndex = 1;
+            gpbCustomerSearch.TabIndex = 0;
             gpbCustomerSearch.TabStop = false;
             gpbCustomerSearch.Text = "Search Customers";
             gpbCustomerSearch.Enter += gpbCustomerSearch_Enter;
@@ -72,7 +76,7 @@
             LblLastName.Location = new Point(376, 24);
             LblLastName.Name = "LblLastName";
             LblLastName.Size = new Size(60, 15);
-            LblLastName.TabIndex = 9;
+            LblLastName.TabIndex = 2;
             LblLastName.Text = "LastName";
             LblLastName.Click += LblLastName_Click;
             // 
@@ -82,7 +86,7 @@
             LblName.Location = new Point(20, 24);
             LblName.Name = "LblName";
             LblName.Size = new Size(39, 15);
-            LblName.TabIndex = 8;
+            LblName.TabIndex = 0;
             LblName.Text = "Name";
             // 
             // TxtLastName
@@ -90,21 +94,21 @@
             TxtLastName.Location = new Point(463, 24);
             TxtLastName.Name = "TxtLastName";
             TxtLastName.Size = new Size(263, 23);
-            TxtLastName.TabIndex = 7;
+            TxtLastName.TabIndex = 3;
             // 
             // TxtName
             // 
             TxtName.Location = new Point(75, 24);
             TxtName.Name = "TxtName";
             TxtName.Size = new Size(263, 23);
-            TxtName.TabIndex = 6;
+            TxtName.TabIndex = 1;
             // 
             // BtnSearch
             // 
             BtnSearch.Location = new Point(735, 62);
             BtnSearch.Name = "BtnSearch";
             BtnSearch.Size = new Size(75, 23);
-            BtnSearch.TabIndex = 5;
+            BtnSearch.TabIndex = 4;
             BtnSearch.Text = "Search";
             BtnSearch.UseVisualStyleBackColor = true;
             BtnSearch.Click += BtnSearch_Click;
@@ -137,6 +141,7 @@
             BtnExit.TabIndex = 4;
             BtnExit.Text = "Exit";
             BtnExit.UseVisualStyleBackColor = true;
+            BtnExit.Click += BtnExit_Click;
             // 
             // FrmCustomerWatch
             // 
@@ -169,5 +174,6 @@
         private TextBox TxtName;
         private Label LblLastName;
         private Label LblName;
+        private DataGridViewTextBoxColumn CodBarrio;
     }
 }

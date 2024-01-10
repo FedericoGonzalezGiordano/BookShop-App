@@ -12,7 +12,7 @@ GO
 CREATE PROCEDURE SP_CONSULTAR_BARRIOS
 AS
 BEGIN
-SELECT * FROM barrios ORDER BY 2
+SELECT * FROM barrios 
 END
 
 GO
@@ -51,7 +51,7 @@ end;
 
 GO
 
-CREATE PROCEDURE SP_BORRAR_CLIENTE
+ALTER PROCEDURE [dbo].[SP_BORRAR_CLIENTE]
     @id INT
 AS
 BEGIN
@@ -82,10 +82,11 @@ BEGIN
         IF @@TRANCOUNT > 0  
             ROLLBACK;
 
-        -- Propagar el error al nivel superior (puedes personalizar el mensaje aquí)
+        -- Propagar el error al nivel superior 
         PRINT 'Error en SP_BORRAR_CLIENTE: ' + ERROR_MESSAGE();
     END CATCH;
 END;
+
 
 GO
 
@@ -103,3 +104,21 @@ set nom_cliente=@nom,
     [e-mail]=@mail
 where cod_cliente=@cod
 end;
+
+GO 
+
+create procedure sp_get_customer_by_id
+@cod int
+as
+begin
+select cod_cliente,
+	   nom_cliente,
+	   ape_cliente,
+	   calle,altura,
+	   b.cod_barrio,
+	   b.barrio,
+	   nro_tel,
+	   [e-mail]
+from clientes c join barrios b on c.cod_barrio=c.cod_barrio
+where c.cod_cliente=@cod
+end

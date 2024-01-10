@@ -50,6 +50,8 @@ namespace FrontEnd.View.Customer
             DgvCustomerWatch.Columns["NeighborhoodName"].DataPropertyName = "Neighborhood.NameNeighborhood";
             DgvCustomerWatch.Columns["TelCustomer"].DataPropertyName = "TelCustomer";
             DgvCustomerWatch.Columns["MailCustomer"].DataPropertyName = "MailCustomer";
+
+            
         }
 
         private void FrmCustomerWatch_Load(object sender, EventArgs e)
@@ -159,14 +161,36 @@ namespace FrontEnd.View.Customer
             }
         }
 
-        private void BtnModify_Click(object sender, EventArgs e)
+        private async void BtnModify_Click(object sender, EventArgs e)
         {
             if (DgvCustomerWatch.SelectedRows.Count > 0)
             {
-                CustomerModel customer = DgvCustomerWatch.SelectedRows[0].DataBoundItem as CustomerModel;
-                FrmCustomerRegistration frmModification=new FrmCustomerRegistration(factory,customer);
-                
+                DataGridViewRow row = DgvCustomerWatch.SelectedRows[0];
+                int idCliente = Convert.ToInt32(row.Cells["CodCustomer"].Value);
+                CustomerModel cliente = await customerService.GetCustomerByIdAsync(idCliente);
+                if (cliente != null)
+                {
+
+                    FrmCustomerUpdate update = new FrmCustomerUpdate(factory, cliente);
+                    update.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("Error getting customer details.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
             }
+        }
+
+        private void BtnExit_Click(object sender, EventArgs e)
+        {
+
+            this.Dispose();
+        }
+
+        private void DgvCustomerWatch_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 

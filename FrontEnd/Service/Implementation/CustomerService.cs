@@ -72,5 +72,35 @@ namespace FrontEnd.Service.Implementation
 
             return response;
         }
+        public async Task<CustomerModel> GetCustomerByIdAsync(int customerId)
+        {
+            try
+            {
+                string url = host+$"/GetCustomerById?id={customerId}";
+                CustomerModel result = null;
+                var response = await ClientSingleton.GetInstance().GetAsync(url);
+
+                if (response != null && response.SuccessStatus)
+                {
+                    result = JsonConvert.DeserializeObject<CustomerModel>(response.Data);
+                }
+                else
+                {
+                    MessageBox.Show("Error retrieving customer data.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public Task<HttpResponse> CustomerUpdate(CustomerModel customer)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

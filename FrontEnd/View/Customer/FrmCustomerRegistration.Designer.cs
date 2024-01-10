@@ -58,7 +58,7 @@
             txtEmail.Location = new Point(107, 103);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(197, 23);
-            txtEmail.TabIndex = 70;
+            txtEmail.TabIndex = 13;
             // 
             // LblEmail
             // 
@@ -67,7 +67,7 @@
             LblEmail.Location = new Point(48, 103);
             LblEmail.Name = "LblEmail";
             LblEmail.Size = new Size(41, 15);
-            LblEmail.TabIndex = 79;
+            LblEmail.TabIndex = 12;
             LblEmail.Text = "E-Mail";
             // 
             // cboNeighborhood
@@ -78,7 +78,7 @@
             cboNeighborhood.Location = new Point(107, 74);
             cboNeighborhood.Name = "cboNeighborhood";
             cboNeighborhood.Size = new Size(197, 23);
-            cboNeighborhood.TabIndex = 65;
+            cboNeighborhood.TabIndex = 9;
             cboNeighborhood.SelectedIndexChanged += cboNeighborhood_SelectedIndexChanged;
             // 
             // txtTelephone
@@ -87,7 +87,7 @@
             txtTelephone.Location = new Point(427, 77);
             txtTelephone.Name = "txtTelephone";
             txtTelephone.Size = new Size(213, 23);
-            txtTelephone.TabIndex = 71;
+            txtTelephone.TabIndex = 11;
             // 
             // LblTelephone
             // 
@@ -96,7 +96,7 @@
             LblTelephone.Location = new Point(360, 83);
             LblTelephone.Name = "LblTelephone";
             LblTelephone.Size = new Size(61, 15);
-            LblTelephone.TabIndex = 78;
+            LblTelephone.TabIndex = 10;
             LblTelephone.Text = "Telephone";
             // 
             // LblStreet
@@ -106,7 +106,7 @@
             LblStreet.Location = new Point(52, 46);
             LblStreet.Name = "LblStreet";
             LblStreet.Size = new Size(37, 15);
-            LblStreet.TabIndex = 76;
+            LblStreet.TabIndex = 4;
             LblStreet.Text = "Street";
             // 
             // LblNeighborhood
@@ -116,7 +116,7 @@
             LblNeighborhood.Location = new Point(6, 77);
             LblNeighborhood.Name = "LblNeighborhood";
             LblNeighborhood.Size = new Size(85, 15);
-            LblNeighborhood.TabIndex = 75;
+            LblNeighborhood.TabIndex = 8;
             LblNeighborhood.Text = "Neighborhood";
             // 
             // TxtLastName
@@ -125,7 +125,7 @@
             TxtLastName.Location = new Point(427, 19);
             TxtLastName.Name = "TxtLastName";
             TxtLastName.Size = new Size(213, 23);
-            TxtLastName.TabIndex = 67;
+            TxtLastName.TabIndex = 3;
             // 
             // LblLastName
             // 
@@ -134,7 +134,7 @@
             LblLastName.Location = new Point(363, 22);
             LblLastName.Name = "LblLastName";
             LblLastName.Size = new Size(58, 15);
-            LblLastName.TabIndex = 73;
+            LblLastName.TabIndex = 2;
             LblLastName.Text = "Lastname";
             // 
             // txtname
@@ -143,7 +143,7 @@
             txtname.Location = new Point(107, 16);
             txtname.Name = "txtname";
             txtname.Size = new Size(197, 23);
-            txtname.TabIndex = 66;
+            txtname.TabIndex = 1;
             txtname.TextChanged += txtname_TextChanged;
             // 
             // LblName
@@ -153,7 +153,7 @@
             LblName.Location = new Point(52, 19);
             LblName.Name = "LblName";
             LblName.Size = new Size(39, 15);
-            LblName.TabIndex = 72;
+            LblName.TabIndex = 0;
             LblName.Text = "Name";
             // 
             // txtStreet
@@ -162,7 +162,7 @@
             txtStreet.Location = new Point(107, 46);
             txtStreet.Name = "txtStreet";
             txtStreet.Size = new Size(197, 23);
-            txtStreet.TabIndex = 80;
+            txtStreet.TabIndex = 5;
             txtStreet.TextChanged += txtStreet_TextChanged;
             // 
             // TxtStreetNumber
@@ -171,7 +171,7 @@
             TxtStreetNumber.Location = new Point(427, 48);
             TxtStreetNumber.Name = "TxtStreetNumber";
             TxtStreetNumber.Size = new Size(213, 23);
-            TxtStreetNumber.TabIndex = 81;
+            TxtStreetNumber.TabIndex = 7;
             // 
             // LblStreetNumber
             // 
@@ -180,7 +180,7 @@
             LblStreetNumber.Location = new Point(337, 51);
             LblStreetNumber.Name = "LblStreetNumber";
             LblStreetNumber.Size = new Size(84, 15);
-            LblStreetNumber.TabIndex = 82;
+            LblStreetNumber.TabIndex = 6;
             LblStreetNumber.Text = "Street Number";
             // 
             // btnCancel
@@ -189,7 +189,7 @@
             btnCancel.Location = new Point(340, 443);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(108, 26);
-            btnCancel.TabIndex = 84;
+            btnCancel.TabIndex = 3;
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = true;
             btnCancel.Click += btnCancel_Click;
@@ -200,7 +200,7 @@
             btnExit.Location = new Point(606, 443);
             btnExit.Name = "btnExit";
             btnExit.Size = new Size(108, 26);
-            btnExit.TabIndex = 85;
+            btnExit.TabIndex = 4;
             btnExit.Text = "Exit";
             btnExit.UseVisualStyleBackColor = true;
             btnExit.Click += btnExit_Click;
@@ -211,7 +211,7 @@
             btnLoad.Location = new Point(77, 443);
             btnLoad.Name = "btnLoad";
             btnLoad.Size = new Size(108, 26);
-            btnLoad.TabIndex = 83;
+            btnLoad.TabIndex = 2;
             btnLoad.Text = "Load";
             btnLoad.UseVisualStyleBackColor = true;
             btnLoad.Click += btnLoad_Click;
@@ -223,7 +223,7 @@
             DgvCustomer.Name = "DgvCustomer";
             DgvCustomer.RowTemplate.Height = 25;
             DgvCustomer.Size = new Size(711, 254);
-            DgvCustomer.TabIndex = 86;
+            DgvCustomer.TabIndex = 1;
             DgvCustomer.CellContentClick += DgvCustomer_CellContentClick;
             // 
             // BtnAdd
@@ -232,7 +232,7 @@
             BtnAdd.Location = new Point(524, 114);
             BtnAdd.Name = "BtnAdd";
             BtnAdd.Size = new Size(89, 21);
-            BtnAdd.TabIndex = 87;
+            BtnAdd.TabIndex = 14;
             BtnAdd.Text = "Add";
             BtnAdd.UseVisualStyleBackColor = true;
             BtnAdd.Click += BtnAdd_Click;
@@ -257,7 +257,7 @@
             GpbCustomer.Location = new Point(52, 12);
             GpbCustomer.Name = "GpbCustomer";
             GpbCustomer.Size = new Size(646, 141);
-            GpbCustomer.TabIndex = 88;
+            GpbCustomer.TabIndex = 0;
             GpbCustomer.TabStop = false;
             GpbCustomer.Text = "Customer";
             // 

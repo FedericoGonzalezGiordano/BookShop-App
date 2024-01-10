@@ -8,7 +8,7 @@ public class CustomerModel
     public string StreetCustomer { get; set; }
     public int StreetNumberCustomer { get; set; }
     public NeighborhoodModel Neighborhood { get; set; }
-    public int TelCustomer { get; set; }
+    public long TelCustomer { get; set; }
     public string MailCustomer { get;set; }
 
     public CustomerModel()

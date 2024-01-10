@@ -120,8 +120,8 @@ namespace API.Controllers
             }
         }
 
-        [HttpGet("/GetCustomer")]
-        public IActionResult GetCustomer([FromQuery] int id)
+        [HttpGet("/GetCustomerById")]
+        public IActionResult GetCustomerById([FromQuery] int id)
         {
             try
             {
@@ -129,17 +129,21 @@ namespace API.Controllers
 
                 if (result == null)
                 {
-                    return StatusCode(500, "An error occurred while searching for customer with id="+id);
+                    // No se encontró el cliente con el ID proporcionado
+                    return NotFound($"No customer found with ID={id}");
                 }
 
+                // Se encontró el cliente, devolver OK con los datos del cliente
                 return Ok(result);
             }
             catch (Exception ex)
             {
+                // Ocurrió un error durante el procesamiento, registrar y devolver un código de estado 500
                 Console.WriteLine($"An error occurred: {ex.Message}");
                 Console.WriteLine($"StackTrace: {ex.StackTrace}");
                 return StatusCode(500, $"An error occurred while processing your request. Details: {ex.Message}");
             }
         }
+
     }
 }

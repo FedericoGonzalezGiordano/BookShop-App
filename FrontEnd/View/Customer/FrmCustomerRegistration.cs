@@ -12,20 +12,17 @@ namespace FrontEnd
         ICustomerService _customerService;
         private List<NeighborhoodModel> neighborhoodLst;
         private List<CustomerModel> lst = new List<CustomerModel>();
-        private CustomerModel? customer;
+
 
         public FrmCustomerRegistration(IFactoryService factory)
         {
             this.factory = factory;
-            _customerService = factory.CreateClienteService();
+            _customerService = factory.GetCustomerService();
             InitializeComponent();
-            
+
         }
 
-        public FrmCustomerRegistration(IFactoryService factory, CustomerModel? customer) : this(factory)
-        {
-            this.customer = customer;
-        }
+
 
         private void FrmCustomerRegistration_Load(object sender, EventArgs e)
         {
@@ -75,7 +72,7 @@ namespace FrontEnd
                 Clean();
 
                 MessageBox.Show("Customers successfully loaded", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                lst.Clear();  // Limpiar la lista después de cargar los clientes en la base de datos
+                lst.Clear();
                 DgvCustomer.Rows.Clear();
                 DgvCustomer.Refresh();
             }
@@ -138,7 +135,7 @@ namespace FrontEnd
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            lst.Clear();  // Limpiar la lista de clientes
+            lst.Clear();
             Clean();
             DgvCustomer.Rows.Clear();
             DgvCustomer.Refresh();
