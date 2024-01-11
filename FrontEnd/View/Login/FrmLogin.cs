@@ -47,6 +47,7 @@ namespace FrontEnd.View.Login
             cboSeller.DisplayMember = "CompleteName";
             cboSeller.DataSource = sellerLst;
             cboSeller.SelectedIndex = -1;
+            cboSeller.DropDownStyle=ComboBoxStyle.DropDownList;
         }
 
         private void btnLog_Click(object sender, EventArgs e)

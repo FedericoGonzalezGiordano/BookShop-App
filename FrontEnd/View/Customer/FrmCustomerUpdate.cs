@@ -27,7 +27,7 @@ namespace FrontEnd.View.Customer
             this.customer = customer;
             _customerService = factoryService.GetCustomerService(); 
         }
-        private void loadFields()
+        private void loadCustomer()
         {                
                 txtname.Text = customer.NameCustomer;
                 TxtLastName.Text = customer.LastNameCustomer;
@@ -36,9 +36,22 @@ namespace FrontEnd.View.Customer
                 txtEmail.Text = customer.MailCustomer;
                 txtTelephone.Text = customer.TelCustomer.ToString();              
         }
+        private void updateCustomer()
+        {
+            customer.NameCustomer = txtname.Text;
+            customer.LastNameCustomer = TxtLastName.Text;
+            customer.StreetCustomer = txtStreet.Text;
+            customer.StreetNumberCustomer=Convert.ToInt32(TxtStreetNumber.Text); 
+            customer.MailCustomer= txtEmail.Text;
+            customer.TelCustomer = Convert.ToInt64(txtTelephone.Text);
+            int selectedNeighborhoodCode = cboNeighborhood.SelectedIndex + 1;
+            customer.Neighborhood.CodNeighborHood = selectedNeighborhoodCode;
+            customer.Neighborhood.NameNeighborhood = cboNeighborhood.Text;
+            
+        }
         private async void FrmCustomerUpdate_Load(object sender, EventArgs e)
         {
-            loadFields();
+            loadCustomer();
             await LoadComboAsync(customer);
         }
 
@@ -92,6 +105,7 @@ namespace FrontEnd.View.Customer
         {
             if (Validated())
             {
+                updateCustomer();
                 var response = await _customerService.CustomerUpdate(customer);
 
                 // Imprimir el contenido de la respuesta para obtener más detalles
