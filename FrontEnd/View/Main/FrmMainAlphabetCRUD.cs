@@ -1,4 +1,5 @@
 ﻿using FrontEnd.Factory.Interface;
+using FrontEnd.View.Article;
 using FrontEnd.View.Customer;
 using System;
 using System.Collections.Generic;
@@ -73,6 +74,12 @@ namespace FrontEnd.View.Main
         {
             FrmCustomerWatch frmCustomerWatch = new FrmCustomerWatch(factory);
             frmCustomerWatch.ShowDialog();
+        }
+
+        private void newToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FrmArticuleRegistration frmArticuleRegistration = new FrmArticuleRegistration(factory);
+            frmArticuleRegistration.ShowDialog();
         }
     }
 }

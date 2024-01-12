@@ -122,3 +122,17 @@ select cod_cliente,
 from clientes c join barrios b on c.cod_barrio=c.cod_barrio
 where c.cod_cliente=@cod
 end
+
+GO
+
+create procedure sp_insert_articles
+@description varchar(50),
+@stockmin int,
+@stock int,
+@preUnit decimal(5,2),
+@obser varchar(50)
+as
+begin
+insert into articulos(descripcion,stock_minimo,stock,pre_unitario,observaciones)
+values(@description,@stockmin,@stock,@preUnit,@obser)
+end

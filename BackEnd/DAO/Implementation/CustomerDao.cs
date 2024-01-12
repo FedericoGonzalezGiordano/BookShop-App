@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Transactions;
+using System.Diagnostics;
 
 namespace BackEnd.DAO.Implementation
 {
@@ -243,7 +244,7 @@ namespace BackEnd.DAO.Implementation
 
                         customer = new CustomerModel
                         {
-                            CodCustomer = reader["cod_cliente"] as int? ?? 0, // Modify this line
+                            CodCustomer = reader["cod_cliente"] as int? ?? 0, 
                             NameCustomer = reader["nom_cliente"] as string,
                             LastNameCustomer = reader["ape_cliente"] as string,
                             StreetCustomer = reader["calle"] as string,

@@ -92,14 +92,14 @@
             // seeClientsToolStripMenuItem
             // 
             seeClientsToolStripMenuItem.Name = "seeClientsToolStripMenuItem";
-            seeClientsToolStripMenuItem.Size = new Size(180, 22);
+            seeClientsToolStripMenuItem.Size = new Size(108, 22);
             seeClientsToolStripMenuItem.Text = "Watch";
             seeClientsToolStripMenuItem.Click += seeClientsToolStripMenuItem_Click;
             // 
             // newCustomerToolStripMenuItem
             // 
             newCustomerToolStripMenuItem.Name = "newCustomerToolStripMenuItem";
-            newCustomerToolStripMenuItem.Size = new Size(180, 22);
+            newCustomerToolStripMenuItem.Size = new Size(108, 22);
             newCustomerToolStripMenuItem.Text = "New";
             newCustomerToolStripMenuItem.Click += newCustomerToolStripMenuItem_Click;
             // 
@@ -132,14 +132,15 @@
             // watchToolStripMenuItem1
             // 
             watchToolStripMenuItem1.Name = "watchToolStripMenuItem1";
-            watchToolStripMenuItem1.Size = new Size(108, 22);
+            watchToolStripMenuItem1.Size = new Size(180, 22);
             watchToolStripMenuItem1.Text = "Watch";
             // 
             // newToolStripMenuItem1
             // 
             newToolStripMenuItem1.Name = "newToolStripMenuItem1";
-            newToolStripMenuItem1.Size = new Size(108, 22);
+            newToolStripMenuItem1.Size = new Size(180, 22);
             newToolStripMenuItem1.Text = "New";
+            newToolStripMenuItem1.Click += newToolStripMenuItem1_Click;
             // 
             // FrmMainAlphabetCRUD
             // 

@@ -10,9 +10,8 @@ namespace FrontEnd.Factory.Interface
     public interface IFactoryService
     {
 
-
+        IArticleService CreateArticleService();
         ILoginService CreateLoginService();
- 
         ICustomerService GetCustomerService();
     }
 }

@@ -52,8 +52,6 @@ namespace FrontEnd.HTTPClient
 
         public async Task<HttpResponse> PostAsync(string url, string data)
         {
-
-
             try
             {
                 var content = new StringContent(data, Encoding.UTF8, "application/json");

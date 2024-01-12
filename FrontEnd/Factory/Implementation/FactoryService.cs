@@ -11,7 +11,10 @@ namespace FrontEnd.Factory.Implementation
 {
     public class FactoryService : IFactoryService
     {
-
+        public IArticleService CreateArticleService()
+        {
+            return new ArticleService();
+        }
 
         public ILoginService CreateLoginService()
         {
