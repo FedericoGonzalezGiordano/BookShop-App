@@ -124,7 +124,108 @@ namespace BackEnd.DAO.Implementation
             }
             return resultado;
         }
-        
+
+        public ArticleModel GetArticlesById(int id)
+        {
+            SqlConnection connection = HelperDao.GetInstance().GetConnection();
+            SqlCommand command = null;
+            ArticleModel article = null;
+
+            try
+            {
+                connection.Open();
+                command = new SqlCommand("SP_GET_ARTICLES_BY_ID", connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@cod", id);
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        Console.WriteLine("Reading customer data from database...");
+
+                        article = new ArticleModel
+                        {
+                            CodArticle = reader[0] as int? ?? 0,
+                            DescriptionArticle = reader[1] as string,
+                            StockMinArticle = reader[2] as int? ?? 0,
+                            StockArticle = reader[3] as int? ?? 0,
+                            PriceUnitArticle = reader[4] as double? ?? 0,
+                            ObservationArticle = reader[5] as string
+                        };
+
+                        Console.WriteLine("Article data read successfully.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("No data found for the specified article ID.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"GetArticleById failed: {ex.Message}");
+                Console.WriteLine($"Exception Type: {ex.GetType().FullName}");
+                Console.WriteLine($"StackTrace: {ex.StackTrace}");
+                throw;
+            }
+            finally
+            {
+                if (command != null)
+                {
+                    command.Dispose();
+                }
+
+                if (connection != null && connection.State == ConnectionState.Open)
+                {
+                    connection.Close();
+                }
+            }
+
+            return article;
+        }
+
+        public bool ArticleUpdate(ArticleModel article)
+        {
+            SqlConnection connection = HelperDao.GetInstance().GetConnection();
+            SqlTransaction t = null;
+            bool result = true;
+
+            try
+            {
+                connection = HelperDao.GetInstance().GetConnection();
+                connection.Open();
+                t = connection.BeginTransaction();
+
+                SqlCommand command = new SqlCommand("SP_MODIFCAR_ARTICULO", connection, t);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@cod", article.CodArticle);
+                command.Parameters.AddWithValue("@descripcion", article.DescriptionArticle);
+                command.Parameters.AddWithValue("@stockMin", article.StockMinArticle);
+                command.Parameters.AddWithValue("@stock", article.StockArticle);
+                command.Parameters.AddWithValue("@preUnit", article.PriceUnitArticle);
+                command.Parameters.AddWithValue("@observacion", article.ObservationArticle);
+               
+                command.ExecuteNonQuery();
+                t.Commit();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error during article update: {ex.Message}");
+
+                if (t != null)
+                    t.Rollback();
+                result = false;
+            }
+            finally
+            {
+
+                if (connection != null && connection.State == ConnectionState.Open)
+                    connection.Close();
+            }
+
+            return result;
+        }
     }
 }
 

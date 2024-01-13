@@ -12,5 +12,7 @@ namespace BackEnd.Front.Interface
       bool ArticleRegistration(ArticleModel article);
       List<ArticleModel> GetArticles(string nameArticle);
       bool ArticleTermination(int id);
+      ArticleModel GetArticlesById(int id);
+      bool ArticleUpdate(ArticleModel article);
     }
 }

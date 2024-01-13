@@ -48,6 +48,7 @@
             BtnExit.TabIndex = 9;
             BtnExit.Text = "Exit";
             BtnExit.UseVisualStyleBackColor = true;
+            BtnExit.Click += BtnExit_Click;
             // 
             // BtnModify
             // 
@@ -57,6 +58,7 @@
             BtnModify.TabIndex = 8;
             BtnModify.Text = "Modify";
             BtnModify.UseVisualStyleBackColor = true;
+            BtnModify.Click += BtnModify_Click;
             // 
             // BtnDelete
             // 

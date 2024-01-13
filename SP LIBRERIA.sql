@@ -171,3 +171,19 @@ begin
 delete articulos
 where cod_articulo=@cod
 end
+
+GO  
+
+CREATE procedure SP_MODIFCAR_ARTICULO
+@cod int ,@descripcion varchar(60),@stockMin int,@stock int,@preUnit decimal, @observacion varchar(60)
+as
+begin
+update articulos
+set descripcion=@descripcion,
+	stock_minimo=@stockMin,
+	stock=@stock,
+	pre_unitario=@preUnit,
+	observaciones=@observacion
+where cod_articulo=@cod
+end
+

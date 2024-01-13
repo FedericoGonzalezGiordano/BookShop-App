@@ -28,9 +28,19 @@ namespace BackEnd.Front.Implementation
             return articleDao.ArticleTermination(id);       
         }
 
+        public bool ArticleUpdate(ArticleModel article)
+        {
+            return articleDao.ArticleUpdate(article);
+        }
+
         public List<ArticleModel> GetArticles(string nameArticle)
         {
             return articleDao.GetArticles(nameArticle);
+        }
+
+        public ArticleModel GetArticlesById(int id)
+        {
+            return articleDao.GetArticlesById(id);
         }
     }
 }

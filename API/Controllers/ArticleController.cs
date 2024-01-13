@@ -74,5 +74,46 @@ namespace API.Controllers
             }
         }
 
+        [HttpGet("/GetArticleByID")]
+        public IActionResult GetArticleById([FromQuery] int cod)
+        {
+            try
+            {
+                var result = front.GetArticlesById(cod);
+
+                if (result == null)
+                {
+                    return StatusCode(500, "An error occurred while searching for articles by ID");
+                }
+
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred: {ex.Message}");
+                Console.WriteLine($"StackTrace: {ex.StackTrace}");
+                return StatusCode(500, $"An error occurred while processing your request. Details: {ex.Message}");
+            }
+        }
+
+        [HttpPut("/UpdateArticle")]
+        public IActionResult UpdateCustomer(ArticleModel article)
+        {
+            try
+            {
+                var result = front.ArticleUpdate(article);
+                if (result == false)
+                {
+                    return StatusCode(500, "An error ocurred while updating an article");
+                }
+                return Ok(result);
+            }
+            catch (Exception)
+            {
+
+                return StatusCode(500);
+            }
+        }
+
     }
 }

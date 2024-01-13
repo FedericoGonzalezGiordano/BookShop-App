@@ -12,5 +12,9 @@ namespace BackEnd.DAO.Interface
         List<ArticleModel> GetArticles(string nameArticle);
 
         bool ArticleTermination(int id);
+
+        ArticleModel GetArticlesById(int id);
+
+        bool ArticleUpdate(ArticleModel article);
     }
 }

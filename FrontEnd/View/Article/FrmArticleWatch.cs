@@ -1,6 +1,7 @@
 ﻿using FrontEnd.Factory.Interface;
 using FrontEnd.Service.Implementation;
 using FrontEnd.Service.Interface;
+using FrontEnd.View.Customer;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -128,6 +129,33 @@ namespace FrontEnd.View.Article
                 MessageBox.Show("No selected rows in DataGridView");
                 MessageBox.Show("Select an article before deleting.");
             }
+        }
+
+        private async void BtnModify_Click(object sender, EventArgs e)
+        {
+            if (DgvArticleWatch.SelectedRows.Count > 0)
+            {
+                DataGridViewRow row = DgvArticleWatch.SelectedRows[0];
+                int idCliente = Convert.ToInt32(row.Cells[0].Value);
+                ArticleModel article = await articleService.GetArticleByIdAsync(idCliente);
+                if (article != null)
+                {
+
+                    FrmArticleUpdate frmArticleUpdate = new FrmArticleUpdate(factoryService, article);
+                    frmArticleUpdate.ShowDialog();
+
+                }
+                else
+                {
+                    MessageBox.Show("Error getting article details.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+            }
+        }
+
+        private void BtnExit_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
         }
     }
 }
