@@ -10,5 +10,6 @@ namespace BackEnd.Front.Interface
     public interface IArticleFront
     {
       bool ArticleRegistration(ArticleModel article);
+      List<ArticleModel> GetArticles(string nameArticle);
     }
 }

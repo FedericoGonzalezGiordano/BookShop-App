@@ -13,7 +13,7 @@ namespace BackEnd.DAO.Helper
 {
     public class HelperDao
     {
-        private SqlConnection _connection;
+        private readonly SqlConnection _connection;
         private string stringConexion = "Data Source=.\\SQLEXPRESS;Initial Catalog = LIBRERIA_LCI2023;Integrated Security = True";
         private static HelperDao instance;
 
@@ -72,6 +72,23 @@ namespace BackEnd.DAO.Helper
             {
                 comando.Parameters.AddWithValue(p.Name, p.Value);
             }
+            table.Load(comando.ExecuteReader());
+            Disconect();
+            return table;
+        }
+
+        public DataTable GetConsultParameter(string nombreSP, Parameter parameter)
+        {
+            DataTable table = new DataTable();
+            Connect();
+            SqlCommand comando = new SqlCommand();
+            comando.Connection = _connection;
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.CommandText = nombreSP;
+            comando.Parameters.Clear();
+            
+            comando.Parameters.AddWithValue(parameter.Name, parameter.Value);
+           
             table.Load(comando.ExecuteReader());
             Disconect();
             return table;

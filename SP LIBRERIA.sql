@@ -136,3 +136,12 @@ begin
 insert into articulos(descripcion,stock_minimo,stock,pre_unitario,observaciones)
 values(@description,@stockmin,@stock,@preUnit,@obser)
 end
+
+GO
+
+CREATE PROCEDURE SP_BUSCAR_ARTICULO
+@descripcion varchar(50)
+AS
+BEGIN 
+select * from articulos where descripcion=@descripcion
+END

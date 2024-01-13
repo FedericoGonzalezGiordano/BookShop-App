@@ -9,5 +9,6 @@ namespace BackEnd.DAO.Interface
     public interface IArticleDao
     {
          bool ArticleRegistration(ArticleModel article);
+        List<ArticleModel> GetArticles(string nameArticle);
     }
 }

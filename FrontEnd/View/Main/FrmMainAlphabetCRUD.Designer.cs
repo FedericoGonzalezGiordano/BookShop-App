@@ -134,6 +134,7 @@
             watchToolStripMenuItem1.Name = "watchToolStripMenuItem1";
             watchToolStripMenuItem1.Size = new Size(180, 22);
             watchToolStripMenuItem1.Text = "Watch";
+            watchToolStripMenuItem1.Click += watchToolStripMenuItem1_Click;
             // 
             // newToolStripMenuItem1
             // 

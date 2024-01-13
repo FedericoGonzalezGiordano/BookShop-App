@@ -121,7 +121,7 @@ namespace BackEnd.DAO.Implementation
             return lstCustomers;
         }
 
-        private bool IsDBNull(object value)
+        static bool IsDBNull(object value)
         {
             return value == DBNull.Value || value == null;
         }

@@ -16,9 +16,9 @@ namespace FrontEnd.View.Article
 {
     public partial class FrmArticuleRegistration : Form
     {
-        IFactoryService factory;
-        IArticleService articleService;
-        private List<ArticleModel> lstArticles;
+        readonly IFactoryService factory;
+        readonly IArticleService articleService;
+        private readonly List<ArticleModel> lstArticles;
         public FrmArticuleRegistration(IFactoryService factory)
         {
             lstArticles = new List<ArticleModel>();
@@ -50,7 +50,7 @@ namespace FrontEnd.View.Article
                     article.PriceUnitArticle,
                     article.ObservationArticle
                 );
-
+                
                 Clean();
 
             }

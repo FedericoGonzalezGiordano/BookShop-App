@@ -33,5 +33,27 @@ namespace API.Controllers
                 return StatusCode(500);
             }
         }
+        [HttpGet("/GetArticle")]
+        public IActionResult GetArticle([FromQuery] string nameArticle)
+        {
+            try
+            {
+                var result = front.GetArticles(nameArticle);
+
+                if (result == null)
+                {
+                    return StatusCode(500, "An error occurred while searching for articles");
+                }
+
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred: {ex.Message}");
+                Console.WriteLine($"StackTrace: {ex.StackTrace}");
+                return StatusCode(500, $"An error occurred while processing your request. Details: {ex.Message}");
+            }
+        }
+
     }
 }

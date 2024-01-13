@@ -9,7 +9,7 @@ namespace API.Controllers
     [ApiController]
     public class CustomerController : ControllerBase
     {
-        private ICustomerFront front;
+        private readonly ICustomerFront front;
         public CustomerController()
         {
             front = new CustomerFront();

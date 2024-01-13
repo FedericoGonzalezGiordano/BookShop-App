@@ -12,7 +12,7 @@ namespace BackEnd.Front.Implementation
     public class ArticleFront : IArticleFront
     {
 
-        private IArticleDao articleDao;
+        private readonly IArticleDao articleDao;
 
         public ArticleFront()
         {
@@ -21,6 +21,11 @@ namespace BackEnd.Front.Implementation
         public bool ArticleRegistration(ArticleModel article)
         {
             return articleDao.ArticleRegistration(article);
+        }
+
+        public List<ArticleModel> GetArticles(string nameArticle)
+        {
+            return articleDao.GetArticles(nameArticle);
         }
     }
 }

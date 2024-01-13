@@ -81,5 +81,11 @@ namespace FrontEnd.View.Main
             FrmArticuleRegistration frmArticuleRegistration = new FrmArticuleRegistration(factory);
             frmArticuleRegistration.ShowDialog();
         }
+
+        private void watchToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FrmArticleWatch frmArticleWatch = new FrmArticleWatch(factory);
+            frmArticleWatch.ShowDialog();
+        }
     }
 }

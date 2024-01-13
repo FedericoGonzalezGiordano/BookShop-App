@@ -10,5 +10,6 @@ namespace FrontEnd.Service.Interface
     public interface IArticleService
     {
         Task<HttpResponse> ArticleRegistration(ArticleModel article);
+        Task<List<ArticleModel>> GetArticleAsync(string nameArticle);
     }
 }

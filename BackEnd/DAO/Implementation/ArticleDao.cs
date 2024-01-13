@@ -51,5 +51,48 @@ namespace BackEnd.DAO.Implementation
             }
             return result;
         }
+
+        public List<ArticleModel> GetArticles(string nameArticle)
+        {
+            List<ArticleModel>lstArticles = new List<ArticleModel> ();
+            Parameter parameter=new Parameter("@descripcion",nameArticle);
+          
+            try
+            {
+                DataTable table = HelperDao.GetInstance().GetConsultParameter("SP_BUSCAR_ARTICULO", parameter);
+                
+                foreach (DataRow row in table.Rows)
+                {
+                    ArticleModel article = new ArticleModel
+                    {
+                        CodArticle = IsDBNull(row[0]) ? 0 : Convert.ToInt32(row[0]),
+                        DescriptionArticle = IsDBNull(row[1]) ? string.Empty : Convert.ToString(row[1]),
+                        StockMinArticle = IsDBNull(row[2]) ? 0 : Convert.ToInt32(row[2]),
+                        StockArticle = IsDBNull(row[3]) ? 0 : Convert.ToInt32(row[3]),
+                        PriceUnitArticle = IsDBNull(row[4]) ? 0 : Convert.ToDouble(row[4]),
+                        ObservationArticle = IsDBNull(row[5]) ? string.Empty : Convert.ToString(row[5])
+                    };
+                    lstArticles.Add(article);
+                }
+      
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred in GetCustomer: {ex.Message}");
+                Console.WriteLine($"StackTrace: {ex.StackTrace}");
+                throw;
+
+            }
+            return lstArticles;
+        }
+
+
+
+        static bool IsDBNull(object value)
+        {
+            return value == DBNull.Value || value == null;
+        }
+
     }
 }
+
