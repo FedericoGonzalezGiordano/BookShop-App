@@ -54,6 +54,25 @@ namespace API.Controllers
                 return StatusCode(500, $"An error occurred while processing your request. Details: {ex.Message}");
             }
         }
+        [HttpDelete("/DeleteArticle")]
+        public IActionResult DeleteArticle([FromQuery]int id) 
+        {
+            Console.WriteLine($"Received Delete article request with id: {id}");
+            try
+            {
+                var result = front.ArticleTermination(id);
+                if (result == false)
+                {
+                    return StatusCode(500, " An error occurred while deregistering a customer");
+                }
+                return Ok(result);
+            }
+            catch (Exception)
+            {
+
+                return StatusCode(500);
+            }
+        }
 
     }
 }

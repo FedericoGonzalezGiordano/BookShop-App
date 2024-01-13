@@ -86,13 +86,45 @@ namespace BackEnd.DAO.Implementation
             return lstArticles;
         }
 
-
-
         static bool IsDBNull(object value)
         {
             return value == DBNull.Value || value == null;
         }
 
+        public bool ArticleTermination(int id)
+        {
+            SqlConnection conn = null;
+            SqlTransaction t=null;
+            bool resultado = true;
+            try
+            {
+                conn = HelperDao.GetInstance().GetConnection();
+                conn.Open();
+                t=conn.BeginTransaction();
+                SqlCommand sqlCommand = new SqlCommand("SP_ELIMINAR_ARTICULO", conn, t);
+                sqlCommand.CommandType=CommandType.StoredProcedure;
+                sqlCommand.Parameters.AddWithValue("@cod", id);
+                sqlCommand.ExecuteNonQuery();
+                t.Commit();
+            }
+            catch (Exception)
+            {
+                if (t!=null)
+                {
+                    t.Rollback();
+                    resultado=false;
+                }
+            }
+            finally
+            {
+                if(conn!=null && conn.State == ConnectionState.Open)
+                {
+                    conn.Close();   
+                }
+            }
+            return resultado;
+        }
+        
     }
 }
 

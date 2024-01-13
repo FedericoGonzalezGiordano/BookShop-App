@@ -66,6 +66,7 @@
             BtnDelete.TabIndex = 7;
             BtnDelete.Text = "Delete";
             BtnDelete.UseVisualStyleBackColor = true;
+            BtnDelete.Click += BtnDelete_Click;
             // 
             // GpbArticles
             // 

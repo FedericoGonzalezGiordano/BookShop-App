@@ -1,5 +1,6 @@
 ﻿using FrontEnd.HTTPClient;
 using FrontEnd.Service.Interface;
+using FrontEnd.View.Article;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -22,9 +23,17 @@ namespace FrontEnd.Service.Implementation
             
         }
 
+        public async Task<HttpResponse> ArticleTermination(int id)
+        {
+            string url = host + $"/DeleteArticle?id={id}";
+            var response= await ClientSingleton.GetInstance().DeleteAsync(url);
+            return response;
+        }
+      
+
         public async Task<List<ArticleModel>> GetArticleAsync(string nameArticle)
         {
-            //string url = host + $"/GetCustomer?name={name}&lastName={lastName}";
+          
             string url = host + $"/GetArticle?nameArticle={nameArticle}";
             List<ArticleModel> result = new List<ArticleModel>();
             var response = await ClientSingleton.GetInstance().GetAsync(url);

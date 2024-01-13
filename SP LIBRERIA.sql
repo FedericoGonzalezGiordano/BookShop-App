@@ -51,7 +51,7 @@ end;
 
 GO
 
-ALTER PROCEDURE [dbo].[SP_BORRAR_CLIENTE]
+CREATE PROCEDURE [dbo].[SP_BORRAR_CLIENTE]
     @id INT
 AS
 BEGIN
@@ -145,3 +145,29 @@ AS
 BEGIN 
 select * from articulos where descripcion=@descripcion
 END
+
+GO
+
+create procedure SP_GET_ARTICLES_BY_ID
+@cod int
+as
+begin
+select cod_articulo,
+	   descripcion,
+	   stock_minimo,
+	   stock,
+	   pre_unitario,
+	   observaciones
+from articulos
+where cod_articulo=@cod
+end
+
+GO
+
+create procedure SP_ELIMINAR_ARTICULO
+@cod int
+as 
+begin
+delete articulos
+where cod_articulo=@cod
+end

@@ -140,9 +140,6 @@ namespace FrontEnd.View.Customer
             {
                 DataGridViewRow row = DgvCustomerWatch.SelectedRows[0];
                 int idCliente = Convert.ToInt32(row.Cells[0].Value);
-
-
-
                 try
                 {
                     var result = await customerService.CustomerTermination(idCliente);

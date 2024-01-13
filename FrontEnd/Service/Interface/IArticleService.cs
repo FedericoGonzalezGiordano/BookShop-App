@@ -11,5 +11,7 @@ namespace FrontEnd.Service.Interface
     {
         Task<HttpResponse> ArticleRegistration(ArticleModel article);
         Task<List<ArticleModel>> GetArticleAsync(string nameArticle);
+
+        Task<HttpResponse> ArticleTermination(int id);
     }
 }

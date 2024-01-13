@@ -23,6 +23,11 @@ namespace BackEnd.Front.Implementation
             return articleDao.ArticleRegistration(article);
         }
 
+        public bool ArticleTermination(int id)
+        {
+            return articleDao.ArticleTermination(id);       
+        }
+
         public List<ArticleModel> GetArticles(string nameArticle)
         {
             return articleDao.GetArticles(nameArticle);

@@ -1,4 +1,5 @@
 ﻿using FrontEnd.Factory.Interface;
+using FrontEnd.Service.Implementation;
 using FrontEnd.Service.Interface;
 using System;
 using System.Collections.Generic;
@@ -26,7 +27,7 @@ namespace FrontEnd.View.Article
         }
         private void ConfigureDataGridView()
         {
-            DgvArticleWatch.AutoGenerateColumns = false;          
+            DgvArticleWatch.AutoGenerateColumns = false;
             DgvArticleWatch.Columns.Add("CodArticle", "Code");
             DgvArticleWatch.Columns.Add("DescriptionArticle", "Description");
             DgvArticleWatch.Columns.Add("StockMinArticle", "Minimum Stock");
@@ -103,6 +104,30 @@ namespace FrontEnd.View.Article
         private void FrmArticleWatch_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private async void BtnDelete_Click(object sender, EventArgs e)
+        {
+            if (DgvArticleWatch.SelectedRows.Count > 0)
+            {
+                DataGridViewRow row = DgvArticleWatch.SelectedRows[0];
+                int idArt = Convert.ToInt32(row.Cells[0].Value);
+                try
+                {
+                    var result = await articleService.ArticleTermination(idArt);
+                    MessageBox.Show("Customer deleted with ID: " + idArt);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error: {ex.Message}");
+                    MessageBox.Show("Error deleting an article. Details: " + ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("No selected rows in DataGridView");
+                MessageBox.Show("Select an article before deleting.");
+            }
         }
     }
 }
