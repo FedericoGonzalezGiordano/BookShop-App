@@ -187,3 +187,32 @@ set descripcion=@descripcion,
 where cod_articulo=@cod
 end
 
+
+GO
+
+CREATE PROCEDURE INSERTAR_FACTURA
+    @Fecha DATETIME,
+    @CodCliente INT,
+    @CodVendedor INT,
+    @NroFactura INT OUTPUT
+AS
+BEGIN
+    INSERT INTO facturas (fecha, cod_cliente, cod_vendedor)
+    VALUES (@Fecha, @CodCliente, @CodVendedor);
+
+    SET @NroFactura = SCOPE_IDENTITY();
+END
+
+GO
+
+CREATE PROCEDURE INSERTAR_DETALLE_FACTURA
+    @NroFactura INT,
+    @CodArticulo INT,
+    @PrecioUnitario decimal(10, 2),
+    @Cantidad SMALLINT
+AS
+BEGIN
+    INSERT INTO detalle_facturas (nro_factura, cod_articulo, pre_unitario, cantidad)
+    VALUES (@NroFactura, @CodArticulo, @PrecioUnitario, @Cantidad);
+END;
+
