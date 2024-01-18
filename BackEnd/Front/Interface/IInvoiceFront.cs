@@ -9,5 +9,10 @@ namespace BackEnd.Front.Interface
     public interface IInvoiceFront
     {
         bool InvoiceRegistration(InvoiceModel invoice);
+
+        List<SellerModel> GetSellerList();
+        List<ArticleModel> GetArticleList();
+
+        List<CustomerModel> GetCustomerList();
     }
 }

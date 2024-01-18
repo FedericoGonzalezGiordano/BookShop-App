@@ -26,6 +26,9 @@ namespace FrontEnd.Factory.Implementation
             return new CustomerService();
         }
 
-
+        public IInvoiceService GetInvoiceService()
+        {
+            return new InvoiceService();    
+        }
     }
 }

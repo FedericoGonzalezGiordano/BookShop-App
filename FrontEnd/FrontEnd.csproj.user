@@ -19,6 +19,9 @@
     <Compile Update="View\Customer\FrmCustomerWatch.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="View\Invoice\FrmInvoiceRegistration.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="View\Login\FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>

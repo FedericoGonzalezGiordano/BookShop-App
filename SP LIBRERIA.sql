@@ -27,7 +27,7 @@ BEGIN
     SELECT @pPassword = contrasenia FROM vendedores WHERE nom_vendedor = @pName and @pApe=ape_vendedor and cod_vendedor=@cod;
 END;
 GO
-CREATE PROCEDURE [dbo].[Sp_Obtener_Vendedores]
+CREATE PROCEDURE Sp_Obtener_Vendedores
 AS
 BEGIN
     SELECT v.*, b.barrio as 'NombreBarrio'
@@ -51,7 +51,7 @@ end;
 
 GO
 
-CREATE PROCEDURE [dbo].[SP_BORRAR_CLIENTE]
+CREATE PROCEDURE SP_BORRAR_CLIENTE
     @id INT
 AS
 BEGIN
@@ -216,3 +216,21 @@ BEGIN
     VALUES (@NroFactura, @CodArticulo, @PrecioUnitario, @Cantidad);
 END;
 
+GO
+
+create procedure SP_OBTENER_ARTICULOS
+AS
+BEGIN
+SELECT * FROM articulos
+END
+
+GO
+
+CREATE procedure SP_OBTENER_ClIENTES
+AS
+BEGIN
+SELECT c.*, b.barrio as 'NombreBarrio'
+    FROM clientes c
+    LEFT JOIN barrios b ON c.cod_barrio = b.cod_barrio
+    ORDER BY 1,2;
+END

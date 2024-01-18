@@ -13,5 +13,7 @@ namespace FrontEnd.Factory.Interface
         IArticleService CreateArticleService();
         ILoginService CreateLoginService();
         ICustomerService GetCustomerService();
+
+        IInvoiceService GetInvoiceService();
     }
 }

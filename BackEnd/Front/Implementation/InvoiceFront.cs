@@ -16,6 +16,22 @@ namespace BackEnd.Front.Implementation
         {
              dao=new InvoiceDao();
         }
+
+        public List<ArticleModel> GetArticleList()
+        {
+            return dao.GetArticlesList();
+        }
+
+        public List<CustomerModel> GetCustomerList()
+        {
+            return dao.GetCustomerList();
+        }
+
+        public List<SellerModel> GetSellerList()
+        {
+            return dao.GetSellerList();
+        }
+
         public bool InvoiceRegistration(InvoiceModel invoice)
         {
             return dao.InvoiceRegistration(invoice);

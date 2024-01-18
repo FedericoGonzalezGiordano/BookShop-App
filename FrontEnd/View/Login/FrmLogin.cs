@@ -59,7 +59,7 @@ namespace FrontEnd.View.Login
                 if (selectedSeller.PasswordSeller == pass)
                 {
                     MessageBox.Show("Correct password", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    FrmMainAlphabetCRUD main = new FrmMainAlphabetCRUD(factory);
+                    FrmMainAlphabetCRUD main = new FrmMainAlphabetCRUD(factory,selectedSeller);
                     this.Hide();
                     main.ShowDialog();
                     TxtPassword.Text=string.Empty;

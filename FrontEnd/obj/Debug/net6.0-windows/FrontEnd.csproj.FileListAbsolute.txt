@@ -33,3 +33,4 @@ C:\Users\Federico gonzalez\Desktop\BookShop App\FrontEnd\obj\Debug\net6.0-window
 C:\Users\Federico gonzalez\Desktop\BookShop App\FrontEnd\obj\Debug\net6.0-windows\FrontEnd.View.Article.FrmArticuleRegistration.resources
 C:\Users\Federico gonzalez\Desktop\BookShop App\FrontEnd\obj\Debug\net6.0-windows\FrontEnd.View.Article.FrmArticleWatch.resources
 C:\Users\Federico gonzalez\Desktop\BookShop App\FrontEnd\obj\Debug\net6.0-windows\FrontEnd.View.Article.FrmArticleUpdate.resources
+C:\Users\Federico gonzalez\Desktop\BookShop App\FrontEnd\obj\Debug\net6.0-windows\FrontEnd.View.Invoice.FrmInvoiceRegistration.resources

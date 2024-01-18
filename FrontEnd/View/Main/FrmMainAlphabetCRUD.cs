@@ -1,12 +1,14 @@
 ﻿using FrontEnd.Factory.Interface;
 using FrontEnd.View.Article;
 using FrontEnd.View.Customer;
+using FrontEnd.View.Invoice;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,10 +18,29 @@ namespace FrontEnd.View.Main
     public partial class FrmMainAlphabetCRUD : Form
     {
         private IFactoryService factory;
-        public FrmMainAlphabetCRUD(IFactoryService factory)
+        private SellerModel sellermodel;
+        private System.Windows.Forms.Timer timer;
+        public FrmMainAlphabetCRUD(IFactoryService factory, SellerModel model)
         {
             this.factory = factory;
             InitializeComponent();
+            InitializeTimer();
+            this.sellermodel = model;
+        }
+
+        private void InitializeTimer()
+        {
+            timer = new System.Windows.Forms.Timer();
+            timer.Interval = 5000; 
+            timer.Tick += Timer_Tick;
+            timer.Start(); 
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+
+            LblWelcome.Visible = false;
+            timer.Stop();
         }
 
         private void helpToolStripMenuItem_Click(object sender, EventArgs e)
@@ -67,6 +88,8 @@ namespace FrontEnd.View.Main
 
         private void FrmMainAlphabetCRUD_Load(object sender, EventArgs e)
         {
+            string msg = "Welcome Seller!!" + sellermodel.CompleteName.ToString() + "\nYou can now use the system";
+            LblWelcome.Text = msg;
 
         }
 
@@ -86,6 +109,12 @@ namespace FrontEnd.View.Main
         {
             FrmArticleWatch frmArticleWatch = new FrmArticleWatch(factory);
             frmArticleWatch.ShowDialog();
+        }
+
+        private void newToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmInvoiceRegistration frmInvoiceRegistration = new FrmInvoiceRegistration(factory, sellermodel);
+            frmInvoiceRegistration.ShowDialog();
         }
     }
 }

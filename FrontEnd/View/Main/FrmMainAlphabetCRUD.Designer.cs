@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMainAlphabetCRUD));
             contextMenuStrip1 = new ContextMenuStrip(components);
             menuStrip1 = new MenuStrip();
             archivoToolStripMenuItem = new ToolStripMenuItem();
@@ -44,6 +43,8 @@
             articlesToolStripMenuItem = new ToolStripMenuItem();
             watchToolStripMenuItem1 = new ToolStripMenuItem();
             newToolStripMenuItem1 = new ToolStripMenuItem();
+            LblWelcome = new Label();
+            TimerWelcome = new System.Windows.Forms.Timer(components);
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -57,7 +58,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { archivoToolStripMenuItem, customerToolStripMenuItem, invoiceToolStripMenuItem, articlesToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(800, 24);
+            menuStrip1.Size = new Size(776, 24);
             menuStrip1.TabIndex = 1;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -121,6 +122,7 @@
             newToolStripMenuItem.Name = "newToolStripMenuItem";
             newToolStripMenuItem.Size = new Size(108, 22);
             newToolStripMenuItem.Text = "New";
+            newToolStripMenuItem.Click += newToolStripMenuItem_Click;
             // 
             // articlesToolStripMenuItem
             // 
@@ -132,24 +134,36 @@
             // watchToolStripMenuItem1
             // 
             watchToolStripMenuItem1.Name = "watchToolStripMenuItem1";
-            watchToolStripMenuItem1.Size = new Size(180, 22);
+            watchToolStripMenuItem1.Size = new Size(108, 22);
             watchToolStripMenuItem1.Text = "Watch";
             watchToolStripMenuItem1.Click += watchToolStripMenuItem1_Click;
             // 
             // newToolStripMenuItem1
             // 
             newToolStripMenuItem1.Name = "newToolStripMenuItem1";
-            newToolStripMenuItem1.Size = new Size(180, 22);
+            newToolStripMenuItem1.Size = new Size(108, 22);
             newToolStripMenuItem1.Text = "New";
             newToolStripMenuItem1.Click += newToolStripMenuItem1_Click;
+            // 
+            // LblWelcome
+            // 
+            LblWelcome.AutoSize = true;
+            LblWelcome.BackColor = SystemColors.ActiveCaptionText;
+            LblWelcome.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            LblWelcome.ForeColor = Color.FromArgb(255, 128, 0);
+            LblWelcome.Location = new Point(33, 47);
+            LblWelcome.Name = "LblWelcome";
+            LblWelcome.Size = new Size(0, 25);
+            LblWelcome.TabIndex = 2;
             // 
             // FrmMainAlphabetCRUD
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            BackgroundImage = Properties.Resources.pexels_magda_ehlers_1337386;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(776, 379);
+            Controls.Add(LblWelcome);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
             Name = "FrmMainAlphabetCRUD";
@@ -177,5 +191,7 @@
         private ToolStripMenuItem articlesToolStripMenuItem;
         private ToolStripMenuItem watchToolStripMenuItem1;
         private ToolStripMenuItem newToolStripMenuItem1;
+        private Label LblWelcome;
+        private System.Windows.Forms.Timer TimerWelcome;
     }
 }

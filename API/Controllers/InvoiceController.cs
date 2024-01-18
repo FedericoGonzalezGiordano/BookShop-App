@@ -34,6 +34,66 @@ namespace API.Controllers
                 return StatusCode(500);
             }
         }
+
+        [HttpGet("/GetSellerList")]
+        public IActionResult GetSeller()
+        {
+            try
+            {
+                var result = invoiceFront.GetSellerList();
+                if (result == null)
+                {
+                    return StatusCode(500, "An error ocurred while searching sellers");
+                }
+                return Ok(result);
+            }
+            catch (Exception)
+            {
+
+                return StatusCode(500);
+            }
+
+        }
+
+
+        [HttpGet("/GetArticleList")]
+        public IActionResult GetArticle()
+        {
+            try
+            {
+                var result = invoiceFront.GetArticleList();
+                if (result == null)
+                {
+                    return StatusCode(500, "An error ocurred while searching articles");
+                }
+                return Ok(result);
+            }
+            catch (Exception)
+            {
+
+                return StatusCode(500);
+            }
+
+        }
+        [HttpGet("/GetCustomerList")]
+        public IActionResult GetCustomer()
+        {
+            try
+            {
+                var result = invoiceFront.GetCustomerList();
+                if (result == null)
+                {
+                    return StatusCode(500, "An error ocurred while searching customers");
+                }
+                return Ok(result);
+            }
+            catch (Exception)
+            {
+
+                return StatusCode(500);
+            }
+
+        }
     }
 
    

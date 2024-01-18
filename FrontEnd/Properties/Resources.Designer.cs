@@ -59,5 +59,15 @@ namespace FrontEnd.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pexels_magda_ehlers_1337386 {
+            get {
+                object obj = ResourceManager.GetObject("pexels-magda-ehlers-1337386", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

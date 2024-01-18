@@ -10,16 +10,19 @@ public class CustomerModel
     public NeighborhoodModel Neighborhood { get; set; }
     public long TelCustomer { get; set; }
     public string MailCustomer { get;set; }
-
+    public string CompleteName
+    {
+        get
+        {
+            return NameCustomer + " " + LastNameCustomer;
+        }
+    }
     public CustomerModel()
     { 
      
     }
 
-    public override string ToString()
-    {
-        return NameCustomer + ", " + LastNameCustomer;
-    }
+   
 
 
 
