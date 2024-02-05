@@ -146,6 +146,17 @@ BEGIN
 select * from articulos where descripcion=@descripcion
 END
 
+GO 
+
+CREATE PROCEDURE SP_BUSCAR_ARTICULOO
+    @descripcion VARCHAR(50)
+AS
+BEGIN
+    SELECT *
+    FROM articulos
+    WHERE descripcion LIKE '%' + @descripcion + '%'
+END
+
 GO
 
 create procedure SP_GET_ARTICLES_BY_ID
@@ -189,6 +200,31 @@ end
 
 
 GO
+
+-- CREATE PROCEDURE INSERTAR_FACTURA
+--     @NroFactura INT,
+--     @Fecha DATETIME,
+--     @CodCliente INT,
+--     @CodVendedor INT
+-- as
+-- BEGIN
+--     INSERT INTO facturas (nro_factura,fecha, cod_cliente, cod_vendedor)
+--     VALUES (@NroFactura,@Fecha, @CodCliente, @CodVendedor);
+-- END
+
+-- GO
+
+-- CREATE PROCEDURE INSERTAR_DETALLE_FACTURA
+--     @DetalleId INT,
+-- 	@NroFactura INT,
+--     @CodArticulo INT,
+--     @PrecioUnitario decimal(10, 2),
+--     @Cantidad int
+-- AS
+-- BEGIN
+--     INSERT INTO detalle_facturas (detalle_id,nro_factura, cod_articulo, pre_unitario, cantidad)
+--     VALUES (@DetalleId,@NroFactura, @CodArticulo, @PrecioUnitario, @Cantidad);
+-- END;
 
 CREATE PROCEDURE INSERTAR_FACTURA
     @Fecha DATETIME,

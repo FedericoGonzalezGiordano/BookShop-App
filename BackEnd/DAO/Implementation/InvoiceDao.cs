@@ -111,27 +111,99 @@ namespace BackEnd.DAO.Implementation
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error in GetSellerList: {ex.Message}");
-                Console.WriteLine($"StackTrace: {ex.StackTrace}");
+                Debug.WriteLine($"Error in GetSellerList: {ex.Message}");
+                Debug.WriteLine($"StackTrace: {ex.StackTrace}");
             }
 
             return lstSeller;
         }
-      
+        //METODO PARA OTRA BD
+        //public bool InvoiceRegistration(InvoiceModel invoice)
+        //{
+        //    bool resultado = true;
+
+        //    SqlConnection conn = HelperDao.GetInstance().GetConnection();
+        //    SqlTransaction t = null;
+
+
+        //    string estado = "Activa";
+
+        //    try
+        //    {
+        //        conn.Open();
+        //        t = conn.BeginTransaction();
+
+        //        SqlCommand cmd = new SqlCommand("INSERTAR_FACTURA", conn, t);
+        //        cmd.CommandType = CommandType.StoredProcedure;
+        //        cmd.Parameters.AddWithValue("@NroFactura", invoice.NroInvoice);
+        //        cmd.Parameters.AddWithValue("@Fecha", invoice.Date);
+        //        cmd.Parameters.AddWithValue("@CodCliente", invoice.CustomerCode.CodCustomer);
+        //        cmd.Parameters.AddWithValue("@CodVendedor", invoice.SellerCode.IdSeller);
+        //        cmd.Parameters.AddWithValue("@Estado", estado);
+
+        //        int nroFac = invoice.NroInvoice;
+
+
+        //        cmd.ExecuteNonQuery();
+
+
+
+        //        SqlCommand cmdDetalle;
+
+        //        foreach (InvoiceDetailsModel detail in invoice.lDetails)
+        //        {
+        //            cmdDetalle = new SqlCommand("INSERTAR_DETALLE_FACTURA", conn, t);
+        //            cmdDetalle.CommandType = CommandType.StoredProcedure;
+        //            cmdDetalle.Parameters.AddWithValue("@DetalleId", detail.IdDetailsModel);
+        //            cmdDetalle.Parameters.AddWithValue("@NroFactura", nroFac);
+        //            cmdDetalle.Parameters.AddWithValue("@CodArticulo", detail.ArticleCode.CodArticle);
+        //            cmdDetalle.Parameters.AddWithValue("@PrecioUnitario", detail.UnitPriceInvoice);
+        //            cmdDetalle.Parameters.AddWithValue("@Cantidad", detail.Amount);
+        //            cmdDetalle.ExecuteNonQuery();
+
+        //        }
+        //        nroFac++;
+
+
+        //        t.Commit();
+        //    }
+        //    catch (SqlException ex)
+        //    {
+        //        Debug.WriteLine("Error SQL: " + ex.Message);
+        //        resultado = false;
+        //        return resultado;
+        //    }
+
+        //    catch (Exception ex)
+        //    {
+        //        Debug.WriteLine("Error: " + ex.Message);
+        //        if (t != null)
+        //        {
+        //            t.Rollback();
+        //        }
+        //    }
+        //    finally
+        //    {
+        //        if (conn != null && conn.State == ConnectionState.Open)
+        //            conn.Close();
+        //    }
+
+        //    return resultado;
+        //}
         public bool InvoiceRegistration(InvoiceModel invoice)
         {
-			SqlConnection conn = HelperDao.GetInstance().GetConnection();
-			SqlTransaction t= null;
-			bool resultado = true;
-			try
-			{
-				conn.Open();
-				t = conn.BeginTransaction();
-				SqlCommand cmd = new SqlCommand("INSERTAR_FACTURA", conn, t);
-				cmd.CommandType = CommandType.StoredProcedure;
-				cmd.Parameters.AddWithValue("@Fecha", invoice.Date);
-				cmd.Parameters.AddWithValue("@CodCliente", invoice.CustomerCode.CodCustomer);
-                cmd.Parameters.AddWithValue("@CodVendedor", invoice.SellerCode.IdSeller);
+            SqlConnection conn = HelperDao.GetInstance().GetConnection();
+            SqlTransaction t = null;
+            bool resultado = true;
+            try
+            {
+                conn.Open();
+                t = conn.BeginTransaction();
+                SqlCommand cmd = new SqlCommand("INSERTAR_FACTURA", conn, t);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Fecha", invoice.Date);
+                cmd.Parameters.AddWithValue("@CodCliente", invoice.Customer.CodCustomer);
+                cmd.Parameters.AddWithValue("@CodVendedor", invoice.Seller.IdSeller);
                 SqlParameter paramOut = new SqlParameter();
                 paramOut.ParameterName = "@NroFactura";
                 paramOut.DbType = DbType.Int32;
@@ -140,7 +212,7 @@ namespace BackEnd.DAO.Implementation
                 cmd.ExecuteNonQuery();
 
                 int invoiceNro = (int)paramOut.Value;
-               
+
 
                 SqlCommand cmdDetalle;
                 foreach (InvoiceDetailsModel detail in invoice.lDetails)
@@ -148,7 +220,7 @@ namespace BackEnd.DAO.Implementation
                     cmdDetalle = new SqlCommand("INSERTAR_DETALLE_FACTURA", conn, t);
                     cmdDetalle.CommandType = CommandType.StoredProcedure;
                     cmdDetalle.Parameters.AddWithValue("@NroFactura", invoiceNro);
-                    cmdDetalle.Parameters.AddWithValue("@CodArticulo", detail.ArticleCode.CodArticle);
+                    cmdDetalle.Parameters.AddWithValue("@CodArticulo", detail.Article.CodArticle);
                     cmdDetalle.Parameters.AddWithValue("@cantidad", detail.Amount);
                     cmdDetalle.Parameters.AddWithValue("@monto", detail.UnitPriceInvoice);
                     cmdDetalle.ExecuteNonQuery();
@@ -157,19 +229,19 @@ namespace BackEnd.DAO.Implementation
 
             }
             catch (Exception)
-			{
-				if(t != null )
-				{
-					t.Rollback();
-					resultado= false;
-				}
-			}
-			finally
-			{
+            {
+                if (t != null)
+                {
+                    t.Rollback();
+                    resultado = false;
+                }
+            }
+            finally
+            {
                 if (conn != null && conn.State == ConnectionState.Open)
                     conn.Close();
             }
-			return resultado;
+            return resultado;
         }
     }
 }

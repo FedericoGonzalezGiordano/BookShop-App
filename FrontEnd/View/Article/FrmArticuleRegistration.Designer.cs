@@ -63,20 +63,20 @@
             GbpArticle.Controls.Add(TxtStock);
             GbpArticle.Controls.Add(txtUnitPrice);
             GbpArticle.Controls.Add(LblStock);
-            GbpArticle.Location = new Point(42, 12);
+            GbpArticle.Location = new Point(39, 12);
             GbpArticle.Name = "GbpArticle";
-            GbpArticle.Size = new Size(546, 103);
-            GbpArticle.TabIndex = 5;
+            GbpArticle.Size = new Size(546, 109);
+            GbpArticle.TabIndex = 1;
             GbpArticle.TabStop = false;
             GbpArticle.Text = "Article";
             // 
             // ButonAdd
             // 
             ButonAdd.Anchor = AnchorStyles.Bottom;
-            ButonAdd.Location = new Point(435, 77);
+            ButonAdd.Location = new Point(434, 77);
             ButonAdd.Name = "ButonAdd";
             ButonAdd.Size = new Size(108, 26);
-            ButonAdd.TabIndex = 10;
+            ButonAdd.TabIndex = 9;
             ButonAdd.Text = "Add";
             ButonAdd.UseVisualStyleBackColor = true;
             ButonAdd.Click += ButonAdd_Click;
@@ -94,7 +94,7 @@
             // BtnAdd
             // 
             BtnAdd.Anchor = AnchorStyles.Bottom;
-            BtnAdd.Location = new Point(697, 117);
+            BtnAdd.Location = new Point(697, 123);
             BtnAdd.Name = "BtnAdd";
             BtnAdd.Size = new Size(89, 21);
             BtnAdd.TabIndex = 14;
@@ -108,7 +108,7 @@
             LblObervations.Location = new Point(212, 51);
             LblObervations.Name = "LblObervations";
             LblObervations.Size = new Size(71, 15);
-            LblObervations.TabIndex = 4;
+            LblObervations.TabIndex = 7;
             LblObervations.Text = "Observation";
             // 
             // LblUnitPrice
@@ -118,7 +118,7 @@
             LblUnitPrice.Location = new Point(6, 48);
             LblUnitPrice.Name = "LblUnitPrice";
             LblUnitPrice.Size = new Size(58, 15);
-            LblUnitPrice.TabIndex = 12;
+            LblUnitPrice.TabIndex = 5;
             LblUnitPrice.Text = "Unit price";
             // 
             // TxtDescription
@@ -135,7 +135,7 @@
             TxtObservation.Location = new Point(289, 48);
             TxtObservation.Name = "TxtObservation";
             TxtObservation.Size = new Size(234, 23);
-            TxtObservation.TabIndex = 5;
+            TxtObservation.TabIndex = 8;
             // 
             // TxtMinStock
             // 
@@ -143,7 +143,7 @@
             TxtMinStock.Location = new Point(468, 16);
             TxtMinStock.Name = "TxtMinStock";
             TxtMinStock.Size = new Size(55, 23);
-            TxtMinStock.TabIndex = 7;
+            TxtMinStock.TabIndex = 4;
             // 
             // LblMinimumStock
             // 
@@ -152,7 +152,7 @@
             LblMinimumStock.Location = new Point(371, 19);
             LblMinimumStock.Name = "LblMinimumStock";
             LblMinimumStock.Size = new Size(91, 15);
-            LblMinimumStock.TabIndex = 6;
+            LblMinimumStock.TabIndex = 3;
             LblMinimumStock.Text = "Minimum stock";
             // 
             // TxtStock
@@ -169,7 +169,7 @@
             txtUnitPrice.Location = new Point(80, 48);
             txtUnitPrice.Name = "txtUnitPrice";
             txtUnitPrice.Size = new Size(120, 23);
-            txtUnitPrice.TabIndex = 13;
+            txtUnitPrice.TabIndex = 6;
             // 
             // LblStock
             // 
@@ -184,39 +184,40 @@
             // DgvArticle
             // 
             DgvArticle.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DgvArticle.Location = new Point(42, 121);
+            DgvArticle.Location = new Point(39, 127);
             DgvArticle.Name = "DgvArticle";
             DgvArticle.RowTemplate.Height = 25;
             DgvArticle.Size = new Size(546, 254);
-            DgvArticle.TabIndex = 6;
+            DgvArticle.TabIndex = 2;
             // 
             // btnCancel
             // 
             btnCancel.Anchor = AnchorStyles.Bottom;
-            btnCancel.Location = new Point(265, 387);
+            btnCancel.Location = new Point(265, 399);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(108, 26);
-            btnCancel.TabIndex = 8;
+            btnCancel.TabIndex = 4;
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = true;
             // 
             // btnExit
             // 
             btnExit.Anchor = AnchorStyles.Bottom;
-            btnExit.Location = new Point(487, 387);
+            btnExit.Location = new Point(507, 399);
             btnExit.Name = "btnExit";
             btnExit.Size = new Size(108, 26);
-            btnExit.TabIndex = 9;
+            btnExit.TabIndex = 0;
             btnExit.Text = "Exit";
             btnExit.UseVisualStyleBackColor = true;
+            btnExit.Click += btnExit_Click;
             // 
             // btnLoad
             // 
             btnLoad.Anchor = AnchorStyles.Bottom;
-            btnLoad.Location = new Point(43, 387);
+            btnLoad.Location = new Point(12, 399);
             btnLoad.Name = "btnLoad";
             btnLoad.Size = new Size(108, 26);
-            btnLoad.TabIndex = 7;
+            btnLoad.TabIndex = 3;
             btnLoad.Text = "Load";
             btnLoad.UseVisualStyleBackColor = true;
             btnLoad.Click += btnLoad_Click;

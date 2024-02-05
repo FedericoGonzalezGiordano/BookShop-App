@@ -1,4 +1,5 @@
-﻿using FrontEnd.Factory.Interface;
+﻿using BackEnd.DAO.Implementation;
+using FrontEnd.Factory.Interface;
 using FrontEnd.Service.Implementation;
 using FrontEnd.Service.Interface;
 using System;
@@ -7,9 +8,11 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace FrontEnd.View.Invoice
 {
@@ -17,10 +20,15 @@ namespace FrontEnd.View.Invoice
     {
         IFactoryService _factoryService;
         IInvoiceService _invoiceService;
+
         private List<SellerModel> _sellerModels;
         private List<CustomerModel> _customerModels;
         private List<ArticleModel> _articleModels;
         SellerModel seller;
+
+        private InvoiceModel invoice;
+
+
 
 
         public FrmInvoiceRegistration(IFactoryService factory, SellerModel seller)
@@ -28,8 +36,11 @@ namespace FrontEnd.View.Invoice
             _factoryService = factory;
             _invoiceService = _factoryService.GetInvoiceService();
             this.seller = seller;
+         
+
             InitializeComponent();
-            
+
+
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
@@ -39,8 +50,10 @@ namespace FrontEnd.View.Invoice
 
         private void FrmInvoiceRegistration_Load(object sender, EventArgs e)
         {
+            dateTimePicker1.CustomFormat = "dd/MM/yyyy";
+            dateTimePicker1.Enabled = true;
             LoadComboAsync();
-            //Clean();
+            
         }
 
         private void Clean()
@@ -64,16 +77,15 @@ namespace FrontEnd.View.Invoice
             CboSeller.ValueMember = "idSeller";
             CboSeller.DisplayMember = "CompleteName";
             CboSeller.DataSource = _sellerModels;
-           
+
             CboSeller.DropDownStyle = ComboBoxStyle.DropDownList;
 
-            // Obtener el código del barrio del cliente
+          
             int sellerCode = seller.IdSeller;
 
-            // Configurar el índice del ComboBox basado en el código del barrio del cliente
             CboSeller.SelectedIndex = sellerCode - 1;
 
-            // Asegurarse de que el índice no sea negativo
+            
             if (CboSeller.SelectedIndex < 0)
             {
                 CboSeller.SelectedIndex = 0;
@@ -94,5 +106,116 @@ namespace FrontEnd.View.Invoice
             CboArticle.DropDownStyle = ComboBoxStyle.DropDownList;
 
         }
+        private bool Validated()
+        {
+            if (CboCustomer.SelectedIndex == -1)
+            {
+                MessageBox.Show("You must choose a customer.", "\nAtention!", MessageBoxButtons.OK);
+                CboCustomer.Focus();
+                return false;
+            }
+            if (CboArticle.SelectedIndex == -1)
+            {
+                MessageBox.Show("You must choose an article.", "\nAtention!", MessageBoxButtons.OK);
+                CboCustomer.Focus();
+                return false;
+            }
+            if (string.IsNullOrEmpty(TxtUnitPrice.Text) || !double.TryParse(TxtUnitPrice.Text, out _))
+            {
+                MessageBox.Show("You must choose an article.", "\nAtention!", MessageBoxButtons.OK);
+                CboCustomer.Focus();
+                return false;
+            }
+            if (string.IsNullOrEmpty(TxtAmount.Text) || !int.TryParse(TxtAmount.Text, out _))
+            {
+                MessageBox.Show("You must choose an article.", "\nAtention!", MessageBoxButtons.OK);
+                CboCustomer.Focus();
+                return false;
+            }
+
+            return true;
+        }
+
+
+        private async void BtnRegistration_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var result = await _invoiceService.InvoiceRegistration(invoice);
+
+                if (result.StatusCode == HttpStatusCode.OK)
+                {
+                    MessageBox.Show("FACTURA generada con éxito", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+
+                    string errorMessage = $"Error al cargar Factura. StatusCode: {result.StatusCode}, Message: {result.Data}";
+                    MessageBox.Show(errorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+               
+                string errorMessage = $"Error general: {ex.Message}";
+                MessageBox.Show(errorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void AddColumnsToDataGridView()
+        {
+
+            if (dataGridView1.Columns.Count == 0)
+            {
+                dataGridView1.Columns.Add("ArticleDescription", "Article Description");
+                dataGridView1.Columns.Add("Amount", "Amount");
+                dataGridView1.Columns.Add("UnitPriceInvoice", "Unit Price");
+            }
+        }
+
+
+        private async void BtnAdd_Click(object sender, EventArgs e)
+        {
+            if (Validate())
+            {
+
+                ArticleModel selectedArticle = (ArticleModel)CboArticle.SelectedItem;
+
+
+                InvoiceDetailsModel detail = new InvoiceDetailsModel
+                {
+                    Article = selectedArticle,
+                    Amount = Convert.ToInt32(TxtAmount.Text),
+                    UnitPriceInvoice = Convert.ToDouble(TxtUnitPrice.Text)
+                };
+
+
+                if (invoice == null)
+                {
+                    invoice = new InvoiceModel
+                    {
+                        Date = dateTimePicker1.Value,
+                        Customer = (CustomerModel)CboCustomer.SelectedItem,
+                        Seller = (SellerModel)CboSeller.SelectedItem,
+                        lDetails = new List<InvoiceDetailsModel>()
+                    };
+                }
+
+                // Agrega el detalle a la lista de detalles de la factura
+                invoice.lDetails.Add(detail);
+
+                AddColumnsToDataGridView();
+
+                foreach (InvoiceDetailsModel invoiceDetail in invoice.lDetails)
+                {
+                    dataGridView1.Rows.Add(
+                        invoiceDetail.Article.DescriptionArticle,
+                        invoiceDetail.Amount,
+                        invoiceDetail.UnitPriceInvoice
+                    );
+                }
+            }
+        }
+
     }
 }

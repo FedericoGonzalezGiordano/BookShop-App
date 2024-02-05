@@ -107,6 +107,7 @@ namespace BackEnd.DAO.Implementation
                         TelCustomer = IsDBNull(r["nro_tel"]) ? 0 : Convert.ToInt32(r["nro_tel"]),
                         MailCustomer = IsDBNull(r["e-mail"]) ? string.Empty : r["e-mail"].ToString()
                     };
+                    
 
                     lstCustomers.Add(customer);
                 }
@@ -223,49 +224,49 @@ namespace BackEnd.DAO.Implementation
             return result;
         }
 
-        public CustomerModel GetCustomerById(int idCliente)
-        {
-            SqlConnection connection = HelperDao.GetInstance().GetConnection();
-            SqlCommand command = null;
-            CustomerModel customer = null;
-
-            try
+            public CustomerModel GetCustomerById(int idCliente)
             {
-                connection.Open();
-                command = new SqlCommand("sp_get_customer_by_id", connection);
-                command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.AddWithValue("@cod", idCliente);
+                SqlConnection connection = HelperDao.GetInstance().GetConnection();
+                SqlCommand command = null;
+                CustomerModel customer = null;
 
-                using (SqlDataReader reader = command.ExecuteReader())
+                try
                 {
-                    if (reader.Read())
-                    {
-                        Console.WriteLine("Reading customer data from database...");
+                    connection.Open();
+                    command = new SqlCommand("sp_get_customer_by_id", connection);
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@cod", idCliente);
 
-                        customer = new CustomerModel
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
                         {
-                            CodCustomer = reader["cod_cliente"] as int? ?? 0, 
-                            NameCustomer = reader["nom_cliente"] as string,
-                            LastNameCustomer = reader["ape_cliente"] as string,
-                            StreetCustomer = reader["calle"] as string,
-                            StreetNumberCustomer = reader["altura"] as int? ?? 0,
-                            Neighborhood = new NeighborhoodModel
-                            {
-                                CodNeighborHood = reader["cod_barrio"] as int? ?? 0,
-                                NameNeighborhood = reader["barrio"] as string ?? string.Empty
-                            },
-                            TelCustomer = reader["nro_tel"] as long? ?? 0,
-                            MailCustomer = reader["e-mail"] as string
-                        };
+                            Console.WriteLine("Reading customer data from database...");
 
-                        Console.WriteLine("Customer data read successfully.");
-                    }
-                    else
-                    {
-                        Console.WriteLine("No data found for the specified customer ID.");
+                            customer = new CustomerModel
+                            {
+                                CodCustomer = reader["cod_cliente"] as int? ?? 0, 
+                                NameCustomer = reader["nom_cliente"] as string,
+                                LastNameCustomer = reader["ape_cliente"] as string,
+                                StreetCustomer = reader["calle"] as string,
+                                StreetNumberCustomer = reader["altura"] as int? ?? 0,
+                                Neighborhood = new NeighborhoodModel
+                                {
+                                    CodNeighborHood = reader["cod_barrio"] as int? ?? 0,
+                                    NameNeighborhood = reader["barrio"] as string ?? string.Empty
+                                },
+                                TelCustomer = reader["nro_tel"] as long? ?? 0,
+                                MailCustomer = reader["e-mail"] as string
+                            };
+
+                            Console.WriteLine("Customer data read successfully.");
+                        }
+                        else
+                        {
+                            Console.WriteLine("No data found for the specified customer ID.");
+                        }
                     }
                 }
-            }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error en GetCustomerById: {ex.Message}");

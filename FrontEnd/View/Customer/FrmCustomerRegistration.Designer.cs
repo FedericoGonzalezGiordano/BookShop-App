@@ -197,7 +197,7 @@
             // btnExit
             // 
             btnExit.Anchor = AnchorStyles.Bottom;
-            btnExit.Location = new Point(606, 443);
+            btnExit.Location = new Point(625, 443);
             btnExit.Name = "btnExit";
             btnExit.Size = new Size(108, 26);
             btnExit.TabIndex = 4;
@@ -208,7 +208,7 @@
             // btnLoad
             // 
             btnLoad.Anchor = AnchorStyles.Bottom;
-            btnLoad.Location = new Point(77, 443);
+            btnLoad.Location = new Point(22, 443);
             btnLoad.Name = "btnLoad";
             btnLoad.Size = new Size(108, 26);
             btnLoad.TabIndex = 2;

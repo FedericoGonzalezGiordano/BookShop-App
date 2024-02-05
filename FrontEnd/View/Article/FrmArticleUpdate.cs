@@ -40,8 +40,8 @@ namespace FrontEnd.View.Article
         private void updateArticle()
         {
             _articleModel.DescriptionArticle = TxtDescription.Text;
-            _articleModel.StockMinArticle = Convert.ToInt32(TxtStockMin.Text);
-            _articleModel.StockArticle = Convert.ToInt32(TxtStock.Text);
+            _articleModel.StockMinArticle = Convert.ToInt16(TxtStockMin.Text);
+            _articleModel.StockArticle = Convert.ToInt16(TxtStock.Text);
             _articleModel.PriceUnitArticle = Convert.ToDouble(TxtUnitPrice.Text);
             _articleModel.ObservationArticle = TxtObservation.Text;
 
@@ -115,7 +115,7 @@ namespace FrontEnd.View.Article
                 TxtStock.Focus();
                 return false;
             }
-            if (string.IsNullOrEmpty(TxtUnitPrice.Text) || !int.TryParse(TxtUnitPrice.Text, out _))
+            if (string.IsNullOrEmpty(TxtUnitPrice.Text) || !double.TryParse(TxtUnitPrice.Text, out _))
             {
                 MessageBox.Show("You must enter a unit price ..\nPlease note that the price only accepts two decimal values", "Add", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 TxtUnitPrice.Focus();

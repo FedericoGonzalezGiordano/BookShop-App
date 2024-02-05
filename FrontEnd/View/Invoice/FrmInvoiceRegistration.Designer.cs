@@ -31,13 +31,13 @@
             CboSeller = new ComboBox();
             CboCustomer = new ComboBox();
             GpbInvoice = new GroupBox();
+            BtnAdd = new Button();
             TxtAmount = new TextBox();
             TxtUnitPrice = new TextBox();
             LblArticle = new Label();
             CboArticle = new ComboBox();
             LblCantidad = new Label();
             LblUnitPrice = new Label();
-            dateTimePicker1 = new DateTimePicker();
             LblDate = new Label();
             lblCustomer = new Label();
             lblSeller = new Label();
@@ -45,6 +45,7 @@
             LblTotally = new Label();
             BtnRegistration = new Button();
             BtnExit = new Button();
+            dateTimePicker1 = new DateTimePicker();
             GpbInvoice.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -67,13 +68,14 @@
             // 
             // GpbInvoice
             // 
+            GpbInvoice.Controls.Add(dateTimePicker1);
+            GpbInvoice.Controls.Add(BtnAdd);
             GpbInvoice.Controls.Add(TxtAmount);
             GpbInvoice.Controls.Add(TxtUnitPrice);
             GpbInvoice.Controls.Add(LblArticle);
             GpbInvoice.Controls.Add(CboArticle);
             GpbInvoice.Controls.Add(LblCantidad);
             GpbInvoice.Controls.Add(LblUnitPrice);
-            GpbInvoice.Controls.Add(dateTimePicker1);
             GpbInvoice.Controls.Add(LblDate);
             GpbInvoice.Controls.Add(lblCustomer);
             GpbInvoice.Controls.Add(lblSeller);
@@ -86,6 +88,17 @@
             GpbInvoice.TabStop = false;
             GpbInvoice.Text = "Invoice registration";
             GpbInvoice.Enter += groupBox1_Enter;
+            // 
+            // BtnAdd
+            // 
+            BtnAdd.Anchor = AnchorStyles.Bottom;
+            BtnAdd.Location = new Point(501, 95);
+            BtnAdd.Name = "BtnAdd";
+            BtnAdd.Size = new Size(89, 21);
+            BtnAdd.TabIndex = 15;
+            BtnAdd.Text = "Add";
+            BtnAdd.UseVisualStyleBackColor = true;
+            BtnAdd.Click += BtnAdd_Click;
             // 
             // TxtAmount
             // 
@@ -135,13 +148,6 @@
             LblUnitPrice.Size = new Size(58, 15);
             LblUnitPrice.TabIndex = 7;
             LblUnitPrice.Text = "Unit Price";
-            // 
-            // dateTimePicker1
-            // 
-            dateTimePicker1.Location = new Point(93, 25);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(200, 23);
-            dateTimePicker1.TabIndex = 5;
             // 
             // LblDate
             // 
@@ -197,6 +203,7 @@
             BtnRegistration.TabIndex = 5;
             BtnRegistration.Text = "Register";
             BtnRegistration.UseVisualStyleBackColor = true;
+            BtnRegistration.Click += BtnRegistration_Click;
             // 
             // BtnExit
             // 
@@ -207,11 +214,19 @@
             BtnExit.Text = "Exit";
             BtnExit.UseVisualStyleBackColor = true;
             // 
+            // dateTimePicker1
+            // 
+            dateTimePicker1.Format = DateTimePickerFormat.Custom;
+            dateTimePicker1.Location = new Point(93, 25);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new Size(98, 23);
+            dateTimePicker1.TabIndex = 16;
+            // 
             // FrmInvoiceRegistration
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(626, 418);
+            ClientSize = new Size(619, 413);
             Controls.Add(BtnExit);
             Controls.Add(BtnRegistration);
             Controls.Add(LblTotally);
@@ -234,7 +249,6 @@
         private GroupBox GpbInvoice;
         private Label lblSeller;
         private Label lblCustomer;
-        private DateTimePicker dateTimePicker1;
         private Label LblDate;
         private DataGridView dataGridView1;
         private Label LblUnitPrice;
@@ -246,5 +260,7 @@
         private Label LblTotally;
         private Button BtnRegistration;
         private Button BtnExit;
+        private Button BtnAdd;
+        private DateTimePicker dateTimePicker1;
     }
 }

@@ -2,8 +2,8 @@
 
 public class InvoiceDetailsModel
 {
-    public InvoiceModel invoice { get; set; }
-    public ArticleModel ArticleCode { get; set; }
+    public int IdDetailsModel { get; set; }
+    public ArticleModel Article { get; set; }
     public double UnitPriceInvoice { get; set; }
     public int Amount { get; set; }
     public InvoiceDetailsModel()

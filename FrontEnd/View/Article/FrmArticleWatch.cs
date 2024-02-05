@@ -136,8 +136,8 @@ namespace FrontEnd.View.Article
             if (DgvArticleWatch.SelectedRows.Count > 0)
             {
                 DataGridViewRow row = DgvArticleWatch.SelectedRows[0];
-                int idCliente = Convert.ToInt32(row.Cells[0].Value);
-                ArticleModel article = await articleService.GetArticleByIdAsync(idCliente);
+                int idArticulo = Convert.ToInt32(row.Cells[0].Value);
+                ArticleModel article = await articleService.GetArticleByIdAsync(idArticulo);
                 if (article != null)
                 {
 

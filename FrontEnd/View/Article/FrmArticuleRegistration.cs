@@ -50,7 +50,7 @@ namespace FrontEnd.View.Article
                     article.PriceUnitArticle,
                     article.ObservationArticle
                 );
-                
+
                 Clean();
 
             }
@@ -146,6 +146,11 @@ namespace FrontEnd.View.Article
             {
                 MessageBox.Show("No customers to load", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
         }
     }
 }

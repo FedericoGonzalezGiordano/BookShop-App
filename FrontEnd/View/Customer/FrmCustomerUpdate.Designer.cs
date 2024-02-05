@@ -238,7 +238,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(767, 147);
+            ClientSize = new Size(792, 202);
             Controls.Add(GpbCustomer);
             Name = "FrmCustomerUpdate";
             Text = "FrmCustomerUpdate";

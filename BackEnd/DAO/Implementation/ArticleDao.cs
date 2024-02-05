@@ -24,15 +24,15 @@ namespace BackEnd.DAO.Implementation
             {
                 conn.Open();
                 transaction = conn.BeginTransaction();
-                SqlCommand cmd = new SqlCommand("SP_INSERTAR_ARTICULO", conn, transaction);
+                SqlCommand cmd = new SqlCommand("sp_insert_articles", conn, transaction);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Clear();
 
-                cmd.Parameters.AddWithValue("@descripcion", article.DescriptionArticle);
-                cmd.Parameters.AddWithValue("@stockminimo", article.StockMinArticle);
+                cmd.Parameters.AddWithValue("@description", article.DescriptionArticle);
+                cmd.Parameters.AddWithValue("@stockmin", article.StockMinArticle);
                 cmd.Parameters.AddWithValue("@stock", article.StockArticle);
-                cmd.Parameters.AddWithValue("@precioUnitario", article.PriceUnitArticle);
-                cmd.Parameters.AddWithValue("@observaciones", article.ObservationArticle);
+                cmd.Parameters.AddWithValue("@preUnit", article.PriceUnitArticle);
+                cmd.Parameters.AddWithValue("@obser", article.ObservationArticle);
                 cmd.ExecuteNonQuery();
                 transaction.Commit();
                 result = true;
@@ -59,7 +59,7 @@ namespace BackEnd.DAO.Implementation
           
             try
             {
-                DataTable table = HelperDao.GetInstance().GetConsultParameter("SP_BUSCAR_ARTICULO", parameter);
+                DataTable table = HelperDao.GetInstance().GetConsultParameter("SP_BUSCAR_ARTICULOO", parameter);
                 
                 foreach (DataRow row in table.Rows)
                 {
@@ -67,8 +67,8 @@ namespace BackEnd.DAO.Implementation
                     {
                         CodArticle = IsDBNull(row[0]) ? 0 : Convert.ToInt32(row[0]),
                         DescriptionArticle = IsDBNull(row[1]) ? string.Empty : Convert.ToString(row[1]),
-                        StockMinArticle = IsDBNull(row[2]) ? 0 : Convert.ToInt32(row[2]),
-                        StockArticle = IsDBNull(row[3]) ? 0 : Convert.ToInt32(row[3]),
+                        StockMinArticle = IsDBNull(row[2]) ? 0 : Convert.ToInt16(row[2]),
+                        StockArticle = IsDBNull(row[3]) ? 0 : Convert.ToInt16(row[3]),
                         PriceUnitArticle = IsDBNull(row[4]) ? 0 : Convert.ToDouble(row[4]),
                         ObservationArticle = IsDBNull(row[5]) ? string.Empty : Convert.ToString(row[5])
                     };
@@ -146,12 +146,12 @@ namespace BackEnd.DAO.Implementation
 
                         article = new ArticleModel
                         {
-                            CodArticle = reader[0] as int? ?? 0,
-                            DescriptionArticle = reader[1] as string,
-                            StockMinArticle = reader[2] as int? ?? 0,
-                            StockArticle = reader[3] as int? ?? 0,
-                            PriceUnitArticle = reader[4] as double? ?? 0,
-                            ObservationArticle = reader[5] as string
+                            CodArticle = reader.GetInt32(0),
+                            DescriptionArticle = reader.GetString(1),
+                            StockMinArticle = reader.GetInt16(2),
+                            StockArticle = reader.GetInt16(3),
+                            PriceUnitArticle = Convert.ToDouble(reader.GetValue(4)), 
+                            ObservationArticle = reader.GetString(5)
                         };
 
                         Console.WriteLine("Article data read successfully.");

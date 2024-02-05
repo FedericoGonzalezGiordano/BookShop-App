@@ -144,6 +144,7 @@ namespace FrontEnd.View.Customer
                 {
                     var result = await customerService.CustomerTermination(idCliente);
                     MessageBox.Show("Customer deleted with ID: " + idCliente);
+                    DgvCustomerWatch.Refresh();
                 }
                 catch (Exception ex)
                 {
@@ -156,6 +157,7 @@ namespace FrontEnd.View.Customer
                 MessageBox.Show("No selected rows in DataGridView");
                 MessageBox.Show("Select a customer before deleting.");
             }
+            
         }
 
         private async void BtnModify_Click(object sender, EventArgs e)
