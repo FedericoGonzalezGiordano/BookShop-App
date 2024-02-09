@@ -15,6 +15,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace FrontEnd.View.Login
 {
@@ -22,8 +23,8 @@ namespace FrontEnd.View.Login
     {
         IFactoryService factory;
         ILoginService loginService;
-      
-        
+
+
         private List<SellerModel> sellerLst;
 
         public FrmLogin(IFactoryService factory)
@@ -37,7 +38,7 @@ namespace FrontEnd.View.Login
         private async void FrmLogin_Load(object? sender, EventArgs e)
         {
             LoadComboAsync();
-            
+
         }
 
         private async void LoadComboAsync()
@@ -47,7 +48,8 @@ namespace FrontEnd.View.Login
             cboSeller.DisplayMember = "CompleteName";
             cboSeller.DataSource = sellerLst;
             cboSeller.SelectedIndex = -1;
-            cboSeller.DropDownStyle=ComboBoxStyle.DropDownList;
+            cboSeller.DropDownStyle = ComboBoxStyle.DropDownList;
+         
         }
 
         private void btnLog_Click(object sender, EventArgs e)
@@ -59,10 +61,10 @@ namespace FrontEnd.View.Login
                 if (selectedSeller.PasswordSeller == pass)
                 {
                     MessageBox.Show("Correct password", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    FrmMainAlphabetCRUD main = new FrmMainAlphabetCRUD(factory,selectedSeller);
+                    FrmMainAlphabetCRUD main = new FrmMainAlphabetCRUD(factory, selectedSeller);
                     this.Hide();
                     main.ShowDialog();
-                    TxtPassword.Text=string.Empty;
+                    TxtPassword.Text = string.Empty;
                 }
                 else
                 {

@@ -31,6 +31,7 @@
             CboSeller = new ComboBox();
             CboCustomer = new ComboBox();
             GpbInvoice = new GroupBox();
+            dateTimePicker1 = new DateTimePicker();
             BtnAdd = new Button();
             TxtAmount = new TextBox();
             TxtUnitPrice = new TextBox();
@@ -45,7 +46,6 @@
             LblTotally = new Label();
             BtnRegistration = new Button();
             BtnExit = new Button();
-            dateTimePicker1 = new DateTimePicker();
             GpbInvoice.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -88,6 +88,14 @@
             GpbInvoice.TabStop = false;
             GpbInvoice.Text = "Invoice registration";
             GpbInvoice.Enter += groupBox1_Enter;
+            // 
+            // dateTimePicker1
+            // 
+            dateTimePicker1.Format = DateTimePickerFormat.Custom;
+            dateTimePicker1.Location = new Point(93, 25);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new Size(98, 23);
+            dateTimePicker1.TabIndex = 16;
             // 
             // BtnAdd
             // 
@@ -178,18 +186,21 @@
             // 
             // dataGridView1
             // 
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(12, 140);
+            dataGridView1.Location = new Point(23, 140);
             dataGridView1.Name = "dataGridView1";
+            dataGridView1.ReadOnly = true;
             dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(596, 239);
+            dataGridView1.Size = new Size(423, 239);
             dataGridView1.TabIndex = 3;
             // 
             // LblTotally
             // 
             LblTotally.AutoSize = true;
             LblTotally.Font = new Font("Arial Narrow", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            LblTotally.Location = new Point(439, 386);
+            LblTotally.Location = new Point(23, 382);
             LblTotally.Name = "LblTotally";
             LblTotally.Size = new Size(70, 25);
             LblTotally.TabIndex = 4;
@@ -197,7 +208,7 @@
             // 
             // BtnRegistration
             // 
-            BtnRegistration.Location = new Point(12, 386);
+            BtnRegistration.Location = new Point(452, 356);
             BtnRegistration.Name = "BtnRegistration";
             BtnRegistration.Size = new Size(75, 23);
             BtnRegistration.TabIndex = 5;
@@ -207,20 +218,12 @@
             // 
             // BtnExit
             // 
-            BtnExit.Location = new Point(105, 386);
+            BtnExit.Location = new Point(532, 356);
             BtnExit.Name = "BtnExit";
             BtnExit.Size = new Size(75, 23);
             BtnExit.TabIndex = 6;
             BtnExit.Text = "Exit";
             BtnExit.UseVisualStyleBackColor = true;
-            // 
-            // dateTimePicker1
-            // 
-            dateTimePicker1.Format = DateTimePickerFormat.Custom;
-            dateTimePicker1.Location = new Point(93, 25);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(98, 23);
-            dateTimePicker1.TabIndex = 16;
             // 
             // FrmInvoiceRegistration
             // 

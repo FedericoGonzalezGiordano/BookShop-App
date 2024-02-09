@@ -62,7 +62,6 @@
             TxtPassword.Name = "TxtPassword";
             TxtPassword.Size = new Size(230, 23);
             TxtPassword.TabIndex = 3;
-            TxtPassword.TextAlign = HorizontalAlignment.Center;
             // 
             // cboSeller
             // 

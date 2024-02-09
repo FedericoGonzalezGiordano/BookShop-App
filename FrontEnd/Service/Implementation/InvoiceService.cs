@@ -53,8 +53,9 @@ namespace FrontEnd.Service.Implementation
 
         public async Task<HttpResponse> InvoiceRegistration(InvoiceModel invoice)
         {
-            string url = host + "/PostCustomer";
+            string url = host + "/PostInvoice";
             var cuerpo = JsonConvert.SerializeObject(invoice);
+            Clipboard.SetText(cuerpo);
             var response = await ClientSingleton.GetInstance().PostAsync(url, cuerpo);
             return response;
         }

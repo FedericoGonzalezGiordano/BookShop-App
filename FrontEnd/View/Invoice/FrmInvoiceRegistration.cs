@@ -5,6 +5,7 @@ using FrontEnd.Service.Interface;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -28,6 +29,7 @@ namespace FrontEnd.View.Invoice
 
         private InvoiceModel invoice;
 
+        int total;
 
 
 
@@ -36,7 +38,7 @@ namespace FrontEnd.View.Invoice
             _factoryService = factory;
             _invoiceService = _factoryService.GetInvoiceService();
             this.seller = seller;
-         
+
 
             InitializeComponent();
 
@@ -53,7 +55,6 @@ namespace FrontEnd.View.Invoice
             dateTimePicker1.CustomFormat = "dd/MM/yyyy";
             dateTimePicker1.Enabled = true;
             LoadComboAsync();
-            
         }
 
         private void Clean()
@@ -64,9 +65,12 @@ namespace FrontEnd.View.Invoice
                 {
                     textBox.Text = string.Empty;
                 }
+
                 else if (control is ComboBox comboBox)
                 {
-                    comboBox.SelectedIndex = -1;
+                    CboArticle.SelectedIndex = -1;
+                    CboCustomer.SelectedIndex = -1;
+
                 }
             }
         }
@@ -80,12 +84,12 @@ namespace FrontEnd.View.Invoice
 
             CboSeller.DropDownStyle = ComboBoxStyle.DropDownList;
 
-          
+
             int sellerCode = seller.IdSeller;
 
             CboSeller.SelectedIndex = sellerCode - 1;
 
-            
+
             if (CboSeller.SelectedIndex < 0)
             {
                 CboSeller.SelectedIndex = 0;
@@ -145,19 +149,21 @@ namespace FrontEnd.View.Invoice
 
                 if (result.StatusCode == HttpStatusCode.OK)
                 {
-                    MessageBox.Show("FACTURA generada con éxito", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("INVOICE generated successfully", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Clean();
+                    dataGridView1.Rows.Clear();
                 }
                 else
                 {
 
-                    string errorMessage = $"Error al cargar Factura. StatusCode: {result.StatusCode}, Message: {result.Data}";
+                    string errorMessage = $"Error loading Invoice. StatusCode: {result.StatusCode}, Message: {result.Data}";
                     MessageBox.Show(errorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
             {
-               
-                string errorMessage = $"Error general: {ex.Message}";
+
+                string errorMessage = $"Error gral: {ex.Message}";
                 MessageBox.Show(errorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -201,7 +207,7 @@ namespace FrontEnd.View.Invoice
                     };
                 }
 
-                // Agrega el detalle a la lista de detalles de la factura
+
                 invoice.lDetails.Add(detail);
 
                 AddColumnsToDataGridView();
@@ -214,6 +220,14 @@ namespace FrontEnd.View.Invoice
                         invoiceDetail.UnitPriceInvoice
                     );
                 }
+
+                total = 0;
+                foreach (InvoiceDetailsModel invoiceDetail in invoice.lDetails)
+                {
+                    total += (int)(invoiceDetail.Amount * invoiceDetail.UnitPriceInvoice);
+                }
+
+                LblTotally.Text ="Totally :"+ total.ToString();
             }
         }
 

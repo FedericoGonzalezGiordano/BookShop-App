@@ -28,7 +28,7 @@ namespace BackEnd.DAO.Implementation
                         StockMinArticle = row["stock_minimo"] != DBNull.Value ? Convert.ToInt32(row["stock_minimo"]) : 0,
                         StockArticle = Convert.ToInt32(row["stock"]),
                         PriceUnitArticle = Convert.ToDouble(row["pre_unitario"]),
-                        ObservationArticle = row["observaciones"] != DBNull.Value ? row["observaciones"].ToString() : null
+                        ObservationArticle = row["observaciones"] != DBNull.Value ? row["observaciones"].ToString() : DBNull.Value.ToString()
                     };
 
                     lstArticle.Add(article);
@@ -57,15 +57,15 @@ namespace BackEnd.DAO.Implementation
                         NameCustomer = row["nom_cliente"].ToString(),
                         LastNameCustomer = row["ape_cliente"].ToString(),
                         StreetCustomer = row["calle"].ToString(),
-                        StreetNumberCustomer = Convert.ToInt32(row["altura"]),
+                        StreetNumberCustomer = Convert.ToInt32(row["altura"].ToString()),
                         Neighborhood = new NeighborhoodModel
                         {
                             CodNeighborHood = row["cod_barrio"] != DBNull.Value ? Convert.ToInt32(row["cod_barrio"]) : 0,
-                            NameNeighborhood = row["NombreBarrio"] != DBNull.Value ? row["NombreBarrio"].ToString() : null
+                            NameNeighborhood = row["NombreBarrio"] != DBNull.Value ? row["NombreBarrio"].ToString() : DBNull.Value.ToString()
                         },
                         TelCustomer = row["nro_tel"] != DBNull.Value ? Convert.ToInt32(row["nro_tel"]) : 0,
-                        MailCustomer = row["e-mail"] != DBNull.Value ? row["e-mail"].ToString() : null
-                  
+                        MailCustomer = row["e-mail"] != DBNull.Value ? row["e-mail"].ToString() : DBNull.Value.ToString()
+
                     };
 
                     lstCustomer.Add(customer);
@@ -98,7 +98,7 @@ namespace BackEnd.DAO.Implementation
                         Neighborhood = new NeighborhoodModel
                         {
                             CodNeighborHood = row["cod_barrio"] != DBNull.Value ? Convert.ToInt32(row["cod_barrio"]) : 0,
-                            NameNeighborhood = row["NombreBarrio"] != DBNull.Value ? row["NombreBarrio"].ToString() : null
+                            NameNeighborhood = row["NombreBarrio"] != DBNull.Value ? row["NombreBarrio"].ToString() : DBNull.Value.ToString()
                         },
                         NumberTelephoneSeller = row["nro_tel"] != DBNull.Value ? Convert.ToInt32(row["nro_tel"]) : 0,
                         MailSeller = row["e-mail"].ToString(),
@@ -117,79 +117,7 @@ namespace BackEnd.DAO.Implementation
 
             return lstSeller;
         }
-        //METODO PARA OTRA BD
-        //public bool InvoiceRegistration(InvoiceModel invoice)
-        //{
-        //    bool resultado = true;
 
-        //    SqlConnection conn = HelperDao.GetInstance().GetConnection();
-        //    SqlTransaction t = null;
-
-
-        //    string estado = "Activa";
-
-        //    try
-        //    {
-        //        conn.Open();
-        //        t = conn.BeginTransaction();
-
-        //        SqlCommand cmd = new SqlCommand("INSERTAR_FACTURA", conn, t);
-        //        cmd.CommandType = CommandType.StoredProcedure;
-        //        cmd.Parameters.AddWithValue("@NroFactura", invoice.NroInvoice);
-        //        cmd.Parameters.AddWithValue("@Fecha", invoice.Date);
-        //        cmd.Parameters.AddWithValue("@CodCliente", invoice.CustomerCode.CodCustomer);
-        //        cmd.Parameters.AddWithValue("@CodVendedor", invoice.SellerCode.IdSeller);
-        //        cmd.Parameters.AddWithValue("@Estado", estado);
-
-        //        int nroFac = invoice.NroInvoice;
-
-
-        //        cmd.ExecuteNonQuery();
-
-
-
-        //        SqlCommand cmdDetalle;
-
-        //        foreach (InvoiceDetailsModel detail in invoice.lDetails)
-        //        {
-        //            cmdDetalle = new SqlCommand("INSERTAR_DETALLE_FACTURA", conn, t);
-        //            cmdDetalle.CommandType = CommandType.StoredProcedure;
-        //            cmdDetalle.Parameters.AddWithValue("@DetalleId", detail.IdDetailsModel);
-        //            cmdDetalle.Parameters.AddWithValue("@NroFactura", nroFac);
-        //            cmdDetalle.Parameters.AddWithValue("@CodArticulo", detail.ArticleCode.CodArticle);
-        //            cmdDetalle.Parameters.AddWithValue("@PrecioUnitario", detail.UnitPriceInvoice);
-        //            cmdDetalle.Parameters.AddWithValue("@Cantidad", detail.Amount);
-        //            cmdDetalle.ExecuteNonQuery();
-
-        //        }
-        //        nroFac++;
-
-
-        //        t.Commit();
-        //    }
-        //    catch (SqlException ex)
-        //    {
-        //        Debug.WriteLine("Error SQL: " + ex.Message);
-        //        resultado = false;
-        //        return resultado;
-        //    }
-
-        //    catch (Exception ex)
-        //    {
-        //        Debug.WriteLine("Error: " + ex.Message);
-        //        if (t != null)
-        //        {
-        //            t.Rollback();
-        //        }
-        //    }
-        //    finally
-        //    {
-        //        if (conn != null && conn.State == ConnectionState.Open)
-        //            conn.Close();
-        //    }
-
-        //    return resultado;
-        //}
         public bool InvoiceRegistration(InvoiceModel invoice)
         {
             SqlConnection conn = HelperDao.GetInstance().GetConnection();
@@ -211,7 +139,7 @@ namespace BackEnd.DAO.Implementation
                 cmd.Parameters.Add(paramOut);
                 cmd.ExecuteNonQuery();
 
-                int invoiceNro = (int)paramOut.Value;
+                int invoiceNro = Convert.ToInt32(paramOut.Value);
 
 
                 SqlCommand cmdDetalle;
@@ -221,11 +149,12 @@ namespace BackEnd.DAO.Implementation
                     cmdDetalle.CommandType = CommandType.StoredProcedure;
                     cmdDetalle.Parameters.AddWithValue("@NroFactura", invoiceNro);
                     cmdDetalle.Parameters.AddWithValue("@CodArticulo", detail.Article.CodArticle);
-                    cmdDetalle.Parameters.AddWithValue("@cantidad", detail.Amount);
-                    cmdDetalle.Parameters.AddWithValue("@monto", detail.UnitPriceInvoice);
+                    cmdDetalle.Parameters.AddWithValue("@Cantidad", detail.Amount);
+                    cmdDetalle.Parameters.AddWithValue("@PrecioUnitario", detail.UnitPriceInvoice);
                     cmdDetalle.ExecuteNonQuery();
                 }
 
+                t.Commit();
 
             }
             catch (Exception)
@@ -235,6 +164,7 @@ namespace BackEnd.DAO.Implementation
                     t.Rollback();
                     resultado = false;
                 }
+                
             }
             finally
             {

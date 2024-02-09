@@ -14,7 +14,7 @@ namespace BackEnd.DAO.Helper
     public class HelperDao
     {
         private readonly SqlConnection _connection;
-        private string stringConexion = "Data Source=.\\SQLEXPRESS;Initial Catalog =LIBRERIA_LCI2023;Integrated Security = True";
+        private string stringConexion = Properties.Resources.CadenaFede;
         private static HelperDao instance;
 
         private HelperDao()
