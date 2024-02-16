@@ -38,3 +38,43 @@ C:\Users\Federico gonzalez\Desktop\BookShop App\API\obj\Debug\net6.0\refint\API.
 C:\Users\Federico gonzalez\Desktop\BookShop App\API\obj\Debug\net6.0\API.pdb
 C:\Users\Federico gonzalez\Desktop\BookShop App\API\obj\Debug\net6.0\API.genruntimeconfig.cache
 C:\Users\Federico gonzalez\Desktop\BookShop App\API\obj\Debug\net6.0\ref\API.dll
+F:\TUP1\BookShop App\API\bin\Debug\net6.0\appsettings.Development.json
+F:\TUP1\BookShop App\API\bin\Debug\net6.0\appsettings.json
+F:\TUP1\BookShop App\API\bin\Debug\net6.0\API.exe
+F:\TUP1\BookShop App\API\bin\Debug\net6.0\API.deps.json
+F:\TUP1\BookShop App\API\bin\Debug\net6.0\API.runtimeconfig.json
+F:\TUP1\BookShop App\API\bin\Debug\net6.0\API.dll
+F:\TUP1\BookShop App\API\bin\Debug\net6.0\API.pdb
+F:\TUP1\BookShop App\API\bin\Debug\net6.0\Microsoft.OpenApi.dll
+F:\TUP1\BookShop App\API\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+F:\TUP1\BookShop App\API\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+F:\TUP1\BookShop App\API\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+F:\TUP1\BookShop App\API\bin\Debug\net6.0\System.Data.SqlClient.dll
+F:\TUP1\BookShop App\API\bin\Debug\net6.0\runtimes\win-arm64\native\sni.dll
+F:\TUP1\BookShop App\API\bin\Debug\net6.0\runtimes\win-x64\native\sni.dll
+F:\TUP1\BookShop App\API\bin\Debug\net6.0\runtimes\win-x86\native\sni.dll
+F:\TUP1\BookShop App\API\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+F:\TUP1\BookShop App\API\bin\Debug\net6.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+F:\TUP1\BookShop App\API\bin\Debug\net6.0\BackEnd.dll
+F:\TUP1\BookShop App\API\bin\Debug\net6.0\BackEnd.pdb
+F:\TUP1\BookShop App\API\obj\Debug\net6.0\API.csproj.AssemblyReference.cache
+F:\TUP1\BookShop App\API\obj\Debug\net6.0\API.GeneratedMSBuildEditorConfig.editorconfig
+F:\TUP1\BookShop App\API\obj\Debug\net6.0\API.AssemblyInfoInputs.cache
+F:\TUP1\BookShop App\API\obj\Debug\net6.0\API.AssemblyInfo.cs
+F:\TUP1\BookShop App\API\obj\Debug\net6.0\API.csproj.CoreCompileInputs.cache
+F:\TUP1\BookShop App\API\obj\Debug\net6.0\API.MvcApplicationPartsAssemblyInfo.cs
+F:\TUP1\BookShop App\API\obj\Debug\net6.0\API.MvcApplicationPartsAssemblyInfo.cache
+F:\TUP1\BookShop App\API\obj\Debug\net6.0\staticwebassets\msbuild.API.Microsoft.AspNetCore.StaticWebAssets.props
+F:\TUP1\BookShop App\API\obj\Debug\net6.0\staticwebassets\msbuild.build.API.props
+F:\TUP1\BookShop App\API\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.API.props
+F:\TUP1\BookShop App\API\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.API.props
+F:\TUP1\BookShop App\API\obj\Debug\net6.0\staticwebassets.pack.json
+F:\TUP1\BookShop App\API\obj\Debug\net6.0\staticwebassets.build.json
+F:\TUP1\BookShop App\API\obj\Debug\net6.0\staticwebassets.development.json
+F:\TUP1\BookShop App\API\obj\Debug\net6.0\scopedcss\bundle\API.styles.css
+F:\TUP1\BookShop App\API\obj\Debug\net6.0\API.csproj.CopyComplete
+F:\TUP1\BookShop App\API\obj\Debug\net6.0\API.dll
+F:\TUP1\BookShop App\API\obj\Debug\net6.0\refint\API.dll
+F:\TUP1\BookShop App\API\obj\Debug\net6.0\API.pdb
+F:\TUP1\BookShop App\API\obj\Debug\net6.0\API.genruntimeconfig.cache
+F:\TUP1\BookShop App\API\obj\Debug\net6.0\ref\API.dll

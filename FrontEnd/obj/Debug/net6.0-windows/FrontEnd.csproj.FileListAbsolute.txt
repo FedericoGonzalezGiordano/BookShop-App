@@ -34,3 +34,39 @@ C:\Users\Federico gonzalez\Desktop\BookShop App\FrontEnd\obj\Debug\net6.0-window
 C:\Users\Federico gonzalez\Desktop\BookShop App\FrontEnd\obj\Debug\net6.0-windows\FrontEnd.View.Article.FrmArticleWatch.resources
 C:\Users\Federico gonzalez\Desktop\BookShop App\FrontEnd\obj\Debug\net6.0-windows\FrontEnd.View.Article.FrmArticleUpdate.resources
 C:\Users\Federico gonzalez\Desktop\BookShop App\FrontEnd\obj\Debug\net6.0-windows\FrontEnd.View.Invoice.FrmInvoiceRegistration.resources
+F:\TUP1\BookShop App\FrontEnd\bin\Debug\net6.0-windows\FrontEnd.exe
+F:\TUP1\BookShop App\FrontEnd\bin\Debug\net6.0-windows\FrontEnd.deps.json
+F:\TUP1\BookShop App\FrontEnd\bin\Debug\net6.0-windows\FrontEnd.runtimeconfig.json
+F:\TUP1\BookShop App\FrontEnd\bin\Debug\net6.0-windows\FrontEnd.dll
+F:\TUP1\BookShop App\FrontEnd\bin\Debug\net6.0-windows\FrontEnd.pdb
+F:\TUP1\BookShop App\FrontEnd\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
+F:\TUP1\BookShop App\FrontEnd\bin\Debug\net6.0-windows\System.Data.SqlClient.dll
+F:\TUP1\BookShop App\FrontEnd\bin\Debug\net6.0-windows\runtimes\win-arm64\native\sni.dll
+F:\TUP1\BookShop App\FrontEnd\bin\Debug\net6.0-windows\runtimes\win-x64\native\sni.dll
+F:\TUP1\BookShop App\FrontEnd\bin\Debug\net6.0-windows\runtimes\win-x86\native\sni.dll
+F:\TUP1\BookShop App\FrontEnd\bin\Debug\net6.0-windows\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+F:\TUP1\BookShop App\FrontEnd\bin\Debug\net6.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+F:\TUP1\BookShop App\FrontEnd\bin\Debug\net6.0-windows\BackEnd.dll
+F:\TUP1\BookShop App\FrontEnd\bin\Debug\net6.0-windows\BackEnd.pdb
+F:\TUP1\BookShop App\FrontEnd\obj\Debug\net6.0-windows\FrontEnd.csproj.AssemblyReference.cache
+F:\TUP1\BookShop App\FrontEnd\obj\Debug\net6.0-windows\FrontEnd.Properties.Resources.resources
+F:\TUP1\BookShop App\FrontEnd\obj\Debug\net6.0-windows\FrontEnd.View.Article.FrmArticleUpdate.resources
+F:\TUP1\BookShop App\FrontEnd\obj\Debug\net6.0-windows\FrontEnd.View.Article.FrmArticleWatch.resources
+F:\TUP1\BookShop App\FrontEnd\obj\Debug\net6.0-windows\FrontEnd.View.Article.FrmArticuleRegistration.resources
+F:\TUP1\BookShop App\FrontEnd\obj\Debug\net6.0-windows\FrontEnd.FrmCustomerRegistration.resources
+F:\TUP1\BookShop App\FrontEnd\obj\Debug\net6.0-windows\FrontEnd.View.Customer.FrmCustomerUpdate.resources
+F:\TUP1\BookShop App\FrontEnd\obj\Debug\net6.0-windows\FrontEnd.View.Customer.FrmCustomerWatch.resources
+F:\TUP1\BookShop App\FrontEnd\obj\Debug\net6.0-windows\FrontEnd.View.Invoice.FrmInvoiceRegistration.resources
+F:\TUP1\BookShop App\FrontEnd\obj\Debug\net6.0-windows\FrontEnd.View.Login.FrmLogin.resources
+F:\TUP1\BookShop App\FrontEnd\obj\Debug\net6.0-windows\FrontEnd.View.Main.FrmMainAlphabetCRUD.resources
+F:\TUP1\BookShop App\FrontEnd\obj\Debug\net6.0-windows\FrontEnd.csproj.GenerateResource.cache
+F:\TUP1\BookShop App\FrontEnd\obj\Debug\net6.0-windows\FrontEnd.GeneratedMSBuildEditorConfig.editorconfig
+F:\TUP1\BookShop App\FrontEnd\obj\Debug\net6.0-windows\FrontEnd.AssemblyInfoInputs.cache
+F:\TUP1\BookShop App\FrontEnd\obj\Debug\net6.0-windows\FrontEnd.AssemblyInfo.cs
+F:\TUP1\BookShop App\FrontEnd\obj\Debug\net6.0-windows\FrontEnd.csproj.CoreCompileInputs.cache
+F:\TUP1\BookShop App\FrontEnd\obj\Debug\net6.0-windows\FrontEnd.csproj.CopyComplete
+F:\TUP1\BookShop App\FrontEnd\obj\Debug\net6.0-windows\FrontEnd.dll
+F:\TUP1\BookShop App\FrontEnd\obj\Debug\net6.0-windows\refint\FrontEnd.dll
+F:\TUP1\BookShop App\FrontEnd\obj\Debug\net6.0-windows\FrontEnd.pdb
+F:\TUP1\BookShop App\FrontEnd\obj\Debug\net6.0-windows\FrontEnd.genruntimeconfig.cache
+F:\TUP1\BookShop App\FrontEnd\obj\Debug\net6.0-windows\ref\FrontEnd.dll

@@ -65,6 +65,7 @@
             CboCustomer.Name = "CboCustomer";
             CboCustomer.Size = new Size(200, 23);
             CboCustomer.TabIndex = 1;
+            CboCustomer.SelectedIndexChanged += CboCustomer_SelectedIndexChanged;
             // 
             // GpbInvoice
             // 
@@ -193,8 +194,9 @@
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(423, 239);
+            dataGridView1.Size = new Size(437, 239);
             dataGridView1.TabIndex = 3;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // LblTotally
             // 
@@ -208,7 +210,7 @@
             // 
             // BtnRegistration
             // 
-            BtnRegistration.Location = new Point(452, 356);
+            BtnRegistration.Location = new Point(457, 382);
             BtnRegistration.Name = "BtnRegistration";
             BtnRegistration.Size = new Size(75, 23);
             BtnRegistration.TabIndex = 5;
@@ -218,12 +220,13 @@
             // 
             // BtnExit
             // 
-            BtnExit.Location = new Point(532, 356);
+            BtnExit.Location = new Point(538, 382);
             BtnExit.Name = "BtnExit";
             BtnExit.Size = new Size(75, 23);
             BtnExit.TabIndex = 6;
             BtnExit.Text = "Exit";
             BtnExit.UseVisualStyleBackColor = true;
+            BtnExit.Click += BtnExit_Click;
             // 
             // FrmInvoiceRegistration
             // 

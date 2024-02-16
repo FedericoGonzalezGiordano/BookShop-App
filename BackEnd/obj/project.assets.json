@@ -475,11 +475,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Federico gonzalez\\Desktop\\BookShop App\\BackEnd\\BackEnd.csproj",
+      "projectUniqueName": "F:\\TUP1\\BookShop App\\BackEnd\\BackEnd.csproj",
       "projectName": "BackEnd",
-      "projectPath": "C:\\Users\\Federico gonzalez\\Desktop\\BookShop App\\BackEnd\\BackEnd.csproj",
+      "projectPath": "F:\\TUP1\\BookShop App\\BackEnd\\BackEnd.csproj",
       "packagesPath": "C:\\Users\\Federico gonzalez\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Federico gonzalez\\Desktop\\BookShop App\\BackEnd\\obj\\",
+      "outputPath": "F:\\TUP1\\BookShop App\\BackEnd\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Federico gonzalez\\AppData\\Roaming\\NuGet\\NuGet.Config",

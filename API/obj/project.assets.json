@@ -920,11 +920,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Federico gonzalez\\Desktop\\BookShop App\\API\\API.csproj",
+      "projectUniqueName": "F:\\TUP1\\BookShop App\\API\\API.csproj",
       "projectName": "API",
-      "projectPath": "C:\\Users\\Federico gonzalez\\Desktop\\BookShop App\\API\\API.csproj",
+      "projectPath": "F:\\TUP1\\BookShop App\\API\\API.csproj",
       "packagesPath": "C:\\Users\\Federico gonzalez\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Federico gonzalez\\Desktop\\BookShop App\\API\\obj\\",
+      "outputPath": "F:\\TUP1\\BookShop App\\API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Federico gonzalez\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -941,8 +941,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\Federico gonzalez\\Desktop\\BookShop App\\BackEnd\\BackEnd.csproj": {
-              "projectPath": "C:\\Users\\Federico gonzalez\\Desktop\\BookShop App\\BackEnd\\BackEnd.csproj"
+            "F:\\TUP1\\BookShop App\\BackEnd\\BackEnd.csproj": {
+              "projectPath": "F:\\TUP1\\BookShop App\\BackEnd\\BackEnd.csproj"
             }
           }
         }

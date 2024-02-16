@@ -12,3 +12,17 @@ C:\Users\Federico gonzalez\Desktop\BookShop App\BackEnd\obj\Debug\net6.0\BackEnd
 C:\Users\Federico gonzalez\Desktop\BookShop App\BackEnd\obj\Debug\net6.0\ref\BackEnd.dll
 C:\Users\Federico gonzalez\Desktop\BookShop App\BackEnd\obj\Debug\net6.0\BackEnd.Properties.Resources.resources
 C:\Users\Federico gonzalez\Desktop\BookShop App\BackEnd\obj\Debug\net6.0\BackEnd.csproj.GenerateResource.cache
+F:\TUP1\BookShop App\BackEnd\bin\Debug\net6.0\BackEnd.deps.json
+F:\TUP1\BookShop App\BackEnd\bin\Debug\net6.0\BackEnd.dll
+F:\TUP1\BookShop App\BackEnd\bin\Debug\net6.0\BackEnd.pdb
+F:\TUP1\BookShop App\BackEnd\obj\Debug\net6.0\BackEnd.csproj.AssemblyReference.cache
+F:\TUP1\BookShop App\BackEnd\obj\Debug\net6.0\BackEnd.Properties.Resources.resources
+F:\TUP1\BookShop App\BackEnd\obj\Debug\net6.0\BackEnd.csproj.GenerateResource.cache
+F:\TUP1\BookShop App\BackEnd\obj\Debug\net6.0\BackEnd.GeneratedMSBuildEditorConfig.editorconfig
+F:\TUP1\BookShop App\BackEnd\obj\Debug\net6.0\BackEnd.AssemblyInfoInputs.cache
+F:\TUP1\BookShop App\BackEnd\obj\Debug\net6.0\BackEnd.AssemblyInfo.cs
+F:\TUP1\BookShop App\BackEnd\obj\Debug\net6.0\BackEnd.csproj.CoreCompileInputs.cache
+F:\TUP1\BookShop App\BackEnd\obj\Debug\net6.0\BackEnd.dll
+F:\TUP1\BookShop App\BackEnd\obj\Debug\net6.0\refint\BackEnd.dll
+F:\TUP1\BookShop App\BackEnd\obj\Debug\net6.0\BackEnd.pdb
+F:\TUP1\BookShop App\BackEnd\obj\Debug\net6.0\ref\BackEnd.dll

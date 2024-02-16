@@ -29,7 +29,7 @@ namespace FrontEnd.View.Invoice
 
         private InvoiceModel invoice;
 
-        int total;
+        double total;
 
 
 
@@ -152,6 +152,8 @@ namespace FrontEnd.View.Invoice
                     MessageBox.Show("INVOICE generated successfully", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Clean();
                     dataGridView1.Rows.Clear();
+                    CboCustomer.Enabled = true;
+                    dataGridView1.Refresh();
                 }
                 else
                 {
@@ -173,9 +175,17 @@ namespace FrontEnd.View.Invoice
 
             if (dataGridView1.Columns.Count == 0)
             {
+
                 dataGridView1.Columns.Add("ArticleDescription", "Article Description");
                 dataGridView1.Columns.Add("Amount", "Amount");
                 dataGridView1.Columns.Add("UnitPriceInvoice", "Unit Price");
+                DataGridViewButtonColumn colDelete = new DataGridViewButtonColumn();
+                colDelete.HeaderText = "";
+                colDelete.Text = "Delete";
+                colDelete.UseColumnTextForButtonValue = true;
+                colDelete.Name = "Delete";
+                dataGridView1.Columns.Add(colDelete);
+
             }
         }
 
@@ -210,16 +220,31 @@ namespace FrontEnd.View.Invoice
 
                 invoice.lDetails.Add(detail);
 
+
+
                 AddColumnsToDataGridView();
 
-                foreach (InvoiceDetailsModel invoiceDetail in invoice.lDetails)
+                if (dataGridView1.Rows.Count == 0)
+                {
+                    dataGridView1.Rows.Clear();
+                    foreach (InvoiceDetailsModel invoiceDetail in invoice.lDetails)
+                    {
+                        dataGridView1.Rows.Add(
+                            invoiceDetail.Article.DescriptionArticle,
+                            invoiceDetail.Amount,
+                            invoiceDetail.UnitPriceInvoice
+                        );
+                    }
+                }
+                else
                 {
                     dataGridView1.Rows.Add(
-                        invoiceDetail.Article.DescriptionArticle,
-                        invoiceDetail.Amount,
-                        invoiceDetail.UnitPriceInvoice
+                        detail.Article.DescriptionArticle,
+                        detail.Amount,
+                        detail.UnitPriceInvoice
                     );
                 }
+                CboCustomer.Enabled = false;
 
                 total = 0;
                 foreach (InvoiceDetailsModel invoiceDetail in invoice.lDetails)
@@ -227,9 +252,47 @@ namespace FrontEnd.View.Invoice
                     total += (int)(invoiceDetail.Amount * invoiceDetail.UnitPriceInvoice);
                 }
 
-                LblTotally.Text ="Totally :"+ total.ToString();
+                LblTotally.Text = "Totally :" + total.ToString();
             }
         }
+        private void ClearInvoice()
+        {
+            invoice = null;
+            dataGridView1.Rows.Clear();
+            total = 0;
+            LblTotally.Text = "Totally :" + total.ToString();
+        }
 
+        private void CboCustomer_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ClearInvoice();
+        }
+
+        private void BtnExit_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex == dataGridView1.Columns["Delete"].Index)
+            {
+                // Obtener el monto del detalle a eliminar
+                int amount = (int)dataGridView1.Rows[e.RowIndex].Cells["Amount"].Value;
+                double unitPrice = (double)dataGridView1.Rows[e.RowIndex].Cells["UnitPriceInvoice"].Value;
+
+                // Restar el monto del detalle eliminado al total
+                total -= amount * unitPrice;
+
+                // Eliminar detalle de la factura
+                invoice.lDetails.RemoveAt(e.RowIndex);
+
+                // Actualizar la grilla
+                dataGridView1.Rows.RemoveAt(e.RowIndex);
+
+                // Actualizar la etiqueta del total
+                LblTotally.Text = "Totally :" + total.ToString();
+            }
+        }
     }
 }

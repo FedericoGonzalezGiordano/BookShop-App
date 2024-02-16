@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "DqwU/3Z3xK1z9PRngOKdKk7o+1i1Q2+ytRd7sgd5SCzihPr8RiZWuLEA2BPQ1bYjbDjD6+rtRxJruCv/v8H06w==",
+  "dgSpecHash": "3t6kEZQqm3JhkB/Ohk+fue2d99+GVkH6JYChR5b23pphiK29YGj5awQo1qb+3EY0EFBSZCoqdrgTtFupIEZFZQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Federico gonzalez\\Desktop\\BookShop App\\FrontEnd\\FrontEnd.csproj",
+  "projectFilePath": "F:\\TUP1\\BookShop App\\FrontEnd\\FrontEnd.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Federico gonzalez\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\Federico gonzalez\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Federico gonzalez\\Desktop\\BookShop App\\FrontEnd\\FrontEnd.csproj": {}
+    "F:\\TUP1\\BookShop App\\FrontEnd\\FrontEnd.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Federico gonzalez\\Desktop\\BookShop App\\BackEnd\\BackEnd.csproj": {
+    "F:\\TUP1\\BookShop App\\BackEnd\\BackEnd.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Federico gonzalez\\Desktop\\BookShop App\\BackEnd\\BackEnd.csproj",
+        "projectUniqueName": "F:\\TUP1\\BookShop App\\BackEnd\\BackEnd.csproj",
         "projectName": "BackEnd",
-        "projectPath": "C:\\Users\\Federico gonzalez\\Desktop\\BookShop App\\BackEnd\\BackEnd.csproj",
+        "projectPath": "F:\\TUP1\\BookShop App\\BackEnd\\BackEnd.csproj",
         "packagesPath": "C:\\Users\\Federico gonzalez\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Federico gonzalez\\Desktop\\BookShop App\\BackEnd\\obj\\",
+        "outputPath": "F:\\TUP1\\BookShop App\\BackEnd\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Federico gonzalez\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -65,14 +65,14 @@
         }
       }
     },
-    "C:\\Users\\Federico gonzalez\\Desktop\\BookShop App\\FrontEnd\\FrontEnd.csproj": {
+    "F:\\TUP1\\BookShop App\\FrontEnd\\FrontEnd.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Federico gonzalez\\Desktop\\BookShop App\\FrontEnd\\FrontEnd.csproj",
+        "projectUniqueName": "F:\\TUP1\\BookShop App\\FrontEnd\\FrontEnd.csproj",
         "projectName": "FrontEnd",
-        "projectPath": "C:\\Users\\Federico gonzalez\\Desktop\\BookShop App\\FrontEnd\\FrontEnd.csproj",
+        "projectPath": "F:\\TUP1\\BookShop App\\FrontEnd\\FrontEnd.csproj",
         "packagesPath": "C:\\Users\\Federico gonzalez\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Federico gonzalez\\Desktop\\BookShop App\\FrontEnd\\obj\\",
+        "outputPath": "F:\\TUP1\\BookShop App\\FrontEnd\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Federico gonzalez\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -89,8 +89,8 @@
           "net6.0-windows7.0": {
             "targetAlias": "net6.0-windows",
             "projectReferences": {
-              "C:\\Users\\Federico gonzalez\\Desktop\\BookShop App\\BackEnd\\BackEnd.csproj": {
-                "projectPath": "C:\\Users\\Federico gonzalez\\Desktop\\BookShop App\\BackEnd\\BackEnd.csproj"
+              "F:\\TUP1\\BookShop App\\BackEnd\\BackEnd.csproj": {
+                "projectPath": "F:\\TUP1\\BookShop App\\BackEnd\\BackEnd.csproj"
               }
             }
           }
